@@ -1,34 +1,36 @@
+# IB-insync Documentation
+
+## Table of Contents
+
+### API Documentation
+- [Client](#client)
+- [Order](#order)
+- [Contract](#contract)
+- [Objects](#objects)
+- [Utilities](#utilities)
+- [FlexReport](#flexreport)
+- [IBC](#ibc)
+- [IBController](#ibcontroller)
+- [Watchdog](#watchdog)
+
+### Code Examples
+- [Fetching consecutive historical data](#fetching-consecutive-historical-data)
+- [Async streaming ticks](#async-streaming-ticks)
+- [Scanner data (blocking)](#scanner-data-blocking)
+- [Scanner data (streaming)](#scanner-data-streaming)
+- [Option calculations](#option-calculations)
+- [Order book](#order-book)
+- [Minimum price increments](#minimum-price-increments)
+- [News articles](#news-articles)
+- [News bulletins](#news-bulletins)
+- [Dividends](#dividends)
+- [Fundamental ratios](#fundamental-ratios)
+- [Integration with Tkinter](#integration-with-tkinter)
 
 
-INDEX
-
-**API DOCS**
-**Client**
-**Order**
-**Contract**
-**OBJECTS**
-**UTILITIES**
-**FlexReport**
-**IBC**
-**IBController**
-**Watchdog**
-**CODE EXMAPLE**S**
-    **Fetching consecutive historical data**
-    **Async streaming ticks**
-    **Scanner data (blocking)**
-    **Scanner data (streaming)**
-    **Option calculations**
-    **Order book**
-    **Minimum price increments**
-    **News articles**
-    **News bulletins**
-    **Dividends**
-    **Fundemental ratios**
-    **Async streaming ticks**
-    **Integration with Tkinter**
 
 
-
+```python
 pip install ib_insync
 
 
@@ -50,9 +52,11 @@ print(df)
 
 
 
+```
 
 
-**API DOCS**
+
+## API DOCS
 
 The goal of the IB-insync library is to make working with the Trader Workstation API from Interactive Brokers as easy
 as possible.
@@ -979,7 +983,7 @@ async requestFAAsync(faDataType)
 reqUserInfoAsync()
 
 
-**2.2 Client**
+### Client
 
 Socket client for communicating with Interactive Brokers.
 class ib_insync.client.Client(wrapper)
@@ -1153,7 +1157,7 @@ reqWshEventData(reqId, data)
 cancelWshEventData(reqId)
 reqUserInfo(reqId)
 
-**2.3 Order**
+### Order
 
 class ib_insync.order.Order(orderId: int = 0, clientId: int = 0, permId: int = 0, action: str = '',
 totalQuantity: float = 0.0, orderType: str = '', lmtPrice: float =
@@ -1815,7 +1819,7 @@ Return type
 object
 
  
-**Contract**
+### Contract
 
 class ib_insync.contract.Contract(secType: str = '', conId: int = 0, symbol: str = '',
 lastTradeDateOrContractMonth: str = '', strike: float = 0.0, right: str =
@@ -2475,7 +2479,7 @@ Return type
 object
 
 
-**Ticker**
+### Ticker
 
 ccess to realtime market information.
 class ib_insync.ticker.Ticker(contract: ~typing.Optional[~ib_insync.contract.Contract] = None, time:
@@ -2714,7 +2718,7 @@ Emit a new value to all connected listeners.
 Parameters
 args – Argument values to emit to listeners.
 
-**OBJECTS**
+### Objects
 
 class ib_insync.objects.ScannerSubscription(numberOfRows: int = -1, instrument: str = '',
 locationCode: str = '', scanCode: str = '', abovePrice: float
@@ -3460,7 +3464,7 @@ Parameters
 • message (str) – Original error message
 
 
-**UTILITIES**
+### Utilities
 
 
 ib_insync.util.df(objs, labels=None)
@@ -3598,7 +3602,7 @@ Run combined Qt5/asyncio event loo
 
 
 
-**FlexReport**
+### FlexReport
 
 ccess to account statement webservice.
 exception ib_insync.flexreport.FlexError
@@ -3626,7 +3630,7 @@ save(path)
 Save report to XML file
 
 
-**IBC**
+### IBC
 
 class ib_insync.ibcontroller.IBC(twsVersion: int = 0, gateway: bool = False, tradingMode: str = '',
 twsPath: str = '', twsSettingsPath: str = '', ibcPath: str = '', ibcIni: str = '',
@@ -3710,7 +3714,7 @@ keyword arguments.
 Return type
 object
 
-**IBController**
+### IBController
 
 class ib_insync.ibcontroller.IBController(APP: str = 'TWS', TWS_MAJOR_VRSN: str = '969',
 TRADING_MODE: str = 'live', IBC_INI: str =
@@ -3768,7 +3772,7 @@ Return type
 object
 
 
-**Watchdog**
+### Watchdog
 
 class ib_insync.ibcontroller.Watchdog(controller: Union[IBC, IBController], ib: IB, host: str =
 '127.0.0.1', port: int = 7497, clientId: int = 1, connectTimeout:
@@ -3853,12 +3857,11 @@ keyword arguments.
 Return type
 object
 
-=================
-**CODE EXAMPLES**
-=================
+## CODE EXAMPLES
 
-**Fetching consecutive historical data**
+#### Fetching consecutive historical data
 
+```python
 import datetime
 from ib_insync import *
 ib = IB()
@@ -3883,10 +3886,12 @@ print(dt)
 # save to CSV file
 allBars = [b for bars in reversed(barsList) for b in bars]
 df = util.df(allBars)
-df.to_csv(contract.symbol + '.csv', index=Fals
+df.to_csv(contract.symbol + '.csv', index=False)
+```
 
-**Async streaming ticks**
+#### Async streaming ticks
 
+```python
 import asyncio
 import ib_insync as ibi
 class App:
@@ -3907,9 +3912,12 @@ app = App()
 try:
 asyncio.run(app.run())
 
-**Scanner data (blocking)**
+```
 
-allParams = ib.reqScannerParameters())
+#### Scanner data (blocking)
+
+```python
+allParams = ib.reqScannerParameters()
 print(allParams)
 sub = ScannerSubscription(
 instrument='FUT.US',
@@ -3918,8 +3926,11 @@ scanCode='TOP_PERC_GAIN')
 scanData = ib.reqScannerData(sub)
 print(scanData)
 
-**Scanner data (streaming)**
+```
 
+#### Scanner data (streaming)
+
+```python
 def onScanData(scanData):
 print(scanData[0])
 print(len(scanData))
@@ -3932,18 +3943,24 @@ scanData.updateEvent += onScanData
 ib.sleep(60)
 ib.cancelScannerSubscription(scanData)
 
-**Option calculations**
+```
 
+#### Option calculations
+
+```python
 option = Option('EOE', '20171215', 490, 'P', 'FTA', multiplier=100)
 calc = ib.calculateImpliedVolatility(
-option, optionPrice=6.1, underPrice=525))
+option, optionPrice=6.1, underPrice=525)
 print(calc)
 calc = ib.calculateOptionPrice(
-option, volatility=0.14, underPrice=525))
+option, volatility=0.14, underPrice=525)
 print(calc)
 
-**Order book**
+```
 
+#### Order book
+
+```python
 eurusd = Forex('EURUSD')
 ticker = ib.reqMktDepth(eurusd)
 while ib.sleep(5):
@@ -3951,8 +3968,11 @@ print(
 [d.price for d in ticker.domBids],
 [d.price for d in ticker.domAsks])
 
-**Minimum price increments**
+```
 
+#### Minimum price increments
+
+```python
 usdjpy = Forex('USDJPY')
 cd = ib.reqContractDetails(usdjpy)[0]
 print(cd.marketRuleIds)
@@ -3961,8 +3981,11 @@ ib.reqMarketRule(ruleId)
 for ruleId in cd.marketRuleIds.split(',')]
 print(rules)
 
-**News articles**
+```
 
+#### News articles
+
+```python
 newsProviders = ib.reqNewsProviders()
 print(newsProviders)
 codes = '+'.join(np.code for np in newsProviders)
@@ -3974,14 +3997,20 @@ print(latest)
 article = ib.reqNewsArticle(latest.providerCode, latest.articleId)
 print(article
 
-**News bulletins**
+```
 
+#### News bulletins
+
+```python
 ib.reqNewsBulletins(True)
 ib.sleep(5)
 print(ib.newsBulletins())
 
-**Dividends**
+```
 
+#### Dividends
+
+```python
 contract = Stock('INTC', 'SMART', 'USD')
 ticker = ib.reqMktData(contract, '456')
 ib.sleep(2)
@@ -3990,15 +4019,21 @@ Output:
 Dividends(past12Months=1.2, next12Months=1.2, nextDate=datetime.date(2019, 2, 6),␣
 nextAmount=0.3)
 
-**Fundemental ratios**
+```
 
+#### Fundamental ratios
+
+```python
 contract = Stock('IBM', 'SMART', 'USD')
 ticker = ib.reqMktData(contract, '258')
 ib.sleep(2)
 print(ticker.fundamentalRatios)
 
-**Async streaming ticks**
+```
 
+#### Async streaming ticks
+
+```python
 import asyncio
 import ib_insync as ibi
 class App:
@@ -4021,8 +4056,11 @@ asyncio.run(app.run())
 except (KeyboardInterrupt, SystemExit):
 app.stop()
 
-**Integration with Tkinter**
+```
 
+#### Integration with Tkinter
+
+```python
 class TkApp:
     """
     Example of integrating with Tkinter.
@@ -4061,6 +4099,8 @@ class TkApp:
 
 app = TkApp()
 app.run()
+```
+
 
 
 
