@@ -992,8 +992,9 @@ Optional[HistoricalNews]
 #### async requestFAAsync(faDataType)
 reqUserInfoAsync()
 
-
-### Client
+```
+Client
+```
 
 Socket client for communicating with Interactive Brokers.
 
@@ -1252,7 +1253,9 @@ cancelWshEventData(reqId)
 
 reqUserInfo(reqId)
 
-### Order
+```
+Order
+```
 
 #### class ib_insync.order.Order(orderId: int = 0, clientId: int = 0, permId: int = 0, action: str = '',
 totalQuantity: float = 0.0, orderType: str = '', lmtPrice: float =
@@ -1979,8 +1982,11 @@ keyword arguments.
 Return type
 object
 
- 
-### Contract
+```
+Contract
+```
+
+Financial instrument types used by Interactive Brokers
 
 class ib_insync.contract.Contract(secType: str = '', conId: int = 0, symbol: str = '',
 lastTradeDateOrContractMonth: str = '', strike: float = 0.0, right: str =
@@ -2004,6 +2010,7 @@ Future('ES', '20180921', 'CME')
 Option('SPY', '20170721', 240, 'C', 'SMART')
 Bond(secIdType='ISIN', secId='US03076KAA60')
 Crypto('BTC', 'PAXOS', 'USD')
+
 Parameters
 -conId (int) -The unique IB contract identifier.
 -symbol (str) -The contract (or its underlying) symbol.
@@ -2049,7 +2056,7 @@ types are not available.
 -comboLegs (List[ComboLeg]) -The legs of a combined contract definition.
 -deltaNeutralContract (DeltaNeutralContract) -Delta and underlying price for
 Delta-Neutral combo orders.
-ecType: str = ''
+secType: str = ''
 conId: int = 0
 symbol: str = ''
 lastTradeDateOrContractMonth: str = ''
@@ -2069,24 +2076,29 @@ issuerId: str = ''
 comboLegsDescrip: str = ''
 comboLegs: List[ComboLeg]
 deltaNeutralContract: Optional[DeltaNeutralContract] = None
+
 static create(**kwargs)
 Create and a return a specialized contract based on the given secType, or a general Contract if secType is
 not given.
 Return type
 Contract
+
 isHashable()
 See if this contract can be hashed by conId.
 Note: Bag contracts always get conId=28812380, so they’re not hashable.
 Return type
 bool
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
@@ -2097,31 +2109,36 @@ keyword arguments.
 Return type
 object
 
-class ib_insync.contract.Stock(symbol='', exchange='', currency='', **kwargs)
+#### class ib_insync.contract.Stock(symbol='', exchange='', currency='', **kwargs)
 Stock contract.
 Parameters
 -symbol (str) -Symbol name.
 -exchange (str) -Destination exchange.
 -currency (str) -Underlying currency.
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 comboLegs: List[ComboLeg]
-class ib_insync.contract.Option(symbol='', lastTradeDateOrContractMonth='', strike=0.0, right='',
+
+#### class ib_insync.contract.Option(symbol='', lastTradeDateOrContractMonth='', strike=0.0, right='',
 exchange='', multiplier='', currency='', **kwargs)
 Option contract.
 Parameters
@@ -2134,41 +2151,34 @@ Parameters
 -exchange (str) -Destination exchange.
 -multiplier (str) -The contract multiplier.
 -currency (str) -Underlying currency.
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
----
-#### nonDefaults()
-
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type
+dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type
+tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type
+object
 
 comboLegs: List[ComboLeg]
 
----
+```
+Future
+```
 
-## Future
-
-class ib_insync.contract.Future(symbol='', lastTradeDateOrContractMonth='', exchange='', localSymbol='', multiplier='', currency='', **kwargs)
+#### class ib_insync.contract.Future(symbol='', lastTradeDateOrContractMonth='', exchange='', localSymbol='', multiplier='', currency='', **kwargs)
 
 Future contract.
 
@@ -2182,88 +2192,54 @@ Future contract.
 - **multiplier** (str) - The contract multiplier.
 - **currency** (str) - Underlying currency.
 
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
 
-## ContFuture
-
-class ib_insync.contract.ContFuture(symbol='', exchange='', localSymbol='', multiplier='', currency='', **kwargs)
-
+#### class ib_insync.contract.ContFuture(symbol='', exchange='', localSymbol='', multiplier='', currency='', **kwargs)
 Continuous future contract.
-
 **Parameters:**
 - **symbol** (str) - Symbol name.
 - **exchange** (str) - Destination exchange.
 - **localSymbol** (str) - The contract's symbol within its primary exchange.
 - **multiplier** (str) - The contract multiplier.
 - **currency** (str) - Underlying currency.
-
----
-#### dict()
-
+ dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type:dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+*Return type: object
 
 comboLegs: List[ComboLeg]
 
----
-
-## Forex
+```
+ Forex
+```
 
 class ib_insync.contract.Forex(pair='', exchange='IDEALPRO', symbol='', currency='', **kwargs)
 
@@ -2275,223 +2251,150 @@ Foreign exchange currency pair.
 - **symbol** (str) - Base currency.
 - **currency** (str) - Quote currency.
 
----
-#### pair()
-
+ pair()
 Short name of pair.
+Return type: str
 
-**Return type:** str
-
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
-
-## Index
+```
+Index
+```
 
 class ib_insync.contract.Index(symbol='', exchange='', currency='', **kwargs)
 
 Index.
-
 **Parameters:**
 - **symbol** (str) - Symbol name.
 - **exchange** (str) - Destination exchange.
 - **currency** (str) - Underlying currency.
 
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
+tuple()
 
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
-
-## CFD
+```
+CFD
+```
 
 class ib_insync.contract.CFD(symbol='', exchange='', currency='', **kwargs)
 
 Contract For Difference.
-
 **Parameters:**
 - **symbol** (str) - Symbol name.
 - **exchange** (str) - Destination exchange.
 - **currency** (str) - Underlying currency.
 
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type:** dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type:** object
 
 comboLegs: List[ComboLeg]
 
----
 
-## Commodity
+```
+Commodity
+```
 
 class ib_insync.contract.Commodity(symbol='', exchange='', currency='', **kwargs)
 
 Commodity.
-
 **Parameters:**
 - **symbol** (str) - Symbol name.
 - **exchange** (str) - Destination exchange.
 - **currency** (str) - Underlying currency.
 
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
 #### update(*srcObjs, **kwargs)
-
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
+```
+Bond
+```
 
-## Bond
 
 class ib_insync.contract.Bond(**kwargs)
-
 Bond.
 
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
+```
+FuturesOption
+```
 
-## FuturesOption
 
 class ib_insync.contract.FuturesOption(symbol='', lastTradeDateOrContractMonth='', strike=0.0, right='', exchange='', multiplier='', currency='', **kwargs)
 
@@ -2508,161 +2411,107 @@ Option on a futures contract.
 - **multiplier** (str) - The contract multiplier.
 - **currency** (str) - Underlying currency.
 
----
-#### dict()
-
+ dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type:** dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
 
-## MutualFund
+```
+MutualFund
+```
 
 class ib_insync.contract.MutualFund(**kwargs)
 
 Mutual fund.
 
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
-
-**Return type:** dict
+Return type: dict
 
 ---
 #### tuple()
-
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
-
-## Warrant
+```
+Warrant
+```
 
 class ib_insync.contract.Warrant(**kwargs)
 
 Warrant option.
 
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+*Return type:** tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
 
-## Bag
+```
+Bag
+```
 
 class ib_insync.contract.Bag(**kwargs)
 
 Bag contract.
 
----
-#### dict()
-
+ dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
-
-**Return type:** dict
-
----
-#### nonDefaults()
-
+Return type: dict
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type:** tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
-
-## Crypto
+```
+Crypto
+```
 
 class ib_insync.contract.Crypto(symbol='', exchange='', currency='', **kwargs)
 
@@ -2673,59 +2522,49 @@ Crypto currency contract.
 - **exchange** (str) - Destination exchange.
 - **currency** (str) - Underlying currency.
 
----
-#### dict()
-
+dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### nonDefaults()
-
+nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type: dict
 
-**Return type:** dict
-
----
-#### tuple()
-
+tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type: tuple
 
-**Return type:** tuple
-
----
-#### update(*srcObjs, **kwargs)
-
+update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from keyword arguments.
-
-**Return type:** object
-
----
+Return type: object
 
 comboLegs: List[ComboLeg]
 
----
 
+```
 ## TagValue
+```
 
 class ib_insync.contract.TagValue(tag, value)
 
 Create new instance of TagValue(tag, value)
 
----
-#### tag
+```
+tag
+```
 
 Property tag
 
----
-#### value
+```
+value
+****
 
 Property value
 
----
 
-## ComboLeg
+```
+ComboLeg
+```
 
 class ib_insync.contract.ComboLeg(conId: int = 0, ratio: int = 0, action: str = '', exchange: str = '', openClose: int = 0, shortSaleSlot: int = 0, designatedLocation: str = '', exemptCode: int = -1)
 
@@ -2878,9 +2717,11 @@ Update fields of the given dataclass object from zero or more dataclass source o
 
 **Return type:** object
 
----
 
-## ScanData
+
+```
+ScanData
+```
 
 class ib_insync.contract.ScanData
 
@@ -2920,8 +2761,9 @@ Update fields of the given dataclass object from zero or more dataclass source o
 
 **Return type:** object
 
-
-### Ticker
+```
+Ticker
+```
 
 Access to realtime market information.
 
@@ -3864,8 +3706,9 @@ Parameters
 -code (int) -Original error code.
 -message (str) -Original error message
 
-
-### Utilities
+```
+Utilities
+```
 
 
 ib_insync.util.df(objs, labels=None)
@@ -4002,8 +3845,9 @@ Run combined Qt5/asyncio event loo
 -period (float) -Period in seconds to poll Qt.
 
 
-
-### FlexReport
+```
+FlexReport
+```
 
 ccess to account statement webservice.
 exception ib_insync.flexreport.FlexError
@@ -4030,8 +3874,9 @@ Load report from XML file.
 save(path)
 Save report to XML file
 
-
-### IBC
+```
+IBC
+```
 
 class ib_insync.ibcontroller.IBC(twsVersion: int = 0, gateway: bool = False, tradingMode: str = '',
 twsPath: str = '', twsSettingsPath: str = '', ibcPath: str = '', ibcIni: str = '',
@@ -4115,7 +3960,9 @@ keyword arguments.
 Return type
 object
 
-### IBController
+```
+IBController
+```
 
 class ib_insync.ibcontroller.IBController(APP: str = 'TWS', TWS_MAJOR_VRSN: str = '969',
 TRADING_MODE: str = 'live', IBC_INI: str =
@@ -4172,8 +4019,9 @@ keyword arguments.
 Return type
 object
 
-
-### Watchdog
+```
+Watchdog
+```
 
 class ib_insync.ibcontroller.Watchdog(controller: Union[IBC, IBController], ib: IB, host: str =
 '127.0.0.1', port: int = 7497, clientId: int = 1, connectTimeout:
