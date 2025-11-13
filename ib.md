@@ -51,7 +51,6 @@ print(df)
 
 ```
 
-
 ## API DOCS
 
 The goal of the IB-insync library is to make working with the Trader Workstation API from Interactive Brokers as easy as possible.
@@ -149,8 +148,6 @@ By default run the event loop forever.
 When awaitables (like Tasks, Futures or coroutines) are given then run the event loop until each has completed and return their results.
 An optional timeout (in seconds) can be given that will raise asyncio.TimeoutError if the awaitables are not ready within the timeout period.
 
----
-
 #### static schedule(callback, *args)
 Schedule the callback to be run at the given time with the given arguments. This will return the Event Handle.
 **Parameters:**
@@ -220,7 +217,6 @@ List of account values for the given account, or of all accounts if account is l
 - **account** (str) - If specified, filter for this account name.
 **Return type:** List[AccountValue]
 
-
 #### portfolio()
 List of portfolio items of the default account.
 **Return type:** List[PortfolioItem]
@@ -245,8 +241,6 @@ List of subscribed PnLSingle objects (profit and loss for single positions). The
 - **modelCode** (str) - If specified, filter for this account model.
 - **conId** (int) - If specified, filter for this contract ID.
 **Return type:** List[PnLSingle]
-
-
 
 #### trades()
 List of all order trades from this session.
@@ -315,10 +309,9 @@ Fully qualify the given contracts in-place. This will fill in the missing fields
 
 #### bracketOrder(action, quantity, limitPrice, takeProfitPrice, stopLossPrice, **kwargs)
 Create a limit order that is bracketed by a take-profit order and a stop-loss order. Submit the bracket like:
-```
+
 for o in bracket:
     ib.placeOrder(contract, o)
-```
 **Parameters:**
 - **action** (str) - 'BUY' or 'SELL'.
 - **quantity** (float) - Size of order.
@@ -1003,7 +996,8 @@ reqUserInfoAsync()
 ### Client
 
 Socket client for communicating with Interactive Brokers.
-class ib_insync.client.Client(wrapper)
+
+#### class ib_insync.client.Client(wrapper)
 Replacement for ibapi.client.EClient that uses asyncio.
 The client is fully asynchronous and has its own event-driven networking code that replaces the networking code
 of the standard EClient. It also replaces the infinite loop of EClient.run() with the asyncio event loop. It can
@@ -1069,12 +1063,12 @@ Get the list of account names that are under management.
 Return type
 List[str]
 
-
 setConnectOptions(connectOptions)
 Set additional connect options.
 Parameters
 connectOptions (str) -Use “+PACEAPI” to use request-pacing built into TWS/gateway
 974+.
+
 connect(host, port, clientId, timeout=2.0)
 Connect to a running TWS or IB gateway application.
 Parameters
@@ -1083,100 +1077,184 @@ Parameters
 -clientId (int) -ID number to use for this client; must be unique per connection.
 -timeout (Optional[float]) -If establishing the connection takes longer than timeout
 seconds then the asyncio.TimeoutError exception is raised. Set to 0 to disable timeout.
+
 async connectAsync(host, port, clientId, timeout=2.0)
+
 disconnect()
 Disconnect from IB connection.
+
 send(*fields)
 Serialize and send the given fields using the IB socket protocol.
+
 sendMsg(msg)
+
 reqMktData(reqId, contract, genericTickList, snapshot, regulatorySnapshot, mktDataOptions)
+
 cancelMktData(reqId)
+
 placeOrder(orderId, contract, order)
+
 cancelOrder(orderId, manualCancelOrderTime='')
+
 reqOpenOrders()
+
 reqAccountUpdates(subscribe, acctCode)
+
 reqExecutions(reqId, execFilter)
+
 reqIds(numIds)
+
 reqContractDetails(reqId, contract)
+
 reqMktDepth(reqId, contract, numRows, isSmartDepth, mktDepthOptions)
+
 cancelMktDepth(reqId, isSmartDepth)
+
 reqNewsBulletins(allMsgs)
+
 cancelNewsBulletins()
+
 setServerLogLevel(logLevel)
+
 reqAutoOpenOrders(bAutoBind)
+
 reqAllOpenOrders()
+
 reqManagedAccts()
+
 requestFA(faData)
+
 replaceFA(reqId, faData, cxml)
+
 reqHistoricalData(reqId, contract, endDateTime, durationStr, barSizeSetting, whatToShow, useRTH,
 formatDate, keepUpToDate, chartOptions)
+
 exerciseOptions(reqId, contract, exerciseAction, exerciseQuantity, account, override)
+
 reqScannerSubscription(reqId, subscription, scannerSubscriptionOptions,
 scannerSubscriptionFilterOptions)
+
 cancelScannerSubscription(reqId)
+
 reqScannerParameters()
+
 cancelHistoricalData(reqId)
+
 reqCurrentTime()
+
 reqRealTimeBars(reqId, contract, barSize, whatToShow, useRTH, realTimeBarsOptions)
+
 cancelRealTimeBars(reqId)
+
 reqFundamentalData(reqId, contract, reportType, fundamentalDataOptions)
+
 cancelFundamentalData(reqId)
+
 calculateImpliedVolatility(reqId, contract, optionPrice, underPrice, implVolOptions)
+
 calculateOptionPrice(reqId, contract, volatility, underPrice, optPrcOptions)
+
 cancelCalculateImpliedVolatility(reqId)
+
 cancelCalculateOptionPrice(reqId)
+
 reqGlobalCancel()
+
 reqMarketDataType(marketDataType)
+
 reqPositions()
+
 reqAccountSummary(reqId, groupName, tags)
+
 cancelAccountSummary(reqId)
+
 cancelPositions()
+
 verifyRequest(apiName, apiVersion)
+
 verifyMessage(apiData)
+
 queryDisplayGroups(reqId)
+
 subscribeToGroupEvents(reqId, groupId)
+
 updateDisplayGroup(reqId, contractInfo)
+
 unsubscribeFromGroupEvents(reqId)
+
 startApi()
+
 verifyAndAuthRequest(apiName, apiVersion, opaqueIsvKey)
+
 verifyAndAuthMessage(apiData, xyzResponse)
+
 reqPositionsMulti(reqId, account, modelCode)
+
 cancelPositionsMulti(reqId)
+
 reqAccountUpdatesMulti(reqId, account, modelCode, ledgerAndNLV )
+
 cancelAccountUpdatesMulti(reqId)
+
 reqSecDefOptParams(reqId, underlyingSymbol, futFopExchange, underlyingSecType, underlyingConId)
+
 reqSoftDollarTiers(reqId)
+
 reqFamilyCodes()
+
 reqMatchingSymbols(reqId, pattern)
+
 reqMktDepthExchanges()
+
 reqSmartComponents(reqId, bboExchange)
+
 reqNewsArticle(reqId, providerCode, articleId, newsArticleOptions)
+
 reqNewsProviders()
+
 reqHistoricalNews(reqId, conId, providerCodes, startDateTime, endDateTime, totalResults,
 historicalNewsOptions)
+
 reqHeadTimeStamp(reqId, contract, whatToShow, useRTH, formatDate)
+
 reqHistogramData(tickerId, contract, useRTH, timePeriod)
+
 cancelHistogramData(tickerId)
+
 cancelHeadTimeStamp(reqId)
+
 reqMarketRule(marketRuleId)
+
 reqPnL(reqId, account, modelCode)
+
 cancelPnL(reqId)
+
 reqPnLSingle(reqId, account, modelCode, conid)
+
 cancelPnLSingle(reqId)
+
 reqHistoricalTicks(reqId, contract, startDateTime, endDateTime, numberOfTicks, whatToShow, useRth,
 ignoreSize, miscOptions)
+
 reqTickByTickData(reqId, contract, tickType, numberOfTicks, ignoreSize)
+
 cancelTickByTickData(reqId)
+
 reqCompletedOrders(apiOnly)
+
 reqWshMetaData(reqId)
+
 cancelWshMetaData(reqId)
+
 reqWshEventData(reqId, data)
+
 cancelWshEventData(reqId)
+
 reqUserInfo(reqId)
 
 ### Order
 
-class ib_insync.order.Order(orderId: int = 0, clientId: int = 0, permId: int = 0, action: str = '',
+#### class ib_insync.order.Order(orderId: int = 0, clientId: int = 0, permId: int = 0, action: str = '',
 totalQuantity: float = 0.0, orderType: str = '', lmtPrice: float =
 1.7976931348623157e+308, auxPrice: float = 1.7976931348623157e+308, tif:
 str = '', activeStartTime: str = '', activeStopTime: str = '', ocaGroup: str = '',
@@ -1378,42 +1456,51 @@ minCompeteSize: int = 2147483647
 competeAgainstBestOffset: float = 1.7976931348623157e+308
 midOffsetAtWhole: float = 1.7976931348623157e+308
 midOffsetAtHalf: float = 1.7976931348623157e+308
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.LimitOrder(action, totalQuantity, lmtPrice, **kwargs)
+#### class ib_insync.order.LimitOrder(action, totalQuantity, lmtPrice, **kwargs)
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
+
 algoParams: List[TagValue]
 smartComboRoutingParams: List[TagValue]
 orderComboLegs: List[OrderComboLeg]
@@ -1421,11 +1508,72 @@ orderMiscOptions: List[TagValue]
 conditions: List[OrderCondition]
 softDollarTier: SoftDollarTier
 
-class ib_insync.order.MarketOrder(action, totalQuantity, **kwargs)
+#### class ib_insync.order.MarketOrder(action, totalQuantity, **kwargs)
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
+nonDefaults()
+For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type
+dict
+
+tuple()
+Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type
+tuple
+
+update(*srcObjs, **kwargs)
+Update fields of the given dataclass object from zero or more dataclass source objects and/or from
+keyword arguments.
+Return type
+object
+
+algoParams: List[TagValue]
+smartComboRoutingParams: List[TagValue]
+orderComboLegs: List[OrderComboLeg]
+orderMiscOptions: List[TagValue]
+conditions: List[OrderCondition]
+softDollarTier: SoftDollarTier
+
+#### class ib_insync.order.StopOrder(action, totalQuantity, stopPrice, **kwargs)
+
+dict()
+Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type
+dict
+
+nonDefaults()
+For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type
+dict
+
+tuple()
+Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type
+tuple
+
+update(*srcObjs, **kwargs)
+Update fields of the given dataclass object from zero or more dataclass source objects and/or from
+keyword arguments.
+Return type
+object
+
+algoParams: List[TagValue]
+smartComboRoutingParams: List[TagValue]
+orderComboLegs: List[OrderComboLeg]
+orderMiscOptions: List[TagValue]
+conditions: List[OrderCondition]
+softDollarTier: SoftDollarTier
+
+#### class ib_insync.order.StopLimitOrder(action, totalQuantity, lmtPrice, stopPrice, **kwargs
+
+dict()
+Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type
+dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
@@ -1434,11 +1582,13 @@ tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
+
 algoParams: List[TagValue]
 smartComboRoutingParams: List[TagValue]
 orderComboLegs: List[OrderComboLeg]
@@ -1446,60 +1596,11 @@ orderMiscOptions: List[TagValue]
 conditions: List[OrderCondition]
 softDollarTier: SoftDollarTier
 
-class ib_insync.order.StopOrder(action, totalQuantity, stopPrice, **kwargs)
-dict()
-Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
-Return type
-dict
-nonDefaults()
-For a dataclass instance get the fields that are different from the default values and return as dict.
-Return type
-dict
-tuple()
-Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
-Return type
-tuple
-update(*srcObjs, **kwargs)
-Update fields of the given dataclass object from zero or more dataclass source objects and/or from
-keyword arguments.
-Return type
-object
-algoParams: List[TagValue]
-smartComboRoutingParams: List[TagValue]
-orderComboLegs: List[OrderComboLeg]
-orderMiscOptions: List[TagValue]
-conditions: List[OrderCondition]
-softDollarTier: SoftDollarTier
-
-class ib_insync.order.StopLimitOrder(action, totalQuantity, lmtPrice, stopPrice, **kwargs
-dict()
-Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
-Return type
-dict
-nonDefaults()
-For a dataclass instance get the fields that are different from the default values and return as dict.
-Return type
-dict
-tuple()
-Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
-Return type
-tuple
-update(*srcObjs, **kwargs)
-Update fields of the given dataclass object from zero or more dataclass source objects and/or from
-keyword arguments.
-Return type
-object
-algoParams: List[TagValue]
-smartComboRoutingParams: List[TagValue]
-orderComboLegs: List[OrderComboLeg]
-orderMiscOptions: List[TagValue]
-conditions: List[OrderCondition]
-softDollarTier: SoftDollarTier
-
-class ib_insync.order.OrderStatus(orderId: int = 0, status: str = '', filled: float = 0.0, remaining: float =
+#### class ib_insync.order.OrderStatus(orderId: int = 0, status: str = '', filled: float = 0.0, remaining: float =
 0.0, avgFillPrice: float = 0.0, permId: int = 0, parentId: int = 0,
 lastFillPrice: float = 0.0, clientId: int = 0, whyHeld: str = '',
 mktCapPrice: float = 0.0)
+
 orderId: int = 0
 status: str = ''
 filled: float = 0.0
@@ -1523,25 +1624,29 @@ Inactive: ClassVar[str] = 'Inactive'
 DoneStates: ClassVar[Set[str]] = {'ApiCancelled', 'Cancelled', 'Filled'}
 ActiveStates: ClassVar[Set[str]] = {'ApiPending', 'PendingSubmit', 'PreSubmitted',
 'Submitted'}
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.OrderState(status: str = '', initMarginBefore: str = '', maintMarginBefore: str = '',
+#### class ib_insync.order.OrderState(status: str = '', initMarginBefore: str = '', maintMarginBefore: str = '',
 equityWithLoanBefore: str = '', initMarginChange: str = '',
 maintMarginChange: str = '', equityWithLoanChange: str = '',
 initMarginAfter: str = '', maintMarginAfter: str = '', equityWithLoanAfter:
@@ -1549,6 +1654,7 @@ str = '', commission: float = 1.7976931348623157e+308,
 minCommission: float = 1.7976931348623157e+308, maxCommission:
 float = 1.7976931348623157e+308, commissionCurrency: str = '',
 warningText: str = '', completedTime: str = '', completedStatus: str = '')
+
 status: str = ''
 initMarginBefore: str = ''
 maintMarginBefore: str = ''
@@ -1567,44 +1673,53 @@ warningText: str = ''
 completedTime: str = ''
 completedStatus: str = ''
 dict()
+
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.OrderComboLeg(price: float = 1.7976931348623157e+308)
+#### class ib_insync.order.OrderComboLeg(price: float = 1.7976931348623157e+308)
+
 price: float = 1.7976931348623157e+308
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.Trade(contract: ~ib_insync.contract.Contract = <factory>, order:
+#### class ib_insync.order.Trade(contract: ~ib_insync.contract.Contract = <factory>, order:
 ~ib_insync.order.Order = <factory>, orderStatus:
 ~ib_insync.order.OrderStatus = <factory>, fills:
 ~typing.List[~ib_insync.objects.Fill] = <factory>, log:
@@ -1635,53 +1750,61 @@ filled()
 Number of shares filled.
 remaining()
 Number of shares remaining to be filled.
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.BracketOrder(parent, takeProfit, stopLoss)
+#### class ib_insync.order.BracketOrder(parent, takeProfit, stopLoss)
 Create new instance of BracketOrder(parent, takeProfit, stopLoss)
 property parent
 property takeProfit
 property stopLoss
 
-class ib_insync.order.OrderCondition
+#### class ib_insync.order.OrderCondition
 static createClass(condType)
 And()
 Or()
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.PriceCondition(condType: int = 1, conjunction: str = 'a', isMore: bool = True,
+#### class ib_insync.order.PriceCondition(condType: int = 1, conjunction: str = 'a', isMore: bool = True,
 price: float = 0.0, conId: int = 0, exch: str = '', triggerMethod: int =
 0)
 condType: int = 1
@@ -1691,10 +1814,12 @@ price: float = 0.0
 conId: int = 0
 exch: str = ''
 triggerMethod: int = 0
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
@@ -1703,85 +1828,98 @@ tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.TimeCondition(condType: int = 3, conjunction: str = 'a', isMore: bool = True, time:
+#### class ib_insync.order.TimeCondition(condType: int = 3, conjunction: str = 'a', isMore: bool = True, time:
 str = '')
 condType: int = 3
 conjunction: str = 'a'
 isMore: bool = True
 time: str = ''
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
-update(*srcObjs, **kwargs)
-Update fields of the given dataclass object from zero or more dataclass source objects and/or from
-keyword arguments.
-Return type
-object
-class ib_insync.order.MarginCondition(condType: int = 4, conjunction: str = 'a', isMore: bool = True,
-percent: int = 0)
-condType: int = 4
-conjunction: str = 'a'
-isMore: bool = True
-percent: int = 0
-dict()
-Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
-Return type
-dict
-nonDefaults()
-For a dataclass instance get the fields that are different from the default values and return as dict.
-Return type
-dict
-tuple()
-Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
-Return type
-tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.ExecutionCondition(condType: int = 5, conjunction: str = 'a', secType: str = '',
+#### class ib_insync.order.MarginCondition(condType: int = 4, conjunction: str = 'a', isMore: bool = True,
+percent: int = 0)
+condType: int = 4
+conjunction: str = 'a'
+isMore: bool = True
+percent: int = 0
+
+dict()
+Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
+Return type
+dict
+
+nonDefaults()
+For a dataclass instance get the fields that are different from the default values and return as dict.
+Return type
+dict
+tuple()
+Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
+Return type
+tuple
+
+update(*srcObjs, **kwargs)
+Update fields of the given dataclass object from zero or more dataclass source objects and/or from
+keyword arguments.
+Return type
+object
+
+#### class ib_insync.order.ExecutionCondition(condType: int = 5, conjunction: str = 'a', secType: str = '',
 exch: str = '', symbol: str = '')
 condType: int = 5
 conjunction: str = 'a'
 secType: str = ''
 exch: str = ''
 symbol: str = ''
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
 Return type
 object
 
-class ib_insync.order.VolumeCondition(condType: int = 6, conjunction: str = 'a', isMore: bool = True,
+#### class ib_insync.order.VolumeCondition(condType: int = 6, conjunction: str = 'a', isMore: bool = True,
 volume: int = 0, conId: int = 0, exch: str = '')
 condType: int = 6
 conjunction: str = 'a'
@@ -1789,14 +1927,17 @@ isMore: bool = True
 volume: int = 0
 conId: int = 0
 exch: str = ''
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 nonDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
@@ -1807,7 +1948,7 @@ keyword arguments.
 Return type
 object
 
-class ib_insync.order.PercentChangeCondition(condType: int = 7, conjunction: str = 'a', isMore: bool =
+#### class ib_insync.order.PercentChangeCondition(condType: int = 7, conjunction: str = 'a', isMore: bool =
 True, changePercent: float = 0.0, conId: int = 0, exch: str
 = '')
 condType: int = 7
@@ -1816,18 +1957,22 @@ isMore: bool = True
 changePercent: float = 0.0
 conId: int = 0
 exch: str = ''
+
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
 dict
+
 onDefaults()
 For a dataclass instance get the fields that are different from the default values and return as dict.
 Return type
 dict
+
 tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
