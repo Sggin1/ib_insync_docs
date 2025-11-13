@@ -719,7 +719,7 @@ Request contract descriptions of contracts that match a pattern.
 https://interactivebrokers.github.io/tws-api/matching_symbols.html
 
 **Parameters:**
-pattern (str) – The first few letters of the ticker symbol, or for longer strings a character
+pattern (str) -The first few letters of the ticker symbol, or for longer strings a character
 sequence matching a word in the security name.
 Return type
 List[ContractDescription]
@@ -727,7 +727,7 @@ reqMarketRule(marketRuleId)
 Request price increments rule.
 https://interactivebrokers.github.io/tws-api/minimum_increment.html
 Parameters
-marketRuleId (int) – ID of market rule. The market rule IDs for a contract can be ob-
+marketRuleId (int) -ID of market rule. The market rule IDs for a contract can be ob-
 tained via reqContractDetails() from ContractDetails.marketRuleIds, which con-
 tains a comma separated string of market rule IDs.
 Return type
@@ -736,58 +736,58 @@ reqRealTimeBars(contract, barSize, whatToShow, useRTH, realTimeBarsOptions=[])
 Request realtime 5 second bars.
 https://interactivebrokers.github.io/tws-api/realtime_bars.html
 Parameters
-• contract (Contract) – Contract of interest.
-• barSize (int) – Must be 5.
-• whatToShow (str) – Specifies the source for constructing bars. Can be ‘TRADES’, ‘MID-
+-contract (Contract) -Contract of interest.
+-barSize (int) -Must be 5.
+-whatToShow (str) -Specifies the source for constructing bars. Can be ‘TRADES’, ‘MID-
 POINT’, ‘BID’ or ‘ASK’.
-• useRTH (bool) – If True then only show data from within Regular Trading Hours, if False
+-useRTH (bool) -If True then only show data from within Regular Trading Hours, if False
 then show all data.
-• realTimeBarsOptions (List[TagValue]) – Unknown.
+-realTimeBarsOptions (List[TagValue]) -Unknown.
 Return type
 RealTimeBarList
 
 cancelRealTimeBars(bars)
 Cancel the realtime bars subscription.
 Parameters
-bars (RealTimeBarList) – The bar list that was obtained from reqRealTimeBars.
+bars (RealTimeBarList) -The bar list that was obtained from reqRealTimeBars.
 reqHistoricalData(contract, endDateTime, durationStr, barSizeSetting, whatToShow, useRTH,
 formatDate=1, keepUpToDate=False, chartOptions=[], timeout=60)
 Request historical bar data.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/historical_bars.html
 Parameters
-• contract (Contract) – Contract of interest.
-• endDateTime (Union[datetime, date, str, None]) – Can be set to ‘’ to indicate the
+-contract (Contract) -Contract of interest.
+-endDateTime (Union[datetime, date, str, None]) -Can be set to ‘’ to indicate the
 current time, or it can be given as a datetime.date or datetime.datetime, or it can be given
 as a string in ‘yyyyMMdd HH:mm:ss’ format. If no timezone is given then the TWS login
 timezone is used.
-• durationStr (str) – Time span of all the bars. Examples: ‘60 S’, ‘30 D’, ‘13 W’, ‘6 M’,
+-durationStr (str) -Time span of all the bars. Examples: ‘60 S’, ‘30 D’, ‘13 W’, ‘6 M’,
 ‘10 Y’.
-• barSizeSetting (str) – Time period of one bar. Must be one of: ‘1 secs’, ‘5 secs’, ‘10
+-barSizeSetting (str) -Time period of one bar. Must be one of: ‘1 secs’, ‘5 secs’, ‘10
 secs’ 15 secs’, ‘30 secs’, ‘1 min’, ‘2 mins’, ‘3 mins’, ‘5 mins’, ‘10 mins’, ‘15 mins’, ‘20
 mins’, ‘30 mins’, ‘1 hour’, ‘2 hours’, ‘3 hours’, ‘4 hours’, ‘8 hours’, ‘1 day’, ‘1 week’, ‘1
 month’.
-• whatToShow (str) – Specifies the source for constructing bars. Must be one
+-whatToShow (str) -Specifies the source for constructing bars. Must be one
 of: ‘TRADES’, ‘MIDPOINT’, ‘BID’, ‘ASK’, ‘BID_ASK’, ‘ADJUSTED_LAST’, ‘HIS-
 TORICAL_VOLATILITY’, ‘OPTION_IMPLIED_VOLATILITY’, ‘REBATE_RATE’,
 ‘FEE_RATE’, ‘YIELD_BID’, ‘YIELD_ASK’, ‘YIELD_BID_ASK’, ‘YIELD_LAST’. For
 ‘SCHEDULE’ use reqHistoricalSchedule().
-• useRTH (bool) – If True then only show data from within Regular Trading Hours, if False
+-useRTH (bool) -If True then only show data from within Regular Trading Hours, if False
 then show all data.
-• formatDate (int) – For an intraday request setting to 2 will cause the returned date fields
+-formatDate (int) -For an intraday request setting to 2 will cause the returned date fields
 to be timezone-aware datetime.datetime with UTC timezone, instead of local timezone as
 used by TWS.
-• keepUpToDate (bool) – If True then a realtime subscription is started to keep the bars
+-keepUpToDate (bool) -If True then a realtime subscription is started to keep the bars
 updated; endDateTime must be set empty (‘’) then.
-• chartOptions (List[TagValue]) – Unknown.
-• timeout (float) – Timeout in seconds after which to cancel the request and return an
+-chartOptions (List[TagValue]) -Unknown.
+-timeout (float) -Timeout in seconds after which to cancel the request and return an
 empty bar series. Set to 0 to wait indefinitely.
 Return type
 BarDataList
 cancelHistoricalData(bars)
 Cancel the update subscription for the historical bars.
 Parameters
-bars (BarDataList) – The bar list that was obtained from reqHistoricalData with a
+bars (BarDataList) -The bar list that was obtained from reqHistoricalData with a
 keepUpToDate subscription.
 
 
@@ -795,13 +795,13 @@ reqHistoricalSchedule(contract, numDays, endDateTime='', useRTH=True)
 Request historical schedule.
 This method is blocking.
 Parameters
-• contract (Contract) – Contract of interest.
-• numDays (int) – Number of days.
-• endDateTime (Union[datetime, date, str, None]) – Can be set to ‘’ to indicate the
+-contract (Contract) -Contract of interest.
+-numDays (int) -Number of days.
+-endDateTime (Union[datetime, date, str, None]) -Can be set to ‘’ to indicate the
 current time, or it can be given as a datetime.date or datetime.datetime, or it can be given
 as a string in ‘yyyyMMdd HH:mm:ss’ format. If no timezone is given then the TWS login
 timezone is used.
-• useRTH (bool) – If True then show schedule for Regular Trading Hours, if False then for
+-useRTH (bool) -If True then show schedule for Regular Trading Hours, if False then for
 extended hours.
 Return type
 HistoricalSchedule
@@ -811,37 +811,37 @@ Request historical ticks. The time resolution of the ticks is one second.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/historical_time_and_sales.html
 Parameters
-• contract (Contract) – Contract to query.
-• startDateTime (Union[str, date]) – Can be given as a datetime.date or date-
+-contract (Contract) -Contract to query.
+-startDateTime (Union[str, date]) -Can be given as a datetime.date or date-
 time.datetime, or it can be given as a string in ‘yyyyMMdd HH:mm:ss’ format. If no
 timezone is given then the TWS login timezone is used.
-• endDateTime (Union[str, date]) – One of startDateTime or endDateTime can be
+-endDateTime (Union[str, date]) -One of startDateTime or endDateTime can be
 given, the other must be blank.
-• numberOfTicks (int) – Number of ticks to request (1000 max). The actual result can
+-numberOfTicks (int) -Number of ticks to request (1000 max). The actual result can
 contain a bit more to accommodate all ticks in the latest second.
-• whatToShow (str) – One of ‘Bid_Ask’, ‘Midpoint’ or ‘Trades’.
-• useRTH – If True then only show data from within Regular Trading Hours, if False then
+-whatToShow (str) -One of ‘Bid_Ask’, ‘Midpoint’ or ‘Trades’.
+-useRTH -If True then only show data from within Regular Trading Hours, if False then
 show all data.
-• ignoreSize (bool) – Ignore bid/ask ticks that only update the size.
-• miscOptions (List[TagValue]) – Unknown.
+-ignoreSize (bool) -Ignore bid/ask ticks that only update the size.
+-miscOptions (List[TagValue]) -Unknown.
 Return type
 List
 reqMarketDataType(marketDataType)
 Set the market data type used for reqMktData().
 Parameters
-marketDataType (int) – One of:
-• 1 = Live
-• 2 = Frozen
-• 3 = Delayed
-• 4 = Delayed frozen
+marketDataType (int) -One of:
+-1 = Live
+-2 = Frozen
+-3 = Delayed
+-4 = Delayed frozen
 https://interactivebrokers.github.io/tws-api/market_data_type.html
 reqHeadTimeStamp(contract, whatToShow, useRTH, formatDate=1)
 Get the datetime of earliest available historical data for the contract.
 Parameters
-• contract (Contract) – Contract of interest.
-• useRTH (bool) – If True then only show data from within Regular Trading Hours, if False
+-contract (Contract) -Contract of interest.
+-useRTH (bool) -If True then only show data from within Regular Trading Hours, if False
 then show all data.
-• formatDate (int) – If set to 2 then the result is returned as a timezone-aware date-
+-formatDate (int) -If set to 2 then the result is returned as a timezone-aware date-
 time.datetime with UTC timezone.
 Return type
 datetime
@@ -851,8 +851,8 @@ Subscribe to tick data or request a snapshot. Returns the Ticker that holds the 
 initially be empty and gradually (after a couple of seconds) be filled.
 https://interactivebrokers.github.io/tws-api/md_request.html
 Parameters
-• contract (Contract) – Contract of interest.
-• genericTickList (str) – Comma separated IDs of desired generic ticks that will cause
+-contract (Contract) -Contract of interest.
+-genericTickList (str) -Comma separated IDs of desired generic ticks that will cause
 corresponding Ticker fields to be filled:
 
 ID  Ticker fields
@@ -877,30 +877,30 @@ high52week, avVolume
 456 dividends (of type ib_insync.objects.Dividends)
 588 futuresOpenInterest
 
-• snapshot (bool) – If True then request a one-time snapshot, otherwise subscribe to a
+-snapshot (bool) -If True then request a one-time snapshot, otherwise subscribe to a
 stream of realtime tick data.
-• regulatorySnapshot (bool) – Request NBBO snapshot (may incur a fee).
-• mktDataOptions (Optional[List[TagValue]]) – Unknown
+-regulatorySnapshot (bool) -Request NBBO snapshot (may incur a fee).
+-mktDataOptions (Optional[List[TagValue]]) -Unknown
 Return type
 Ticker
 cancelMktData(contract)
 Unsubscribe from realtime streaming tick data.
 Parameters
-contract (Contract) – The exact contract object that was used to subscribe with.
+contract (Contract) -The exact contract object that was used to subscribe with.
 reqTickByTickData(contract, tickType, numberOfTicks=0, ignoreSize=False)
 Subscribe to tick-by-tick data and return the Ticker that holds the ticks in ticker.tickByTicks.
 https://interactivebrokers.github.io/tws-api/tick_data.html
 Parameters
-• contract (Contract) – Contract of interest.
-• tickType (str) – One of ‘Last’, ‘AllLast’, ‘BidAsk’ or ‘MidPoint’.
-• numberOfTicks (int) – Number of ticks or 0 for unlimited.
-• ignoreSize (bool) – Ignore bid/ask ticks that only update the size.
+-contract (Contract) -Contract of interest.
+-tickType (str) -One of ‘Last’, ‘AllLast’, ‘BidAsk’ or ‘MidPoint’.
+-numberOfTicks (int) -Number of ticks or 0 for unlimited.
+-ignoreSize (bool) -Ignore bid/ask ticks that only update the size.
 Return type
 Ticker
 cancelTickByTickData(contract, tickType)
 Unsubscribe from tick-by-tick data
 Parameters
-contract (Contract) – The exact contract object that was used to subscribe with.
+contract (Contract) -The exact contract object that was used to subscribe with.
 reqSmartComponents(bboExchange)
 Obtain mapping from single letter codes to exchange names.
 Note: The exchanges must be open when using this request, otherwise an empty list is returned.
@@ -915,10 +915,10 @@ reqMktDepth(contract, numRows=5, isSmartDepth=False, mktDepthOptions=None)
 Subscribe to market depth data (a.k.a. DOM, L2 or order book).
 https://interactivebrokers.github.io/tws-api/market_depth.html
 Parameters
-• contract (Contract) – Contract of interest.
-• numRows (int) – Number of depth level on each side of the order book (5 max).
-• isSmartDepth (bool) – Consolidate the order book across exchanges.
-• mktDepthOptions – Unknown.
+-contract (Contract) -Contract of interest.
+-numRows (int) -Number of depth level on each side of the order book (5 max).
+-isSmartDepth (bool) -Consolidate the order book across exchanges.
+-mktDepthOptions -Unknown.
 Return type
 Ticker
 Returns
@@ -927,16 +927,16 @@ list of MktDepthData in ticker.domTicks.
 cancelMktDepth(contract, isSmartDepth=False)
 Unsubscribe from market depth data.
 Parameters
-contract (Contract) – The exact contract object that was used to subscribe with.
+contract (Contract) -The exact contract object that was used to subscribe with.
 reqHistogramData(contract, useRTH, period)
 Request histogram data.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/histograms.html
 Parameters
-• contract (Contract) – Contract to query.
-• useRTH (bool) – If True then only show data from within Regular Trading Hours, if False
+-contract (Contract) -Contract to query.
+-useRTH (bool) -If True then only show data from within Regular Trading Hours, if False
 then show all data.
-• period (str) – Period of which data is being requested, for example ‘3 days’.
+-period (str) -Period of which data is being requested, for example ‘3 days’.
 Return type
 List[HistogramData]
 reqFundamentalData(contract, reportType, fundamentalDataOptions=[])
@@ -944,15 +944,15 @@ Get fundamental data of a contract in XML format.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/fundamentals.html
 Parameters
-• contract (Contract) – Contract to query.
-• reportType (str) –
+-contract (Contract) -Contract to query.
+-reportType (str) –
 – ‘ReportsFinSummary’: Financial summary
 – ’ReportsOwnership’: Company’s ownership
 – ’ReportSnapshot’: Company’s financial overview
 – ’ReportsFinStatements’: Financial Statements
 – ’RESC’: Analyst Estimates
 – ’CalendarReport’: Company’s calendar
-• fundamentalDataOptions (List[TagValue]) – Unknown
+-fundamentalDataOptions (List[TagValue]) -Unknown
 Return type
 str
 
@@ -961,9 +961,9 @@ Do a blocking market scan by starting a subscription and canceling it after the 
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/market_scanners.html
 Parameters
-• subscription (ScannerSubscription) – Basic filters.
-• scannerSubscriptionOptions (List[TagValue]) – Unknown.
-• scannerSubscriptionFilterOptions (List[TagValue]) – Advanced generic filters.
+-subscription (ScannerSubscription) -Basic filters.
+-scannerSubscriptionOptions (List[TagValue]) -Unknown.
+-scannerSubscriptionFilterOptions (List[TagValue]) -Advanced generic filters.
 Return type
 ScanDataList
 reqScannerSubscription(subscription, scannerSubscriptionOptions=[],
@@ -971,16 +971,16 @@ scannerSubscriptionFilterOptions=[])
 Subscribe to market scan data.
 https://interactivebrokers.github.io/tws-api/market_scanners.html
 Parameters
-• subscription (ScannerSubscription) – What to scan for.
-• scannerSubscriptionOptions (List[TagValue]) – Unknown.
-• scannerSubscriptionFilterOptions (List[TagValue]) – Unknown.
+-subscription (ScannerSubscription) -What to scan for.
+-scannerSubscriptionOptions (List[TagValue]) -Unknown.
+-scannerSubscriptionFilterOptions (List[TagValue]) -Unknown.
 Return type
 ScanDataList
 cancelScannerSubscription(dataList)
 Cancel market data subscription.
 https://interactivebrokers.github.io/tws-api/market_scanners.html
 Parameters
-dataList (ScanDataList) – The scan data list that was obtained from
+dataList (ScanDataList) -The scan data list that was obtained from
 reqScannerSubscription().
 reqScannerParameters()
 Requests an XML list of scanner parameters.
@@ -992,11 +992,11 @@ Calculate the volatility given the option price.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/option_computations.html
 Parameters
-• contract (Contract) – Option contract.
-• optionPrice (float) – Option price to use in calculation.
-• underPrice (float) – Price of the underlier to use in calculation
+-contract (Contract) -Option contract.
+-optionPrice (float) -Option price to use in calculation.
+-underPrice (float) -Price of the underlier to use in calculation
 ib_insync, Release 0.9.71
-• implVolOptions (List[TagValue]) – Unknown
+-implVolOptions (List[TagValue]) -Unknown
 Return type
 OptionComputation
 calculateOptionPrice(contract, volatility, underPrice, optPrcOptions=[])
@@ -1004,10 +1004,10 @@ Calculate the option price given the volatility.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/option_computations.html
 Parameters
-• contract (Contract) – Option contract.
-• volatility (float) – Option volatility to use in calculation.
-• underPrice (float) – Price of the underlier to use in calculation
-• implVolOptions – Unknown
+-contract (Contract) -Option contract.
+-volatility (float) -Option volatility to use in calculation.
+-underPrice (float) -Price of the underlier to use in calculation
+-implVolOptions -Unknown
 Return type
 OptionComputation
 reqSecDefOptParams(underlyingSymbol, futFopExchange, underlyingSecType, underlyingConId)
@@ -1015,23 +1015,23 @@ Get the option chain.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/options.html
 Parameters
-• underlyingSymbol (str) – Symbol of underlier contract.
-• futFopExchange (str) – Exchange (only for FuturesOption, otherwise leave blank).
-• underlyingSecType (str) – The type of the underlying security, like ‘STK’ or ‘FUT’.
-• underlyingConId (int) – conId of the underlying contract.
+-underlyingSymbol (str) -Symbol of underlier contract.
+-futFopExchange (str) -Exchange (only for FuturesOption, otherwise leave blank).
+-underlyingSecType (str) -The type of the underlying security, like ‘STK’ or ‘FUT’.
+-underlyingConId (int) -conId of the underlying contract.
 Return type
 List[OptionChain]
 exerciseOptions(contract, exerciseAction, exerciseQuantity, account, override)
 Exercise an options contract.
 https://interactivebrokers.github.io/tws-api/options.html
 Parameters
-• contract (Contract) – The option contract to be exercised.
-• exerciseAction (int) –
+-contract (Contract) -The option contract to be exercised.
+-exerciseAction (int) –
 – 1 = exercise the option
 – 2 = let the option lapse
-• exerciseQuantity (int) – Number of contracts to be exercised.
-• account (str) – Destination account.
-• override (int) –
+-exerciseQuantity (int) -Number of contracts to be exercised.
+-account (str) -Destination account.
+-override (int) –
 – 0 = no override
 – 1 = override the system’s natural action
 reqNewsProviders()
@@ -1044,9 +1044,9 @@ Get the body of a news article.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/news.html
 Parameters
-• providerCode (str) – Code indicating news provider, like ‘BZ’ or ‘FLY’.
-• articleId (str) – ID of the specific article.
-• newsArticleOptions (Optional[List[TagValue]]) – Unknown.
+-providerCode (str) -Code indicating news provider, like ‘BZ’ or ‘FLY’.
+-articleId (str) -ID of the specific article.
+-newsArticleOptions (Optional[List[TagValue]]) -Unknown.
 Return type
 NewsArticle
 reqHistoricalNews(conId, providerCodes, startDateTime, endDateTime, totalResults,
@@ -1055,23 +1055,23 @@ Get historical news headline.
 https://interactivebrokers.github.io/tws-api/news.html
 This method is blocking.
 Parameters
-• conId (int) – Search news articles for contract with this conId.
-• providerCodes (str) – A ‘+’-separated list of provider codes, like ‘BZ+FLY’.
-• startDateTime (Union[str, date]) – The (exclusive) start of the date range. Can be
+-conId (int) -Search news articles for contract with this conId.
+-providerCodes (str) -A ‘+’-separated list of provider codes, like ‘BZ+FLY’.
+-startDateTime (Union[str, date]) -The (exclusive) start of the date range. Can be
 given as a datetime.date or datetime.datetime, or it can be given as a string in ‘yyyyMMdd
 HH:mm:ss’ format. If no timezone is given then the TWS login timezone is used.
-• endDateTime (Union[str, date]) – The (inclusive) end of the date range. Can be given
+-endDateTime (Union[str, date]) -The (inclusive) end of the date range. Can be given
 as a datetime.date or datetime.datetime, or it can be given as a string in ‘yyyyMMdd
 HH:mm:ss’ format. If no timezone is given then the TWS login timezone is used.
-• totalResults (int) – Maximum number of headlines to fetch (300 max).
-• historicalNewsOptions (Optional[List[TagValue]]) – Unknown.
+-totalResults (int) -Maximum number of headlines to fetch (300 max).
+-historicalNewsOptions (Optional[List[TagValue]]) -Unknown.
 Return type
 HistoricalNews
 reqNewsBulletins(allMessages)
 Subscribe to IB news bulletins.
 https://interactivebrokers.github.io/tws-api/news.html
 Parameters
-allMessages (bool) – If True then fetch all messages for the day.
+allMessages (bool) -If True then fetch all messages for the day.
 cancelNewsBulletins()
 Cancel subscription to IB news bulletins.
 
@@ -1080,17 +1080,17 @@ Requests to change the FA configuration.
 This method is blocking.
 Parameters
 faDataType (int) –
-• 1 = Groups: Offer traders a way to create a group of accounts and apply a single allocation
+-1 = Groups: Offer traders a way to create a group of accounts and apply a single allocation
 method to all accounts in the group.
-• 2 = Profiles: Let you allocate shares on an account-by-account basis using a predefined
+-2 = Profiles: Let you allocate shares on an account-by-account basis using a predefined
 calculation value.
-• 3 = Account Aliases: Let you easily identify the accounts by meaningful names rather than
+-3 = Account Aliases: Let you easily identify the accounts by meaningful names rather than
 account numbers.
 replaceFA(faDataType, xml)
 Replaces Financial Advisor’s settings.
 Parameters
-• faDataType (int) – See requestFA().
-• xml (str) – The XML-formatted configuration string.
+-faDataType (int) -See requestFA().
+-xml (str) -The XML-formatted configuration string.
 reqUserInfo()
 Get the White Branding ID of the user.
 Return type
@@ -1211,33 +1211,33 @@ The client is fully asynchronous and has its own event-driven networking code th
 of the standard EClient. It also replaces the infinite loop of EClient.run() with the asyncio event loop. It can
 be used as a drop-in replacement for the standard EClient as provided by IBAPI.
 Compared to the standard EClient this client has the following additional features:
-• client.connect() will block until the client is ready to serve requests; It is not necessary to wait for
+-client.connect() will block until the client is ready to serve requests; It is not necessary to wait for
 nextValidId to start requests as the client has already done that. The reqId is directly available with
 getReqId().
-• client.connectAsync() is a coroutine for connecting asynchronously.
-• When blocking, client.connect() can be made to time out with the timeout parameter (default 2 sec-
+-client.connectAsync() is a coroutine for connecting asynchronously.
+-When blocking, client.connect() can be made to time out with the timeout parameter (default 2 sec-
 onds).
-• Optional wrapper.priceSizeTick(reqId, tickType, price, size) that combines price and size
+-Optional wrapper.priceSizeTick(reqId, tickType, price, size) that combines price and size
 instead of the two wrapper methods priceTick and sizeTick.
-• Automatic request throttling.
-• Optional wrapper.tcpDataArrived() method; If the wrapper has this method it is invoked directly after
+-Automatic request throttling.
+-Optional wrapper.tcpDataArrived() method; If the wrapper has this method it is invoked directly after
 a network packet has arrived. A possible use is to timestamp all data in the packet with the exact same time.
-• Optional wrapper.tcpDataProcessed() method; If the wrapper has this method it is invoked after the
+-Optional wrapper.tcpDataProcessed() method; If the wrapper has this method it is invoked after the
 network packet’s data has been handled. A possible use is to write or evaluate the newly arrived data in one
 batch instead of item by item.
 Parameters
-• MaxRequests (int) – Throttle the number of requests to MaxRequests per
+-MaxRequests (int) -Throttle the number of requests to MaxRequests per
 RequestsInterval seconds. Set to 0 to disable throttling.
-• RequestsInterval (float) – Time interval (in seconds) for request throttling.
-• MinClientVersion (int) – Client protocol version.
-• MaxClientVersion (int) – Client protocol version
+-RequestsInterval (float) -Time interval (in seconds) for request throttling.
+-MinClientVersion (int) -Client protocol version.
+-MaxClientVersion (int) -Client protocol version
 
 Events:
-• apiStart ()
-• apiEnd ()
-• apiError (errorMsg: str)
-• throttleStart ()
-• throttleEnd ()
+-apiStart ()
+-apiEnd ()
+-apiError (errorMsg: str)
+-throttleStart ()
+-throttleEnd ()
 events = ('apiStart', 'apiEnd', 'apiError', 'throttleStart', 'throttleEnd')
 MaxRequests = 45
 RequestsInterval = 1
@@ -1275,15 +1275,15 @@ List[str]
 setConnectOptions(connectOptions)
 Set additional connect options.
 Parameters
-connectOptions (str) – Use “+PACEAPI” to use request-pacing built into TWS/gateway
+connectOptions (str) -Use “+PACEAPI” to use request-pacing built into TWS/gateway
 974+.
 connect(host, port, clientId, timeout=2.0)
 Connect to a running TWS or IB gateway application.
 Parameters
-• host (str) – Host name or IP address.
-• port (int) – Port number.
-• clientId (int) – ID number to use for this client; must be unique per connection.
-• timeout (Optional[float]) – If establishing the connection takes longer than timeout
+-host (str) -Host name or IP address.
+-port (int) -Port number.
+-clientId (int) -ID number to use for this client; must be unique per connection.
+-timeout (Optional[float]) -If establishing the connection takes longer than timeout
 seconds then the asyncio.TimeoutError exception is raised. Set to 0 to disable timeout.
 async connectAsync(host, port, clientId, timeout=2.0)
 disconnect()
@@ -1815,13 +1815,13 @@ class ib_insync.order.Trade(contract: ~ib_insync.contract.Contract = <factory>, 
 str = '')
 Trade keeps track of an order, its status and all its fills.
 Events:
-• statusEvent (trade: Trade)
-• modifyEvent (trade: Trade)
-• fillEvent (trade: Trade, fill: Fill)
-• commissionReportEvent (trade: Trade, fill: Fill, commissionReport: CommissionReport)
-• filledEvent (trade: Trade)
-• cancelEvent (trade: Trade)
-• cancelledEvent (trade: Trade)
+-statusEvent (trade: Trade)
+-modifyEvent (trade: Trade)
+-fillEvent (trade: Trade, fill: Fill)
+-commissionReportEvent (trade: Trade, fill: Fill, commissionReport: CommissionReport)
+-filledEvent (trade: Trade)
+-cancelEvent (trade: Trade)
+-cancelledEvent (trade: Trade)
 events: ClassVar = ('statusEvent', 'modifyEvent', 'fillEvent',
 'commissionReportEvent', 'filledEvent', 'cancelEvent', 'cancelledEvent')
 contract: Contract
@@ -2063,9 +2063,9 @@ Option('SPY', '20170721', 240, 'C', 'SMART')
 Bond(secIdType='ISIN', secId='US03076KAA60')
 Crypto('BTC', 'PAXOS', 'USD')
 Parameters
-• conId (int) – The unique IB contract identifier.
-• symbol (str) – The contract (or its underlying) symbol.
-• secType (str) – The security type:
+-conId (int) -The unique IB contract identifier.
+-symbol (str) -The contract (or its underlying) symbol.
+-secType (str) -The security type:
 – ’STK’ = Stock (or ETF)
 – ’OPT’ = Option
 – ’FUT’ = Future
@@ -2080,32 +2080,32 @@ Parameters
 – ’NEWS’ = News
 – ’FUND’ = Mutual fund
 – ’CRYPTO’ = Crypto currency
-• lastTradeDateOrContractMonth (str) – The contract’s last trading day or contract
+-lastTradeDateOrContractMonth (str) -The contract’s last trading day or contract
 month (for Options and Futures). Strings with format YYYYMM will be interpreted as
 the Contract Month whereas YYYYMMDD will be interpreted as Last Trading Day.
-• strike (float) – The option’s strike price.
-• right (str) – Put or Call. Valid values are ‘P’, ‘PUT’, ‘C’, ‘CALL’, or ‘’ for non-options.
-• multiplier (str) – he instrument’s multiplier (i.e. options, futures).
-• exchange (str) – The destination exchange.
-• currency (str) – The underlying’s currency.
-• localSymbol (str) – The contract’s symbol within its primary exchange. For options, this
+-strike (float) -The option’s strike price.
+-right (str) -Put or Call. Valid values are ‘P’, ‘PUT’, ‘C’, ‘CALL’, or ‘’ for non-options.
+-multiplier (str) -he instrument’s multiplier (i.e. options, futures).
+-exchange (str) -The destination exchange.
+-currency (str) -The underlying’s currency.
+-localSymbol (str) -The contract’s symbol within its primary exchange. For options, this
 will be the OCC symbol.
-• primaryExchange (str) – The contract’s primary exchange. For smart routed contracts,
+-primaryExchange (str) -The contract’s primary exchange. For smart routed contracts,
 used to define contract in case of ambiguity. Should be defined as native exchange of contract,
 e.g. ISLAND for MSFT. For exchanges which contain a period in name, will only be part of
 exchange name prior to period, i.e. ENEXT for ENEXT.BE.
-• tradingClass (str) – The trading class name for this contract. Available in TWS contract
+-tradingClass (str) -The trading class name for this contract. Available in TWS contract
 description window as well. For example, GBL Dec ‘13 future’s trading class is “FGBL”.
-• includeExpired (bool) – If set to true, contract details requests and historical data queries
+-includeExpired (bool) -If set to true, contract details requests and historical data queries
 can be performed pertaining to expired futures contracts. Expired options or other instrument
 types are not available.
-• secIdType (str) – Security identifier type. Examples for Apple:
+-secIdType (str) -Security identifier type. Examples for Apple:
 – secIdType=’ISIN’, secId=’US0378331005’
 – secIdType=’CUSIP’, secId=’037833100’
-• secId (str) – Security identifier.
-• comboLegsDescription (str) – Description of the combo legs.
-• comboLegs (List[ComboLeg]) – The legs of a combined contract definition.
-• deltaNeutralContract (DeltaNeutralContract) – Delta and underlying price for
+-secId (str) -Security identifier.
+-comboLegsDescription (str) -Description of the combo legs.
+-comboLegs (List[ComboLeg]) -The legs of a combined contract definition.
+-deltaNeutralContract (DeltaNeutralContract) -Delta and underlying price for
 Delta-Neutral combo orders.
 ecType: str = ''
 conId: int = 0
@@ -2158,9 +2158,9 @@ object
 class ib_insync.contract.Stock(symbol='', exchange='', currency='', **kwargs)
 Stock contract.
 Parameters
-• symbol (str) – Symbol name.
-• exchange (str) – Destination exchange.
-• currency (str) – Underlying currency.
+-symbol (str) -Symbol name.
+-exchange (str) -Destination exchange.
+-currency (str) -Underlying currency.
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2183,15 +2183,15 @@ class ib_insync.contract.Option(symbol='', lastTradeDateOrContractMonth='', stri
 exchange='', multiplier='', currency='', **kwargs)
 Option contract.
 Parameters
-• symbol (str) – Symbol name.
-• lastTradeDateOrContractMonth (str) – The option’s last trading day or contract month.
+-symbol (str) -Symbol name.
+-lastTradeDateOrContractMonth (str) -The option’s last trading day or contract month.
 – YYYYMM format: To specify last month
 – YYYYMMDD format: To specify last trading day
-• strike (float) – The option’s strike price.
-• right (str) – Put or call option. Valid values are ‘P’, ‘PUT’, ‘C’ or ‘CALL’.
-• exchange (str) – Destination exchange.
-• multiplier (str) – The contract multiplier.
-• currency (str) – Underlying currency.
+-strike (float) -The option’s strike price.
+-right (str) -Put or call option. Valid values are ‘P’, ‘PUT’, ‘C’ or ‘CALL’.
+-exchange (str) -Destination exchange.
+-multiplier (str) -The contract multiplier.
+-currency (str) -Underlying currency.
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2215,14 +2215,14 @@ lass ib_insync.contract.Future(symbol='', lastTradeDateOrContractMonth='', excha
 localSymbol='', multiplier='', currency='', **kwargs)
 Future contract.
 Parameters
-• symbol (str) – Symbol name.
-• lastTradeDateOrContractMonth (str) – The option’s last trading day or contract month.
+-symbol (str) -Symbol name.
+-lastTradeDateOrContractMonth (str) -The option’s last trading day or contract month.
 – YYYYMM format: To specify last month
 – YYYYMMDD format: To specify last trading day
-• exchange (str) – Destination exchange.
-• localSymbol (str) – The contract’s symbol within its primary exchange.
-• multiplier (str) – The contract multiplier.
-• currency (str) – Underlying currenc
+-exchange (str) -Destination exchange.
+-localSymbol (str) -The contract’s symbol within its primary exchange.
+-multiplier (str) -The contract multiplier.
+-currency (str) -Underlying currenc
 ict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2245,11 +2245,11 @@ class ib_insync.contract.ContFuture(symbol='', exchange='', localSymbol='', mult
 **kwargs)
 Continuous future contract.
 Parameters
-• symbol (str) – Symbol name.
-• exchange (str) – Destination exchange.
-• localSymbol (str) – The contract’s symbol within its primary exchange.
-• multiplier (str) – The contract multiplier.
-• currency (str) – Underlying currency.
+-symbol (str) -Symbol name.
+-exchange (str) -Destination exchange.
+-localSymbol (str) -The contract’s symbol within its primary exchange.
+-multiplier (str) -The contract multiplier.
+-currency (str) -Underlying currency.
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2272,10 +2272,10 @@ comboLegs: List[ComboLeg]
 class ib_insync.contract.Forex(pair='', exchange='IDEALPRO', symbol='', currency='', **kwargs)
 Foreign exchange currency pair.
 Parameters
-• pair (str) – Shortcut for specifying symbol and currency, like ‘EURUSD’.
-• exchange (str) – Destination exchange.
-• symbol (str) – Base currency.
-• currency (str) – Quote currency.
+-pair (str) -Shortcut for specifying symbol and currency, like ‘EURUSD’.
+-exchange (str) -Destination exchange.
+-symbol (str) -Base currency.
+-currency (str) -Quote currency.
 pair()
 Short name of pair.
 Return type
@@ -2301,10 +2301,10 @@ comboLegs: List[ComboLeg]
 class ib_insync.contract.Index(symbol='', exchange='', currency='', **kwargs)
 Index.
 Parameters
-• symbol (str) – Symbol name.
-• exchange (str) – Destination exchange
+-symbol (str) -Symbol name.
+-exchange (str) -Destination exchange
 ib_insync, Release 0.9.71
-• currency (str) – Underlying currency.
+-currency (str) -Underlying currency.
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2326,9 +2326,9 @@ comboLegs: List[ComboLeg]
 class ib_insync.contract.CFD(symbol='', exchange='', currency='', **kwargs)
 Contract For Difference.
 Parameters
-• symbol (str) – Symbol name.
-• exchange (str) – Destination exchange.
-• currency (str) – Underlying currency.
+-symbol (str) -Symbol name.
+-exchange (str) -Destination exchange.
+-currency (str) -Underlying currency.
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2352,9 +2352,9 @@ comboLegs: List[ComboLeg]
 class ib_insync.contract.Commodity(symbol='', exchange='', currency='', **kwargs)
 Commodity.
 Parameters
-• symbol (str) – Symbol name.
-• exchange (str) – Destination exchange.
-• currency (str) – Underlying currency.
+-symbol (str) -Symbol name.
+-exchange (str) -Destination exchange.
+-currency (str) -Underlying currency.
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2398,15 +2398,15 @@ class ib_insync.contract.FuturesOption(symbol='', lastTradeDateOrContractMonth='
 right='', exchange='', multiplier='', currency='', **kwargs)
 Option on a futures contract.
 Parameters
-• symbol (str) – Symbol name.
-• lastTradeDateOrContractMonth (str) – The option’s last trading day or contract month.
+-symbol (str) -Symbol name.
+-lastTradeDateOrContractMonth (str) -The option’s last trading day or contract month.
 – YYYYMM format: To specify last month
 – YYYYMMDD format: To specify last trading day
-• strike (float) – The option’s strike price.
-• right (str) – Put or call option. Valid values are ‘P’, ‘PUT’, ‘C’ or ‘CALL’.
-• exchange (str) – Destination exchange.
-• multiplier (str) – The contract multiplier.
-• currency (str) – Underlying currency.
+-strike (float) -The option’s strike price.
+-right (str) -Put or call option. Valid values are ‘P’, ‘PUT’, ‘C’ or ‘CALL’.
+-exchange (str) -Destination exchange.
+-multiplier (str) -The contract multiplier.
+-currency (str) -Underlying currency.
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2491,9 +2491,9 @@ comboLegs: List[ComboLeg]
 class ib_insync.contract.Crypto(symbol='', exchange='', currency='', **kwargs)
 Crypto currency contract.
 Parameters
-• symbol (str) – Symbol name.
-• exchange (str) – Destination exchange.
-• currency (str) – Underlying currency.
+-symbol (str) -Symbol name.
+-exchange (str) -Destination exchange.
+-currency (str) -Underlying currency.
 dict()
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
 Return type
@@ -2748,7 +2748,7 @@ askGreeks resp. lastGreeks attributes. There is also modelGreeks that conveys th
 Interactive Brokers’ option model.
 Events
 ib_insync, Release 0.9.71
-• updateEvent (ticker: Ticker)
+-updateEvent (ticker: Ticker)
 events: ClassVar = ('updateEvent',)
 contract: Optional[Contract] = None
 time: Optional[datetime] = None
@@ -2831,8 +2831,8 @@ Return type
 float
 marketPrice()
 Return the first available one of
-• last price if within current bid/ask or no bid/ask available;
-• average of bid and ask (midpoint).
+-last price if within current bid/ask or no bid/ask available;
+-average of bid and ask (midpoint).
 Return type
 float
 dict()
@@ -2880,20 +2880,20 @@ Tick filtering event operators that emit(time, price, size).
 on_source(ticker)
 Emit a new value to all connected listeners.
 Parameters
-args – Argument values to emit to listeners.
+args -Argument values to emit to listeners.
 timebars(timer)
 Aggregate ticks into time bars, where the timing of new bars is derived from a timer event. Emits a com-
 pleted Bar.
 This event stores a BarList of all created bars in the bars property.
 Parameters
-timer (Event) – Event for timing when a new bar starts.
+timer (Event) -Event for timing when a new bar starts.
 Return type
 TimeBars
 ickbars(count)
 Aggregate ticks into bars that have the same number of ticks. Emits a completed Bar.
 This event stores a BarList of all created bars in the bars property.
 Parameters
-count (int) – Number of ticks to use to form one bar.
+count (int) -Number of ticks to use to form one bar.
 Return type
 TickBars
 
@@ -2901,7 +2901,7 @@ class ib_insync.ticker.Midpoints(tickTypes, source=None)
 on_source(ticker)
 Emit a new value to all connected listeners.
 Parameters
-args – Argument values to emit to listeners.
+args -Argument values to emit to listeners.
 
 class ib_insync.ticker.Bar(time: Union[datetime.datetime, NoneType], open: float = nan, high: float = nan,
 low: float = nan, close: float = nan, volume: int = 0, count: int = 0)
@@ -2919,23 +2919,23 @@ Aggregate ticks into time bars, where the timing of new bars is derived from a t
 Bar.
 This event stores a BarList of all created bars in the bars property.
 Parameters
-timer – Event for timing when a new bar starts.
+timer -Event for timing when a new bar starts.
 bars: BarList
 on_source(time, price, size)
 Emit a new value to all connected listeners.
 Parameters
-args – Argument values to emit to listeners.
+args -Argument values to emit to listeners.
 
 class ib_insync.ticker.TickBars(count, source=None)
 Aggregate ticks into bars that have the same number of ticks. Emits a completed Bar.
 This event stores a BarList of all created bars in the bars property.
 Parameters
-count – Number of ticks to use to form one bar.
+count -Number of ticks to use to form one bar.
 ars: BarList
 on_source(time, price, size)
 Emit a new value to all connected listeners.
 Parameters
-args – Argument values to emit to listeners.
+args -Argument values to emit to listeners.
 
 ### Objects
 
@@ -3641,7 +3641,7 @@ property numMsgSent
 class ib_insync.objects.BarDataList(*args)
 List of BarData that also stores all request parameters.
 Events:
-• updateEvent (bars: BarDataList, hasNewBar: bool)
+-updateEvent (bars: BarDataList, hasNewBar: bool)
 reqId: int
 contract: Contract
 endDateTime: Optional[Union[datetime, date, str]]
@@ -3656,7 +3656,7 @@ chartOptions: List[TagValue]
 class ib_insync.objects.RealTimeBarList(*args)
 List of RealTimeBar that also stores all request parameters.
 Events:
-• updateEvent (bars: RealTimeBarList, hasNewBar: bool)
+-updateEvent (bars: RealTimeBarList, hasNewBar: bool)
 reqId: int
 contract: Contract
 barSize: int
@@ -3667,7 +3667,7 @@ realTimeBarsOptions: List[TagValue]
 class ib_insync.objects.ScanDataList(*args)
 List of ScanData that also stores all request parameters.
 Events:
-• updateEvent (ScanDataList)
+-updateEvent (ScanDataList)
 reqId: int
 subscription: ScannerSubscription
 scannerSubscriptionOptions: List[TagValue]
@@ -3678,9 +3678,9 @@ See: https://interactivebrokers.github.io/tws-api/fundamental_ratios_tags.html
 class ib_insync.wrapper.RequestError(reqId, code, message)
 Exception to raise when the API reports an error that can be tied to a single request.
 Parameters
-• reqId (int) – Original request ID.
-• code (int) – Original error code.
-• message (str) – Original error message
+-reqId (int) -Original request ID.
+-code (int) -Original error code.
+-message (str) -Original error message
 
 
 ### Utilities
@@ -3689,7 +3689,7 @@ Parameters
 ib_insync.util.df(objs, labels=None)
 Create pandas DataFrame from the sequence of same-type objects.
 Parameters
-labels (Optional[List[str]]) – If supplied, retain only the given labels and drop the rest.
+labels (Optional[List[str]]) -If supplied, retain only the given labels and drop the rest.
 
 ib_insync.util.dataclassAsDict(obj)
 Return dataclass values as dict. This is a non-recursive variant of dataclasses.asdict.
@@ -3759,34 +3759,34 @@ within the timeout period.
 ib_insync.util.schedule(time, callback, *args)
 Schedule the callback to be run at the given time with the given arguments. This will return the Event Handle.
 Parameters
-• time (Union[time, datetime]) – Time to run callback. If given as datetime.time then
+-time (Union[time, datetime]) -Time to run callback. If given as datetime.time then
 use today as date.
-• callback (Callable) – Callable scheduled to run.
-• args – Arguments for to call callback with.
+-callback (Callable) -Callable scheduled to run.
+-args -Arguments for to call callback with.
 
 ib_insync.util.sleep(secs=0.02)
 Wait for the given amount of seconds while everything still keeps processing in the background. Never use
 time.sleep().
 Parameters
-secs (float) – Time in seconds to wait.
+secs (float) -Time in seconds to wait.
 Return type
 bool
 
 ib_insync.util.timeRange(start, end, step)
 Iterator that waits periodically until certain time points are reached while yielding those time points.
 Parameters
-• start (Union[time, datetime]) – Start time, can be specified as datetime.datetime, or as
+-start (Union[time, datetime]) -Start time, can be specified as datetime.datetime, or as
 datetime.time in which case today is used as the date
-• end (Union[time, datetime]) – End time, can be specified as datetime.datetime, or as
+-end (Union[time, datetime]) -End time, can be specified as datetime.datetime, or as
 datetime.time in which case today is used as the date
-• step (float) – The number of seconds of each period
+-step (float) -The number of seconds of each period
 Return type
 Iterator[datetime]
 
 ib_insync.util.waitUntil(t)
 Wait until the given time t is reached.
 Parameters
-t (Union[time, datetime]) – The time t can be specified as datetime.datetime, or as date-
+t (Union[time, datetime]) -The time t can be specified as datetime.datetime, or as date-
 time.time in which case today is used as the date.
 Return type
 bool
@@ -3812,12 +3812,12 @@ Use nested asyncio event loop for Jupyter notebooks.
 
 ib_insync.util.useQt(qtLib='PyQt5', period=0.01)
 Run combined Qt5/asyncio event loo
-• qtLib (str) – Name of Qt library to use:
+-qtLib (str) -Name of Qt library to use:
 – PyQt5
 – PyQt6
 – PySide2
 – PySide6
-• period (float) – Period in seconds to poll Qt.
+-period (float) -Period in seconds to poll Qt.
 
 
 
@@ -3857,34 +3857,34 @@ javaPath: str = '', userid: str = '', password: str = '', fixuserid: str = '',
 fixpassword: str = '')
 Programmatic control over starting and stopping TWS/Gateway using IBC (https://github.com/IbcAlpha/IBC).
 Parameters
-• twsVersion (int) – (required) The major version number for TWS or gateway.
-• gateway (bool) –
+-twsVersion (int) -(required) The major version number for TWS or gateway.
+-gateway (bool) –
 – True = gateway
 – False = TWS
-• tradingMode (str) – ‘live’ or ‘paper’.
-• userid (str) – IB account username. It is recommended to set the real username/password
+-tradingMode (str) -‘live’ or ‘paper’.
+-userid (str) -IB account username. It is recommended to set the real username/password
 in a secured IBC config file.
-• password (str) – IB account password.
-• twsPath (str) – Path to the TWS installation folder. Defaults:
+-password (str) -IB account password.
+-twsPath (str) -Path to the TWS installation folder. Defaults:
 – Linux: ~/Jts
 – OS X: ~/Applications
 – Windows: C:\Jts
-• twsSettingsPath (str) – Path to the TWS settings folder. Defaults:
+-twsSettingsPath (str) -Path to the TWS settings folder. Defaults:
 – Linux: ~/Jts
 – OS X: ~/Jts
 – Windows: Not available
-• ibcPath (str) – Path to the IBC installation folder. Defaults:
+-ibcPath (str) -Path to the IBC installation folder. Defaults:
 – Linux: /opt/ibc
 – OS X: /opt/ibc
 – Windows: C:\IBC
-• ibcIni (str) – Path to the IBC configuration file. Defaults:
+-ibcIni (str) -Path to the IBC configuration file. Defaults:
 – Linux: ~/ibc/config.ini
 – OS X: ~/ibc/config.ini
 – Windows: %%HOMEPATH%%\DocumentsIBC\config.ini
-• javaPath (str) – Path to Java executable. Default is to use the Java VM included with
+-javaPath (str) -Path to Java executable. Default is to use the Java VM included with
 TWS/gateway.
-• fixuserid (str) – FIX account user id (gateway only).
-• fixpassword (str) – FIX account password (gateway only).
+-fixuserid (str) -FIX account user id (gateway only).
+-fixpassword (str) -FIX account password (gateway only).
 This is not intended to be run in a notebook.
 To use IBC on Windows, the proactor (or quamash) event loop must have been set:
 
@@ -4003,21 +4003,21 @@ Start, connect and watch over the TWS or gateway app and try to keep it up and r
 used in an event-driven application that properly initializes itself upon (re-)connect.
 It is not intended to be used in a notebook or in imperative-style code. Do not expect Watchdog to magically
 shield you from reality. Do not use Watchdog unless you understand what it does and doesn’t do
-• controller (Union[IBC, IBController]) – (required) IBC or IBController instance.
-• ib (IB) – (required) IB instance to be used. Do no connect this instance as Watchdog takes
+-controller (Union[IBC, IBController]) -(required) IBC or IBController instance.
+-ib (IB) -(required) IB instance to be used. Do no connect this instance as Watchdog takes
 care of that.
-• host (str) – Used for connecting IB instance.
-• port (int) – Used for connecting IB instance.
-• clientId (int) – Used for connecting IB instance.
-• connectTimeout (float) – Used for connecting IB instance.
-• readonly (bool) – Used for connecting IB instance.
-• appStartupTime (float) – Time (in seconds) that the app is given to start up. Make sure
+-host (str) -Used for connecting IB instance.
+-port (int) -Used for connecting IB instance.
+-clientId (int) -Used for connecting IB instance.
+-connectTimeout (float) -Used for connecting IB instance.
+-readonly (bool) -Used for connecting IB instance.
+-appStartupTime (float) -Time (in seconds) that the app is given to start up. Make sure
 that it is given ample time.
-• appTimeout (float) – Timeout (in seconds) for network traffic idle time.
-• retryDelay (float) – Time (in seconds) to restart app after a previous failure.
-• probeContract (Contract) – Contract to use for historical data probe requests (default is
+-appTimeout (float) -Timeout (in seconds) for network traffic idle time.
+-retryDelay (float) -Time (in seconds) to restart app after a previous failure.
+-probeContract (Contract) -Contract to use for historical data probe requests (default is
 EURUSD).
-• probeTimeout (float); Timeout (in seconds) –
+-probeTimeout (float); Timeout (in seconds) –
 The idea is to wait until there is no traffic coming from the app for a certain amount of time (the appTimeout
 parameter). This triggers a historical request to be placed just to see if the app is still alive and well. If yes, then
 continue, if no then restart the whole app and reconnect. Restarting will also occur directly on errors 1100 and
@@ -4034,12 +4034,12 @@ watchdog.start()
 ib.run()
 
 Events:
-• startingEvent (watchdog: Watchdog)
-• startedEvent (watchdog: Watchdog)
-• stoppingEvent (watchdog: Watchdog)
-• stoppedEvent (watchdog: Watchdog)
-• softTimeoutEvent (watchdog: Watchdog)
-• hardTimeoutEvent (watchdog: Watchdog)
+-startingEvent (watchdog: Watchdog)
+-startedEvent (watchdog: Watchdog)
+-stoppingEvent (watchdog: Watchdog)
+-stoppedEvent (watchdog: Watchdog)
+-softTimeoutEvent (watchdog: Watchdog)
+-hardTimeoutEvent (watchdog: Watchdog)
 events = ['startingEvent', 'startedEvent', 'stoppingEvent', 'stoppedEvent',
 'softTimeoutEvent', 'hardTimeoutEvent']
 controller: Union[IBC, IBController]
