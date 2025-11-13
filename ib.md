@@ -49,11 +49,7 @@ df = util.df(bars)
 print(df)
 
 
-
-
-
 ```
-
 
 
 ## API DOCS
@@ -71,21 +67,17 @@ Be sure to take a look at the notebooks, the recipes and the API docs.
 ### class ib_insync.ib.IB
 
 Provides both a blocking and an asynchronous interface to the IB API, using asyncio networking and event loop.
-
 **The One Rule:** User code may not block for too long
-
 For introducing a delay, never use `time.sleep()` but use `sleep()` instead.
 
 **Parameters:**
 
-- **RequestTimeout** (float) - Timeout (in seconds) to wait for a blocking request to finish before raising asyncio.TimeoutError. The default value of 0 will wait indefinitely. Note: This timeout is not used for the *Async methods.
-
+- **RequestTimeout** (float) - Timeout (in seconds) to wait for a blocking request to finish before raising asyncio.TimeoutError. The default value of 0 will wait indefinitely.
+                               Note: This timeout is not used for the *Async methods.
 - **RaiseRequestErrors** (bool) - Specifies the behaviour when certain API requests fail:
   - False: Silently return an empty result
   - True: Raise a RequestError
-
 - **MaxSyncedSubAccounts** (int) - Do not use sub-account updates if the number of sub-accounts exceeds this number (50 by default).
-
 - **TimezoneTWS** (pytz.timezone) - Specifies what timezone TWS (or gateway) is using. The default is to assume local system timezone. **⚠️ USE UTC - THIS HAS CHANGED**
 
 **Events:**
@@ -93,15 +85,17 @@ For introducing a delay, never use `time.sleep()` but use `sleep()` instead.
 - **connectedEvent** () - Is emitted after connecting and synchronizing with TWS/gateway.
 - **disconnectedEvent** () - Is emitted after disconnecting from TWS/gateway.
 - **updateEvent** () - Is emitted after a network packet has been handled.
-- **pendingTickersEvent** (tickers: Set[Ticker]) - Emits the set of tickers that have been updated during the last update and for which there are new ticks, tickByTicks or domTicks.
-- **barUpdateEvent** (bars: BarDataList, hasNewBar: bool) - Emits the bar list that has been updated in real time. If a new bar has been added then hasNewBar is True, when the last bar has changed it is False.
+- **pendingTickersEvent** (tickers: Set[Ticker]) - Emits the set of tickers that have been updated during the last update and for which there are new ticks,
+                          tickByTicks or domTicks.
+- **barUpdateEvent** (bars: BarDataList, hasNewBar: bool) - Emits the bar list that has been updated in real time. If a new bar has been added then hasNewBar is True,
+                     when the last bar has changed it is False.
 - **newOrderEvent** (trade: Trade) - Emits a newly placed trade.
 - **orderModifyEvent** (trade: Trade) - Emits when order is modified.
 - **cancelOrderEvent** (trade: Trade) - Emits a trade directly after requesting for it to be cancelled.
 - **openOrderEvent** (trade: Trade) - Emits the trade with open order.
 - **orderStatusEvent** (trade: Trade) - Emits the changed order status of the ongoing trade.
 - **execDetailsEvent** (trade: Trade, fill: Fill) - Emits the fill together with the ongoing trade it belongs to.
-- **commissionReportEvent** (trade: Trade, fill: Fill, report: CommissionReport) - The commission report is emitted after the fill that it belongs to.
+- **commissionReportEvent** (trade: Trade, fill: Fill, report: CommissionReport) - The commission report is emitted after the fill       that it belongs to.
 - **updatePortfolioEvent** (item: PortfolioItem) - A portfolio item has changed.
 - **positionEvent** (position: Position) - A position has changed.
 - **accountValueEvent** (value: AccountValue) - An account value has changed.
@@ -111,8 +105,10 @@ For introducing a delay, never use `time.sleep()` but use `sleep()` instead.
 - **tickNewsEvent** (news: NewsTick) - Emit a new news headline.
 - **newsBulletinEvent** (bulletin: NewsBulletin) - Emit a new news bulletin.
 - **scannerDataEvent** (data: ScanDataList) - Emit data from a scanner subscription.
-- **errorEvent** (reqId: int, errorCode: int, errorString: str, contract: Contract) - Emits the reqId/orderId and TWS error code and string (see https://interactivebrokers.github.io/tws-api/message_codes.html) together with the contract the error applies to (or None if no contract applies).
-- **timeoutEvent** (idlePeriod: float) - Is emitted if no data is received for longer than the timeout period specified with setTimeout(). The value emitted is the period in seconds since the last update.
+- **errorEvent** (reqId: int, errorCode: int, errorString: str, contract: Contract) - Emits the reqId/orderId and TWS error code and string
+                 (see https://interactivebrokers.github.io/tws-api/message_codes.html) together with the contract the error applies to (or None if no contract applies).
+- **timeoutEvent** (idlePeriod: float) - Is emitted if no data is received for longer than the timeout period specified with setTimeout().
+                   The value emitted is the period in seconds since the last update.
 
 **Note:** It is not advisable to place new requests inside an event handler as it may lead to too much recursion.
 
@@ -129,16 +125,10 @@ RequestTimeout: float = 0
 RaiseRequestErrors: bool = False
 MaxSyncedSubAccounts: int = 50
 TimezoneTWS = None
-```
-
----
 
 #### connect(host='127.0.0.1', port=7497, clientId=1, timeout=4, readonly=False, account='')
-
 Connect to a running TWS or IB gateway application. After the connection is made the client is fully synchronized and ready to serve requests.
-
 **This method is blocking.**
-
 **Parameters:**
 - **host** (str) - Host name or IP address.
 - **port** (int) - Port number.
@@ -146,584 +136,334 @@ Connect to a running TWS or IB gateway application. After the connection is made
 - **timeout** (float) - If establishing the connection takes longer than timeout seconds then the asyncio.TimeoutError exception is raised. Set to 0 to disable timeout.
 - **readonly** (bool) - Set to True when API is in read-only mode.
 - **account** (str) - Main account to receive updates for.
----
-
+- 
 #### disconnect()
-
 Disconnect from a TWS or IB gateway application. This will clear all session state.
 
----
-
 #### isConnected()
-
 Is there an API connection to TWS or IB gateway?
-
 **Return type:** bool
 
----
-
 #### static run(*, timeout=None)
-
 By default run the event loop forever.
-
 When awaitables (like Tasks, Futures or coroutines) are given then run the event loop until each has completed and return their results.
-
 An optional timeout (in seconds) can be given that will raise asyncio.TimeoutError if the awaitables are not ready within the timeout period.
 
 ---
 
 #### static schedule(callback, *args)
-
 Schedule the callback to be run at the given time with the given arguments. This will return the Event Handle.
-
 **Parameters:**
 - **time** (Union[time, datetime]) - Time to run callback. If given as datetime.time then use today as date.
 - **callback** (Callable) - Callable scheduled to run.
 - **args** - Arguments for to call callback with.
 
----
-
 #### static sleep()
-
 Wait for the given amount of seconds while everything still keeps processing in the background. Never use `time.sleep()`.
-
 **Parameters:**
 - **secs** (float) - Time in seconds to wait.
-
 **Return type:** bool
 
----
-
 #### static timeRange(end, step)
-
 Iterator that waits periodically until certain time points are reached while yielding those time points.
-
 **Parameters:**
 - **start** (Union[time, datetime]) - Start time, can be specified as datetime.datetime, or as datetime.time in which case today is used as the date
 - **end** (Union[time, datetime]) - End time, can be specified as datetime.datetime, or as datetime.time in which case today is used as the date
 - **step** (float) - The number of seconds of each period
-
 **Return type:** Iterator[datetime]
 
----
-
 #### static timeRangeAsync(end, step)
-
 Async version of timeRange().
-
 **Return type:** AsyncIterator[datetime]
 
----
-
 #### static waitUntil()
-
 Wait until the given time t is reached.
-
 **Parameters:**
 - **t** (Union[time, datetime]) - The time t can be specified as datetime.datetime, or as datetime.time in which case today is used as the date.
-
 **Return type:** bool
----
 
 #### waitOnUpdate(timeout=0)
-
 Wait on any new update to arrive from the network.
-
 **Parameters:**
 - **timeout** (float) - Maximum time in seconds to wait. If 0 then no timeout is used
-
 **Note:** A loop with waitOnUpdate should not be used to harvest tick data from tickers, since some ticks can go missing. This happens when multiple updates occur almost simultaneously; The ticks from the first update are then cleared. Use events instead to prevent this.
-
 **Return type:** bool
-
 **Returns:** True if not timed-out, False otherwise.
 
----
-
 #### loopUntil(condition=None, timeout=0)
-
 Iterate until condition is met, with optional timeout in seconds. The yielded value is that of the condition or False when timed out.
-
 **Parameters:**
 - **condition** - Predicate function that is tested after every network update.
 - **timeout** (float) - Maximum time in seconds to wait. If 0 then no timeout is used.
-
 **Return type:** Iterator[object]
 
----
-
 #### setTimeout(timeout=60)
-
 Set a timeout for receiving messages from TWS/IBG, emitting timeoutEvent if there is no incoming data for too long.
-
 The timeout fires once per connected session but can be set again after firing or after a reconnect.
-
 **Parameters:**
 - **timeout** (float) - Timeout in seconds.
 
----
-
 #### managedAccounts()
-
 List of account names.
-
 **Return type:** List[str]
 
----
-
 #### accountValues(account='')
-
 List of account values for the given account, or of all accounts if account is left blank.
-
 **Parameters:**
 - **account** (str) - If specified, filter for this account name.
-
 **Return type:** List[AccountValue]
-
----
 
 #### accountSummary(account='')
-
 List of account values for the given account, or of all accounts if account is left blank.
-
 **This method is blocking on first run, non-blocking after that.**
-
 **Parameters:**
 - **account** (str) - If specified, filter for this account name.
-
 **Return type:** List[AccountValue]
 
----
 
 #### portfolio()
-
 List of portfolio items of the default account.
-
 **Return type:** List[PortfolioItem]
 
----
-
 #### positions(account='')
-
 List of positions for the given account, or of all accounts if account is left blank.
-
 **Parameters:**
 - **account** (str) - If specified, filter for this account name.
-
 **Return type:** List[Position]
 
----
-
 #### pnl(account='', modelCode='')
-
 List of subscribed PnL objects (profit and loss), optionally filtered by account and/or modelCode. The PnL objects are kept live updated.
-
 **Parameters:**
 - **account** - If specified, filter for this account name.
 - **modelCode** - If specified, filter for this account model.
-
 **Return type:** List[PnL]
 
----
-
 #### pnlSingle(account='', modelCode='', conId=0)
-
 List of subscribed PnLSingle objects (profit and loss for single positions). The PnLSingle objects are kept live updated.
-
 **Parameters:**
 - **account** (str) - If specified, filter for this account name.
 - **modelCode** (str) - If specified, filter for this account model.
 - **conId** (int) - If specified, filter for this contract ID.
-
 **Return type:** List[PnLSingle]
 
----
+
 
 #### trades()
-
 List of all order trades from this session.
-
 **Return type:** List[Trade]
-
----
 
 #### openTrades()
-
 List of all open order trades.
-
 **Return type:** List[Trade]
 
----
-
 #### orders()
-
 List of all orders from this session.
-
 **Return type:** List[Order]
-
----
 
 #### openOrders()
-
 List of all open orders.
-
 **Return type:** List[Order]
 
----
-
 #### fills()
-
 List of all fills from this session.
-
 **Return type:** List[Fill]
 
----
-
 #### executions()
-
 List of all executions from this session.
-
 **Return type:** List[Execution]
 
----
-
 #### ticker(contract)
-
 Get ticker of the given contract. It must have been requested before with reqMktData with the same contract object. The ticker may not be ready yet if called directly after reqMktData().
-
 **Parameters:**
 - **contract** (Contract) - Contract to get ticker for.
-
 **Return type:** Ticker
 
----
-
 #### tickers()
-
 Get a list of all tickers.
-
 **Return type:** List[Ticker]
-
----
 
 #### pendingTickers()
-
 Get a list of all tickers that have pending ticks or domTicks.
-
 **Return type:** List[Ticker]
 
----
-
 #### realtimeBars()
-
 Get a list of all live updated bars. These can be 5 second realtime bars or live updated historical bars.
-
 **Return type:** List[Union[BarDataList, RealTimeBarList]]
 
----
-
 #### newsTicks()
-
 List of ticks with headline news. The article itself can be retrieved with reqNewsArticle().
-
 **Return type:** List[NewsTick]
 
----
-
 #### newsBulletins()
-
 List of IB news bulletins.
-
 **Return type:** List[NewsBulletin]
 
----
-
 #### reqTickers(*contracts, regulatorySnapshot=False)
-
 Request and return a list of snapshot tickers. The list is returned when all tickers are ready.
-
 **This method is blocking.**
-
 **Parameters:**
 - **contracts** (Contract) - Contracts to get tickers for.
 - **regulatorySnapshot** (bool) - Request NBBO snapshots (may incur a fee).
-
 **Return type:** List[Ticker]
 
----
-
 #### qualifyContracts(*contracts)
-
 Fully qualify the given contracts in-place. This will fill in the missing fields in the contract, especially the conId. Returns a list of contracts that have been successfully qualified.
-
 **This method is blocking.**
-
 **Parameters:**
 - **contracts** (Contract) - Contracts to qualify.
-
 **Return type:** List[Contract]
 
----
-
 #### bracketOrder(action, quantity, limitPrice, takeProfitPrice, stopLossPrice, **kwargs)
-
 Create a limit order that is bracketed by a take-profit order and a stop-loss order. Submit the bracket like:
 ```
 for o in bracket:
     ib.placeOrder(contract, o)
 ```
-
 **Parameters:**
 - **action** (str) - 'BUY' or 'SELL'.
 - **quantity** (float) - Size of order.
 - **limitPrice** (float) - Limit price of entry order.
 - **takeProfitPrice** (float) - Limit price of profit order.
 - **stopLossPrice** (float) - Stop price of loss order.
-
 **Return type:** BracketOrder
 
----
-
 #### static oneCancelsAll(orders, ocaGroup, ocaType)
-
 Place the trades in the same One Cancels All (OCA) group.
-
 https://interactivebrokers.github.io/tws-api/oca.html
-
 **Parameters:**
 - **orders** (List[Order]) - The orders that are to be placed together.
-
 **Return type:** List[Order]
 
----
-
 #### whatIfOrder(contract, order)
-
 Retrieve commission and margin impact without actually placing the order. The given order will not be modified in any way.
-
 **This method is blocking.**
-
 **Parameters:**
 - **contract** (Contract) - Contract to test.
 - **order** (Order) - Order to test.
-
 **Return type:** OrderState
 
----
-
 #### placeOrder(contract, order)
-
 Place a new order or modify an existing order. Returns a Trade that is kept live updated with status changes, fills, etc.
-
 **Parameters:**
 - **contract** (Contract) - Contract to use for order.
 - **order** (Order) - The order to be placed.
-
 **Return type:** Trade
 
----
-
 #### cancelOrder(order, manualCancelOrderTime='')
-
 Cancel the order and return the Trade it belongs to.
-
 **Parameters:**
 - **order** (Order) - The order to be canceled.
 - **manualCancelOrderTime** (str) - For audit trail.
-
 **Return type:** Trade
 
----
-
 #### reqGlobalCancel()
-
 Cancel all active trades including those placed by other clients or TWS/IB gateway.
 
----
-
 #### reqCurrentTime()
-
 Request TWS current time.
-
 **This method is blocking.**
-
 **Return type:** datetime
 
----
-
 #### reqAccountUpdates(account='')
-
 This is called at startup - no need to call again. Request account and portfolio values of the account and keep updated. Returns when both account values and portfolio are filled.
-
 **This method is blocking.**
-
 **Parameters:**
 - **account** (str) - If specified, filter for this account name.
 
----
-
 #### reqAccountUpdatesMulti(account='', modelCode='')
-
 It is recommended to use accountValues() instead. Request account values of multiple accounts and keep updated.
-
 **This method is blocking.**
-
 **Parameters:**
 - **account** (str) - If specified, filter for this account name.
 - **modelCode** (str) - If specified, filter for this account model.
 
----
-
 #### reqAccountSummary()
-
 It is recommended to use accountSummary() instead. Request account values for all accounts and keep them updated. Returns when account summary is filled.
-
 **This method is blocking.**
 
----
-
 #### reqAutoOpenOrders(autoBind=True)
-
 Bind manual TWS orders so that they can be managed from this client. The clientId must be 0 and the TWS API setting "Use negative numbers to bind automatic orders" must be checked. This request is automatically called when clientId=0.
-
 https://interactivebrokers.github.io/tws-api/open_orders.html https://interactivebrokers.github.io/tws-api/modifying_orders.html
 
 **Parameters:**
 - **autoBind** (bool) - Set binding on or off.
 
----
-
 #### reqOpenOrders()
-
 Request and return a list of open orders. This method can give stale information where a new open order is not reported or an already filled or cancelled order is reported as open. It is recommended to use the more reliable and much faster openTrades() or openOrders() methods instead.
-
 **This method is blocking.**
-
 **Return type:** List[Order]
-
----
 
 #### reqAllOpenOrders()
-
 Request and return a list of all open orders over all clients. Note that the orders of other clients will not be kept in sync, use the master clientId mechanism instead to see other client's orders that are kept in sync.
-
 **Return type:** List[Order]
 
----
-
 #### reqCompletedOrders(apiOnly)
-
 Request and return a list of completed trades.
-
 **Parameters:**
 - **apiOnly** (bool) - Request only API orders (not manually placed TWS orders).
-
 **Return type:** List[Trade]
 
----
-
 #### reqExecutions(execFilter=None)
-
 It is recommended to use fills() or executions() instead. Request and return a list of fills.
-
 **This method is blocking.**
-
 **Parameters:**
 - **execFilter** (Optional[ExecutionFilter]) - If specified, return executions that match the filter.
-
 **Return type:** List[Fill]
 
----
-
 #### reqPositions()
-
 It is recommended to use positions() instead. Request and return a list of positions for all accounts.
-
 **This method is blocking.**
-
 **Return type:** List[Position]
 
----
-
 #### reqPnL(account, modelCode='')
-
 Start a subscription for profit and loss events. Returns a PnL object that is kept live updated. The result can also be queried from pnl().
-
 https://interactivebrokers.github.io/tws-api/pnl.html
-
 **Parameters:**
 - **account** (str) - Subscribe to this account.
 - **modelCode** (str) - If specified, filter for this account model.
-
 **Return type:** PnL
 
----
-
 #### cancelPnL(account, modelCode='')
-
 Cancel PnL subscription.
-
 **Parameters:**
 - **account** - Cancel for this account.
 - **modelCode** (str) - If specified, cancel for this account model.
 
----
-
 #### reqPnLSingle(account, modelCode, conId)
-
 Start a subscription for profit and loss events for single positions. Returns a PnLSingle object that is kept live updated. The result can also be queried from pnlSingle().
-
 https://interactivebrokers.github.io/tws-api/pnl.html
-
 **Parameters:**
 - **account** (str) - Subscribe to this account.
 - **modelCode** (str) - Filter for this account model.
 - **conId** (int) - Filter for this contract ID.
-
 **Return type:** PnLSingle
 
----
-
 #### cancelPnLSingle(account, modelCode, conId)
-
 Cancel PnLSingle subscription for the given account, modelCode and conId.
-
 **Parameters:**
 - **account** (str) - Cancel for this account name.
 - **modelCode** (str) - Cancel for this account model.
 - **conId** (int) - Cancel for this contract ID.
 
----
-
 #### reqContractDetails(contract)
-
 Get a list of contract details that match the given contract. If the returned list is empty then the contract is not known; If the list has multiple values then the contract is ambiguous. The fully qualified contract is available in the the ContractDetails.contract attribute.
-
 **This method is blocking.**
-
 https://interactivebrokers.github.io/tws-api/contract_details.html
-
 **Parameters:**
 - **contract** (Contract) - The contract to get details for.
-
 **Return type:** List[ContractDetails]
 
----
-
 #### reqMatchingSymbols(pattern)
-
 Request contract descriptions of contracts that match a pattern.
-
 **This method is blocking.**
-
 https://interactivebrokers.github.io/tws-api/matching_symbols.html
-
 **Parameters:**
 pattern (str) -The first few letters of the ticker symbol, or for longer strings a character
 sequence matching a word in the security name.
 Return type
 List[ContractDescription]
-reqMarketRule(marketRuleId)
+
+#### reqMarketRule(marketRuleId)
 Request price increments rule.
 https://interactivebrokers.github.io/tws-api/minimum_increment.html
 Parameters
@@ -732,7 +472,8 @@ tained via reqContractDetails() from ContractDetails.marketRuleIds, which con-
 tains a comma separated string of market rule IDs.
 Return type
 PriceIncrement
-reqRealTimeBars(contract, barSize, whatToShow, useRTH, realTimeBarsOptions=[])
+
+#### reqRealTimeBars(contract, barSize, whatToShow, useRTH, realTimeBarsOptions=[])
 Request realtime 5 second bars.
 https://interactivebrokers.github.io/tws-api/realtime_bars.html
 Parameters
@@ -746,11 +487,12 @@ then show all data.
 Return type
 RealTimeBarList
 
-cancelRealTimeBars(bars)
+#### cancelRealTimeBars(bars)
 Cancel the realtime bars subscription.
 Parameters
 bars (RealTimeBarList) -The bar list that was obtained from reqRealTimeBars.
-reqHistoricalData(contract, endDateTime, durationStr, barSizeSetting, whatToShow, useRTH,
+
+#### reqHistoricalData(contract, endDateTime, durationStr, barSizeSetting, whatToShow, useRTH,
 formatDate=1, keepUpToDate=False, chartOptions=[], timeout=60)
 Request historical bar data.
 This method is blocking.
@@ -784,14 +526,15 @@ updated; endDateTime must be set empty (‘’) then.
 empty bar series. Set to 0 to wait indefinitely.
 Return type
 BarDataList
-cancelHistoricalData(bars)
+
+#### cancelHistoricalData(bars)
 Cancel the update subscription for the historical bars.
 Parameters
 bars (BarDataList) -The bar list that was obtained from reqHistoricalData with a
 keepUpToDate subscription.
 
 
-reqHistoricalSchedule(contract, numDays, endDateTime='', useRTH=True)
+#### reqHistoricalSchedule(contract, numDays, endDateTime='', useRTH=True)
 Request historical schedule.
 This method is blocking.
 Parameters
@@ -805,7 +548,8 @@ timezone is used.
 extended hours.
 Return type
 HistoricalSchedule
-reqHistoricalTicks(contract, startDateTime, endDateTime, numberOfTicks, whatToShow, useRth,
+
+#### reqHistoricalTicks(contract, startDateTime, endDateTime, numberOfTicks, whatToShow, useRth,
 ignoreSize=False, miscOptions=[])
 Request historical ticks. The time resolution of the ticks is one second.
 This method is blocking.
@@ -826,7 +570,8 @@ show all data.
 -miscOptions (List[TagValue]) -Unknown.
 Return type
 List
-reqMarketDataType(marketDataType)
+
+#### reqMarketDataType(marketDataType)
 Set the market data type used for reqMktData().
 Parameters
 marketDataType (int) -One of:
@@ -845,7 +590,8 @@ then show all data.
 time.datetime with UTC timezone.
 Return type
 datetime
-reqMktData(contract, genericTickList='', snapshot=False, regulatorySnapshot=False,
+
+#### reqMktData(contract, genericTickList='', snapshot=False, regulatorySnapshot=False,
 mktDataOptions=None)
 Subscribe to tick data or request a snapshot. Returns the Ticker that holds the market data. The ticker will
 initially be empty and gradually (after a couple of seconds) be filled.
@@ -883,7 +629,8 @@ stream of realtime tick data.
 -mktDataOptions (Optional[List[TagValue]]) -Unknown
 Return type
 Ticker
-cancelMktData(contract)
+
+#### cancelMktData(contract)
 Unsubscribe from realtime streaming tick data.
 Parameters
 contract (Contract) -The exact contract object that was used to subscribe with.
@@ -897,21 +644,25 @@ Parameters
 -ignoreSize (bool) -Ignore bid/ask ticks that only update the size.
 Return type
 Ticker
-cancelTickByTickData(contract, tickType)
+
+#### cancelTickByTickData(contract, tickType)
 Unsubscribe from tick-by-tick data
 Parameters
 contract (Contract) -The exact contract object that was used to subscribe with.
-reqSmartComponents(bboExchange)
+
+#### reqSmartComponents(bboExchange)
 Obtain mapping from single letter codes to exchange names.
 Note: The exchanges must be open when using this request, otherwise an empty list is returned.
 Return type
 List[SmartComponent]
-reqMktDepthExchanges()
+
+#### reqMktDepthExchanges()
 Get those exchanges that have have multiple market makers (and have ticks returned with marketMaker
 info).
 Return type
 List[DepthMktDataDescription]
-reqMktDepth(contract, numRows=5, isSmartDepth=False, mktDepthOptions=None)
+
+#### reqMktDepth(contract, numRows=5, isSmartDepth=False, mktDepthOptions=None)
 Subscribe to market depth data (a.k.a. DOM, L2 or order book).
 https://interactivebrokers.github.io/tws-api/market_depth.html
 Parameters
@@ -924,11 +675,13 @@ Ticker
 Returns
 The Ticker that holds the market depth in ticker.domBids and ticker.domAsks and the
 list of MktDepthData in ticker.domTicks.
-cancelMktDepth(contract, isSmartDepth=False)
+
+#### cancelMktDepth(contract, isSmartDepth=False)
 Unsubscribe from market depth data.
 Parameters
 contract (Contract) -The exact contract object that was used to subscribe with.
-reqHistogramData(contract, useRTH, period)
+
+#### reqHistogramData(contract, useRTH, period)
 Request histogram data.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/histograms.html
@@ -939,7 +692,8 @@ then show all data.
 -period (str) -Period of which data is being requested, for example ‘3 days’.
 Return type
 List[HistogramData]
-reqFundamentalData(contract, reportType, fundamentalDataOptions=[])
+
+#### reqFundamentalData(contract, reportType, fundamentalDataOptions=[])
 Get fundamental data of a contract in XML format.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/fundamentals.html
@@ -956,7 +710,7 @@ Parameters
 Return type
 str
 
-reqScannerData(subscription, scannerSubscriptionOptions=[], scannerSubscriptionFilterOptions=[])
+#### reqScannerData(subscription, scannerSubscriptionOptions=[], scannerSubscriptionFilterOptions=[])
 Do a blocking market scan by starting a subscription and canceling it after the initial list of results are in.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/market_scanners.html
@@ -966,7 +720,8 @@ Parameters
 -scannerSubscriptionFilterOptions (List[TagValue]) -Advanced generic filters.
 Return type
 ScanDataList
-reqScannerSubscription(subscription, scannerSubscriptionOptions=[],
+
+#### reqScannerSubscription(subscription, scannerSubscriptionOptions=[],
 scannerSubscriptionFilterOptions=[])
 Subscribe to market scan data.
 https://interactivebrokers.github.io/tws-api/market_scanners.html
@@ -976,18 +731,21 @@ Parameters
 -scannerSubscriptionFilterOptions (List[TagValue]) -Unknown.
 Return type
 ScanDataList
-cancelScannerSubscription(dataList)
+
+#### cancelScannerSubscription(dataList)
 Cancel market data subscription.
 https://interactivebrokers.github.io/tws-api/market_scanners.html
 Parameters
 dataList (ScanDataList) -The scan data list that was obtained from
 reqScannerSubscription().
-reqScannerParameters()
+
+#### reqScannerParameters()
 Requests an XML list of scanner parameters.
 This method is blocking.
 Return type
 str
-calculateImpliedVolatility(contract, optionPrice, underPrice, implVolOptions=[])
+
+#### calculateImpliedVolatility(contract, optionPrice, underPrice, implVolOptions=[])
 Calculate the volatility given the option price.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/option_computations.html
@@ -995,11 +753,11 @@ Parameters
 -contract (Contract) -Option contract.
 -optionPrice (float) -Option price to use in calculation.
 -underPrice (float) -Price of the underlier to use in calculation
-ib_insync, Release 0.9.71
 -implVolOptions (List[TagValue]) -Unknown
 Return type
 OptionComputation
-calculateOptionPrice(contract, volatility, underPrice, optPrcOptions=[])
+
+#### calculateOptionPrice(contract, volatility, underPrice, optPrcOptions=[])
 Calculate the option price given the volatility.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/option_computations.html
@@ -1010,7 +768,8 @@ Parameters
 -implVolOptions -Unknown
 Return type
 OptionComputation
-reqSecDefOptParams(underlyingSymbol, futFopExchange, underlyingSecType, underlyingConId)
+
+#### reqSecDefOptParams(underlyingSymbol, futFopExchange, underlyingSecType, underlyingConId)
 Get the option chain.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/options.html
@@ -1021,7 +780,8 @@ Parameters
 -underlyingConId (int) -conId of the underlying contract.
 Return type
 List[OptionChain]
-exerciseOptions(contract, exerciseAction, exerciseQuantity, account, override)
+
+#### exerciseOptions(contract, exerciseAction, exerciseQuantity, account, override)
 Exercise an options contract.
 https://interactivebrokers.github.io/tws-api/options.html
 Parameters
@@ -1034,12 +794,14 @@ Parameters
 -override (int) –
 – 0 = no override
 – 1 = override the system’s natural action
-reqNewsProviders()
+
+#### reqNewsProviders()
 Get a list of news providers.
 This method is blocking.
 Return type
 List[NewsProvider]
-reqNewsArticle(providerCode, articleId, newsArticleOptions=None)
+
+#### reqNewsArticle(providerCode, articleId, newsArticleOptions=None)
 Get the body of a news article.
 This method is blocking.
 https://interactivebrokers.github.io/tws-api/news.html
@@ -1049,7 +811,8 @@ Parameters
 -newsArticleOptions (Optional[List[TagValue]]) -Unknown.
 Return type
 NewsArticle
-reqHistoricalNews(conId, providerCodes, startDateTime, endDateTime, totalResults,
+
+#### reqHistoricalNews(conId, providerCodes, startDateTime, endDateTime, totalResults,
 historicalNewsOptions=None)
 Get historical news headline.
 https://interactivebrokers.github.io/tws-api/news.html
@@ -1067,15 +830,17 @@ HH:mm:ss’ format. If no timezone is given then the TWS login timezone is used.
 -historicalNewsOptions (Optional[List[TagValue]]) -Unknown.
 Return type
 HistoricalNews
-reqNewsBulletins(allMessages)
+
+#### reqNewsBulletins(allMessages)
 Subscribe to IB news bulletins.
 https://interactivebrokers.github.io/tws-api/news.html
 Parameters
 allMessages (bool) -If True then fetch all messages for the day.
-cancelNewsBulletins()
+
+#### cancelNewsBulletins()
 Cancel subscription to IB news bulletins.
 
-requestFA(faDataType)
+#### requestFA(faDataType)
 Requests to change the FA configuration.
 This method is blocking.
 Parameters
@@ -1086,119 +851,152 @@ method to all accounts in the group.
 calculation value.
 -3 = Account Aliases: Let you easily identify the accounts by meaningful names rather than
 account numbers.
-replaceFA(faDataType, xml)
+
+#### replaceFA(faDataType, xml)
 Replaces Financial Advisor’s settings.
 Parameters
 -faDataType (int) -See requestFA().
 -xml (str) -The XML-formatted configuration string.
-reqUserInfo()
+
+#### reqUserInfo()
 Get the White Branding ID of the user.
 Return type
 str
-async connectAsync(host='127.0.0.1', port=7497, clientId=1, timeout=4, readonly=False, account='')
-async qualifyContractsAsync(*contracts)
+
+#### async connectAsync(host='127.0.0.1', port=7497, clientId=1, timeout=4, readonly=False, account='')
+
+#### async qualifyContractsAsync(*contracts)
 Return type
 List[Contract]
-async reqTickersAsync(*contracts, regulatorySnapshot=False)
+
+#### async reqTickersAsync(*contracts, regulatorySnapshot=False)
 Return type
 List[Ticker]
-whatIfOrderAsync(contract, order)
+
+#### whatIfOrderAsync(contract, order)
 Return type
 Awaitable[OrderState]
-reqCurrentTimeAsync()
+
+#### reqCurrentTimeAsync()
 Return type
 Awaitable[datetime]
-reqAccountUpdatesAsync(account)
-Return type
-Awaitable[None]
-reqAccountUpdatesMultiAsync(account, modelCode='')
+
+#### reqAccountUpdatesAsync(account)
 Return type
 Awaitable[None]
 
-ib_insync, Release 0.9.71
-async accountSummaryAsync(account='')
-Return type
-List[AccountValue]
-reqAccountSummaryAsync()
+#### reqAccountUpdatesMultiAsync(account, modelCode='')
 Return type
 Awaitable[None]
-reqOpenOrdersAsync()
+
+#### async accountSummaryAsync(account='')
+Return type
+List[AccountValue]
+
+#### reqAccountSummaryAsync()
+Return type
+Awaitable[None]
+
+#### reqOpenOrdersAsync()
 Return type
 Awaitable[List[Order]]
-reqAllOpenOrdersAsync()
+
+#### reqAllOpenOrdersAsync()
 Return type
 Awaitable[List[Order]]
-reqCompletedOrdersAsync(apiOnly)
+
+#### reqCompletedOrdersAsync(apiOnly)
 Return type
 Awaitable[List[Trade]]
-reqExecutionsAsync(execFilter=None)
+
+#### reqExecutionsAsync(execFilter=None)
 Return type
 Awaitable[List[Fill]]
-reqPositionsAsync()
+
+#### reqPositionsAsync()
 Return type
 Awaitable[List[Position]]
-reqContractDetailsAsync(contract)
+
+#### reqContractDetailsAsync(contract)
 Return type
 Awaitable[List[ContractDetails]]
-async reqMatchingSymbolsAsync(pattern)
+
+#### async reqMatchingSymbolsAsync(pattern)
 Return type
 Optional[List[ContractDescription]]
-async reqMarketRuleAsync(marketRuleId)
+
+#### async reqMarketRuleAsync(marketRuleId)
 Return type
 Optional[List[PriceIncrement]]
-async reqHistoricalDataAsync(contract, endDateTime, durationStr, barSizeSetting, whatToShow,
+
+#### async reqHistoricalDataAsync(contract, endDateTime, durationStr, barSizeSetting, whatToShow,
 useRTH, formatDate=1, keepUpToDate=False, chartOptions=[],
 timeout=60)
 Return type
 BarDataList
-reqHistoricalScheduleAsync(contract, numDays, endDateTime='', useRTH=True)
+
+#### reqHistoricalScheduleAsync(contract, numDays, endDateTime='', useRTH=True)
 Return type
 Awaitable[HistoricalSchedule]
 
-reqHistoricalTicksAsync(contract, startDateTime, endDateTime, numberOfTicks, whatToShow, useRth,
+#### reqHistoricalTicksAsync(contract, startDateTime, endDateTime, numberOfTicks, whatToShow, useRth,
 ignoreSize=False, miscOptions=[])
 Return type
 Awaitable[List]
-reqHeadTimeStampAsync(contract, whatToShow, useRTH, formatDate)
+
+#### reqHeadTimeStampAsync(contract, whatToShow, useRTH, formatDate)
 Return type
 Awaitable[datetime]
-reqSmartComponentsAsync(bboExchange)
-reqMktDepthExchangesAsync()
+
+#### reqSmartComponentsAsync(bboExchange)
+
+#### reqMktDepthExchangesAsync()
 Return type
 Awaitable[List[DepthMktDataDescription]]
-reqHistogramDataAsync(contract, useRTH, period)
+
+#### reqHistogramDataAsync(contract, useRTH, period)
 Return type
 Awaitable[List[HistogramData]]
-reqFundamentalDataAsync(contract, reportType, fundamentalDataOptions=[])
+
+#### reqFundamentalDataAsync(contract, reportType, fundamentalDataOptions=[])
 Return type
 Awaitable[str]
-async reqScannerDataAsync(subscription, scannerSubscriptionOptions=[],
+
+#### async reqScannerDataAsync(subscription, scannerSubscriptionOptions=[],
 scannerSubscriptionFilterOptions=[])
 Return type
 ScanDataList
-reqScannerParametersAsync()
+
+#### reqScannerParametersAsync()
 Return type
 Awaitable[str]
-async calculateImpliedVolatilityAsync(contract, optionPrice, underPrice, implVolOptions=[])
+
+#### async calculateImpliedVolatilityAsync(contract, optionPrice, underPrice, implVolOptions=[])
 Return type
 Optional[OptionComputation]
-async calculateOptionPriceAsync(contract, volatility, underPrice, optPrcOptions=[])
+
+#### async calculateOptionPriceAsync(contract, volatility, underPrice, optPrcOptions=[])
 Return type
 Optional[OptionComputation]
-reqSecDefOptParamsAsync(underlyingSymbol, futFopExchange, underlyingSecType, underlyingConId)
+
+#### reqSecDefOptParamsAsync(underlyingSymbol, futFopExchange, underlyingSecType, underlyingConId)
 Return type
 Awaitable[List[OptionChain]]
-reqNewsProvidersAsync()
+
+#### reqNewsProvidersAsync()
 Return type
 Awaitable[List[NewsProvider]]
-reqNewsArticleAsync(providerCode, articleId, newsArticleOptions)
+
+#### reqNewsArticleAsync(providerCode, articleId, newsArticleOptions)
 Return type
 Awaitable[NewsArticle
-async reqHistoricalNewsAsync(conId, providerCodes, startDateTime, endDateTime, totalResults,
+
+#### async reqHistoricalNewsAsync(conId, providerCodes, startDateTime, endDateTime, totalResults,
 historicalNewsOptions=None)
 Return type
 Optional[HistoricalNews]
-async requestFAAsync(faDataType)
+
+#### async requestFAAsync(faDataType)
 reqUserInfoAsync()
 
 
@@ -1751,7 +1549,6 @@ str = '', commission: float = 1.7976931348623157e+308,
 minCommission: float = 1.7976931348623157e+308, maxCommission:
 float = 1.7976931348623157e+308, commissionCurrency: str = '',
 warningText: str = '', completedTime: str = '', completedStatus: str = '')
-ib_insync, Release 0.9.71
 status: str = ''
 initMarginBefore: str = ''
 maintMarginBefore: str = ''
@@ -2988,7 +2785,6 @@ class ib_insync.ticker.Ticker(contract: ~typing.Optional[~ib_insync.contract.Con
 Current market data such as bid, ask, last price, etc. for a contract. Streaming level-1 ticks of type TickData are stored in the ticks list. Streaming level-2 ticks of type MktDepthData are stored in the domTicks list. The order book (DOM) is available as lists of DOMLevel in domBids and domAsks. Streaming tick-by-tick ticks are stored in tickByTicks. For options the OptionComputation values for the bid, ask, resp. last price are stored in the bidGreeks, askGreeks resp. lastGreeks attributes. There is also modelGreeks that conveys the greeks as calculated by Interactive Brokers' option model.
 
 Events
-ib_insync, Release 0.9.71
 -updateEvent (ticker: Ticker)
 events: ClassVar = ('updateEvent',)
 contract: Optional[Contract] = None
@@ -3088,7 +2884,7 @@ tuple()
 Return dataclass values as tuple. This is a non-recursive variant of dataclasses.astuple.
 Return type
 tuple
-ib_insync, Release 0.9.71
+
 update(*srcObjs, **kwargs)
 Update fields of the given dataclass object from zero or more dataclass source objects and/or from
 keyword arguments.
