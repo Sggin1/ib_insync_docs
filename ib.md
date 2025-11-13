@@ -58,448 +58,667 @@ print(df)
 
 ## API DOCS
 
-The goal of the IB-insync library is to make working with the Trader Workstation API from Interactive Brokers as easy
-as possible.
-The main features are:
-• An easy to use linear style of programming;
-• An IB component that automatically keeps in sync with the TWS or IB Gateway application;
-• A fully asynchonous framework based on asyncio and eventkit for advanced users;
-• Interactive operation with live data in Jupyter notebooks.
+The goal of the IB-insync library is to make working with the Trader Workstation API from Interactive Brokers as easy as possible.
+
+**Main features:**
+- An easy to use linear style of programming
+- An IB component that automatically keeps in sync with the TWS or IB Gateway application
+- A fully asynchronous framework based on asyncio and eventkit for advanced users
+- Interactive operation with live data in Jupyter notebooks
+
 Be sure to take a look at the notebooks, the recipes and the API docs.
 
-class ib_insync.ib.IB
+### class ib_insync.ib.IB
+
 Provides both a blocking and an asynchronous interface to the IB API, using asyncio networking and event loop.
 
-The One Rule: user code may not block for too long
+**The One Rule:** User code may not block for too long
 
-For introducing a delay, never use time.sleep() but use sleep() instead.
+For introducing a delay, never use `time.sleep()` but use `sleep()` instead.
 
+**Parameters:**
 
-Parameters
-• RequestTimeout (float) – Timeout (in seconds) to wait for a blocking request to finish
-before raising asyncio.TimeoutError. The default value of 0 will wait indefinitely. Note:
-This timeout is not used for the *Async methods.
-• RaiseRequestErrors (bool) – Specifies the behaviour when certain API requests fail:
-– False: Silently return an empty result;
-– True: Raise a RequestError.
-• MaxSyncedSubAccounts (int) – Do not use sub-account updates if the number of sub-
-accounts exceeds this number (50 by default).
-• TimezoneTWS (pytz.timezone) – Specifies what timezone TWS (or gateway) is using.
-The default is to assume local system timezone. ---> USE UTC IT HAS CHANGED
+- **RequestTimeout** (float) - Timeout (in seconds) to wait for a blocking request to finish before raising asyncio.TimeoutError. The default value of 0 will wait indefinitely. Note: This timeout is not used for the *Async methods.
 
-Events:
-• connectedEvent (): Is emitted after connecting and synchronzing with TWS/gateway.
-• disconnectedEvent (): Is emitted after disconnecting from TWS/gateway.
-• updateEvent (): Is emitted after a network packet has been handeled.
-• pendingTickersEvent (tickers: Set[Ticker]): Emits the set of tickers that have been updated during
-the last update and for which there are new ticks, tickByTicks or domTicks.
-• barUpdateEvent (bars: BarDataList, hasNewBar: bool): Emits the bar list that has been updated
-in real time. If a new bar has been added then hasNewBar is True, when the last bar has changed it is
-False.
-• newOrderEvent (trade: Trade): Emits a newly placed trade.
-• orderModifyEvent (trade: Trade): Emits when order is modified.
-• cancelOrderEvent (trade: Trade): Emits a trade directly after requesting for it to be cancelled.
-• openOrderEvent (trade: Trade): Emits the trade with open order.
-• orderStatusEvent (trade: Trade): Emits the changed order status of the ongoing trade.
-• execDetailsEvent (trade: Trade, fill: Fill): Emits the fill together with the ongoing trade it be-
-longs to.
-• commissionReportEvent (trade: Trade, fill: Fill, report: CommissionReport): The commission
-report is emitted after the fill that it belongs to.
-• updatePortfolioEvent (item: PortfolioItem): A portfolio item has changed.
-• positionEvent (position: Position): A position has changed.
-• accountValueEvent (value: AccountValue): An account value has changed.
-• accountSummaryEvent (value: AccountValue): An account value has changed.
-• pnlEvent (entry: PnL): A profit- and loss entry is updated.
-• pnlSingleEvent (entry: PnLSingle): A profit- and loss entry for a single position is updated.
-• tickNewsEvent (news: NewsTick): Emit a new news headline.
-• newsBulletinEvent (bulletin: NewsBulletin): Emit a new news bulletin.
-• scannerDataEvent (data: ScanDataList): Emit data from a scanner subscription.
-• errorEvent (reqId: int, errorCode: int, errorString: str, contract: Contract): Emits the re-
-qId/orderId and TWS error code and string (see https://interactivebrokers.github.io/tws-api/message_
-codes.html) together with the contract the error applies to (or None if no contract applies).
-• timeoutEvent (idlePeriod: float): Is emitted if no data is received for longer than the timeout period
-specified with setTimeout(). The value emitted is the period in seconds since the last update.
+- **RaiseRequestErrors** (bool) - Specifies the behaviour when certain API requests fail:
+  - False: Silently return an empty result
+  - True: Raise a RequestError
 
-Note that it is not advisable to place new requests inside an event handler as it may lead to too much recursion.
+- **MaxSyncedSubAccounts** (int) - Do not use sub-account updates if the number of sub-accounts exceeds this number (50 by default).
 
+- **TimezoneTWS** (pytz.timezone) - Specifies what timezone TWS (or gateway) is using. The default is to assume local system timezone. **⚠️ USE UTC - THIS HAS CHANGED**
+
+**Events:**
+
+- **connectedEvent** () - Is emitted after connecting and synchronizing with TWS/gateway.
+- **disconnectedEvent** () - Is emitted after disconnecting from TWS/gateway.
+- **updateEvent** () - Is emitted after a network packet has been handled.
+- **pendingTickersEvent** (tickers: Set[Ticker]) - Emits the set of tickers that have been updated during the last update and for which there are new ticks, tickByTicks or domTicks.
+- **barUpdateEvent** (bars: BarDataList, hasNewBar: bool) - Emits the bar list that has been updated in real time. If a new bar has been added then hasNewBar is True, when the last bar has changed it is False.
+- **newOrderEvent** (trade: Trade) - Emits a newly placed trade.
+- **orderModifyEvent** (trade: Trade) - Emits when order is modified.
+- **cancelOrderEvent** (trade: Trade) - Emits a trade directly after requesting for it to be cancelled.
+- **openOrderEvent** (trade: Trade) - Emits the trade with open order.
+- **orderStatusEvent** (trade: Trade) - Emits the changed order status of the ongoing trade.
+- **execDetailsEvent** (trade: Trade, fill: Fill) - Emits the fill together with the ongoing trade it belongs to.
+- **commissionReportEvent** (trade: Trade, fill: Fill, report: CommissionReport) - The commission report is emitted after the fill that it belongs to.
+- **updatePortfolioEvent** (item: PortfolioItem) - A portfolio item has changed.
+- **positionEvent** (position: Position) - A position has changed.
+- **accountValueEvent** (value: AccountValue) - An account value has changed.
+- **accountSummaryEvent** (value: AccountValue) - An account value has changed.
+- **pnlEvent** (entry: PnL) - A profit and loss entry is updated.
+- **pnlSingleEvent** (entry: PnLSingle) - A profit and loss entry for a single position is updated.
+- **tickNewsEvent** (news: NewsTick) - Emit a new news headline.
+- **newsBulletinEvent** (bulletin: NewsBulletin) - Emit a new news bulletin.
+- **scannerDataEvent** (data: ScanDataList) - Emit data from a scanner subscription.
+- **errorEvent** (reqId: int, errorCode: int, errorString: str, contract: Contract) - Emits the reqId/orderId and TWS error code and string (see https://interactivebrokers.github.io/tws-api/message_codes.html) together with the contract the error applies to (or None if no contract applies).
+- **timeoutEvent** (idlePeriod: float) - Is emitted if no data is received for longer than the timeout period specified with setTimeout(). The value emitted is the period in seconds since the last update.
+
+**Note:** It is not advisable to place new requests inside an event handler as it may lead to too much recursion.
+
+```python
 events = ('connectedEvent', 'disconnectedEvent', 'updateEvent',
-'pendingTickersEvent', 'barUpdateEvent', 'newOrderEvent', 'orderModifyEvent',
-'cancelOrderEvent', 'openOrderEvent', 'orderStatusEvent', 'execDetailsEvent',
-'commissionReportEvent', 'updatePortfolioEvent', 'positionEvent',
-'accountValueEvent', 'accountSummaryEvent', 'pnlEvent', 'pnlSingleEvent',
-'scannerDataEvent', 'tickNewsEvent', 'newsBulletinEvent', 'errorEvent',
-'timeoutEvent')
+          'pendingTickersEvent', 'barUpdateEvent', 'newOrderEvent', 'orderModifyEvent',
+          'cancelOrderEvent', 'openOrderEvent', 'orderStatusEvent', 'execDetailsEvent',
+          'commissionReportEvent', 'updatePortfolioEvent', 'positionEvent',
+          'accountValueEvent', 'accountSummaryEvent', 'pnlEvent', 'pnlSingleEvent',
+          'scannerDataEvent', 'tickNewsEvent', 'newsBulletinEvent', 'errorEvent',
+          'timeoutEvent')
+
 RequestTimeout: float = 0
 RaiseRequestErrors: bool = False
 MaxSyncedSubAccounts: int = 50
 TimezoneTWS = None
+```
 
-connect(host='127.0.0.1', port=7497, clientId=1, timeout=4, readonly=False, account='')
-Connect to a running TWS or IB gateway application. After the connection is made the client is fully
-synchronized and ready to serve requests.
-This method is blocking.
-Parameters
-• host (str) – Host name or IP address.
-• port (int) – Port number.
-• clientId (int) – ID number to use for this client; must be unique per connection. Setting
-clientId=0 will automatically merge manual TWS trading with this client.
-• timeout (float) – If establishing the connection takes longer than timeout seconds then
-the asyncio.TimeoutError exception is raised. Set to 0 to disable timeout.
-• readonly (bool) – Set to True when API is in read-only mode.
-• account (str) – Main account to receive updates for.
-disconnect()
+---
+
+#### connect(host='127.0.0.1', port=7497, clientId=1, timeout=4, readonly=False, account='')
+
+Connect to a running TWS or IB gateway application. After the connection is made the client is fully synchronized and ready to serve requests.
+
+**This method is blocking.**
+
+**Parameters:**
+- **host** (str) - Host name or IP address.
+- **port** (int) - Port number.
+- **clientId** (int) - ID number to use for this client; must be unique per connection. Setting clientId=0 will automatically merge manual TWS trading with this client.
+- **timeout** (float) - If establishing the connection takes longer than timeout seconds then the asyncio.TimeoutError exception is raised. Set to 0 to disable timeout.
+- **readonly** (bool) - Set to True when API is in read-only mode.
+- **account** (str) - Main account to receive updates for.
+---
+
+#### disconnect()
+
 Disconnect from a TWS or IB gateway application. This will clear all session state.
-isConnected()
+
+---
+
+#### isConnected()
+
 Is there an API connection to TWS or IB gateway?
-Return type
-bool
-static run(*, timeout=None)
+
+**Return type:** bool
+
+---
+
+#### static run(*, timeout=None)
+
 By default run the event loop forever.
-When awaitables (like Tasks, Futures or coroutines) are given then run the event loop until each has com-
-pleted and return their results.
-An optional timeout (in seconds) can be given that will raise asyncio.TimeoutError if the awaitables are
-not ready within the timeout period.
 
-static schedule(callback, *args)
-Schedule the callback to be run at the given time with the given arguments. This will return the Event
-Handle.
-Parameters
-• time (Union[time, datetime]) – Time to run callback. If given as datetime.time then
-use today as date.
-• callback (Callable) – Callable scheduled to run.
-• args – Arguments for to call callback with.
-static sleep()
-Wait for the given amount of seconds while everything still keeps processing in the background. Never use
-time.sleep().
-Parameters
-secs (float) – Time in seconds to wait.
-Return type
-bool
-static timeRange(end, step)
+When awaitables (like Tasks, Futures or coroutines) are given then run the event loop until each has completed and return their results.
+
+An optional timeout (in seconds) can be given that will raise asyncio.TimeoutError if the awaitables are not ready within the timeout period.
+
+---
+
+#### static schedule(callback, *args)
+
+Schedule the callback to be run at the given time with the given arguments. This will return the Event Handle.
+
+**Parameters:**
+- **time** (Union[time, datetime]) - Time to run callback. If given as datetime.time then use today as date.
+- **callback** (Callable) - Callable scheduled to run.
+- **args** - Arguments for to call callback with.
+
+---
+
+#### static sleep()
+
+Wait for the given amount of seconds while everything still keeps processing in the background. Never use `time.sleep()`.
+
+**Parameters:**
+- **secs** (float) - Time in seconds to wait.
+
+**Return type:** bool
+
+---
+
+#### static timeRange(end, step)
+
 Iterator that waits periodically until certain time points are reached while yielding those time points.
-Parameters
-• start (Union[time, datetime]) – Start time, can be specified as datetime.datetime, or
-as datetime.time in which case today is used as the date
-• end (Union[time, datetime]) – End time, can be specified as datetime.datetime, or as
-datetime.time in which case today is used as the date
-• step (float) – The number of seconds of each period
-Return type
-Iterator[datetime]
-static timeRangeAsync(end, step)
+
+**Parameters:**
+- **start** (Union[time, datetime]) - Start time, can be specified as datetime.datetime, or as datetime.time in which case today is used as the date
+- **end** (Union[time, datetime]) - End time, can be specified as datetime.datetime, or as datetime.time in which case today is used as the date
+- **step** (float) - The number of seconds of each period
+
+**Return type:** Iterator[datetime]
+
+---
+
+#### static timeRangeAsync(end, step)
+
 Async version of timeRange().
-Return type
-AsyncIterator[datetime]
-static waitUntil()
+
+**Return type:** AsyncIterator[datetime]
+
+---
+
+#### static waitUntil()
+
 Wait until the given time t is reached.
-Parameters
-t (Union[time, datetime]) – The time t can be specified as datetime.datetime, or as date-
-time.time in which case today is used as the date.
-Return type
-bool
 
+**Parameters:**
+- **t** (Union[time, datetime]) - The time t can be specified as datetime.datetime, or as datetime.time in which case today is used as the date.
 
-waitOnUpdate(timeout=0)
+**Return type:** bool
+---
+
+#### waitOnUpdate(timeout=0)
+
 Wait on any new update to arrive from the network.
-Parameters
-timeout (float) – Maximum time in seconds to wait. If 0 then no timeout is used
-Note: A loop with waitOnUpdate should not be used to harvest tick data from tickers, since some ticks
-can go missing. This happens when multiple updates occur almost simultaneously; The ticks from the first
-update are then cleared. Use events instead to prevent this.
-Return type
-bool
-Returns
-True if not timed-out, False otherwise.
 
+**Parameters:**
+- **timeout** (float) - Maximum time in seconds to wait. If 0 then no timeout is used
 
+**Note:** A loop with waitOnUpdate should not be used to harvest tick data from tickers, since some ticks can go missing. This happens when multiple updates occur almost simultaneously; The ticks from the first update are then cleared. Use events instead to prevent this.
 
-loopUntil(condition=None, timeout=0)
-Iterate until condition is met, with optional timeout in seconds. The yielded value is that of the condition
-or False when timed out.
-Parameters
-• condition – Predicate function that is tested after every network
-• update. –
-• timeout (float) – Maximum time in seconds to wait. If 0 then no timeout is used.
-Return type
-Iterator[object]
-setTimeout(timeout=60)
-Set a timeout for receiving messages from TWS/IBG, emitting timeoutEvent if there is no incoming data
-for too long.
+**Return type:** bool
+
+**Returns:** True if not timed-out, False otherwise.
+
+---
+
+#### loopUntil(condition=None, timeout=0)
+
+Iterate until condition is met, with optional timeout in seconds. The yielded value is that of the condition or False when timed out.
+
+**Parameters:**
+- **condition** - Predicate function that is tested after every network update.
+- **timeout** (float) - Maximum time in seconds to wait. If 0 then no timeout is used.
+
+**Return type:** Iterator[object]
+
+---
+
+#### setTimeout(timeout=60)
+
+Set a timeout for receiving messages from TWS/IBG, emitting timeoutEvent if there is no incoming data for too long.
+
 The timeout fires once per connected session but can be set again after firing or after a reconnect.
-Parameters
-timeout (float) – Timeout in seconds.
-managedAccounts()
+
+**Parameters:**
+- **timeout** (float) - Timeout in seconds.
+
+---
+
+#### managedAccounts()
+
 List of account names.
-Return type
-List[str]
-accountValues(account='')
-List of account values for the given account, or of all accounts if account is left blank.
-Parameters
-account (str) – If specified, filter for this account name.
-Return type
-List[AccountValue]
-accountSummary(account='')
-List of account values for the given account, or of all accounts if account is left blank.
-This method is blocking on first run, non-blocking after that.
-Parameters
-account (str) – If specified, filter for this account name.
-Return type
-List[AccountValue]
 
-portfolio()
+**Return type:** List[str]
+
+---
+
+#### accountValues(account='')
+
+List of account values for the given account, or of all accounts if account is left blank.
+
+**Parameters:**
+- **account** (str) - If specified, filter for this account name.
+
+**Return type:** List[AccountValue]
+
+---
+
+#### accountSummary(account='')
+
+List of account values for the given account, or of all accounts if account is left blank.
+
+**This method is blocking on first run, non-blocking after that.**
+
+**Parameters:**
+- **account** (str) - If specified, filter for this account name.
+
+**Return type:** List[AccountValue]
+
+---
+
+#### portfolio()
+
 List of portfolio items of the default account.
-Return type
-List[PortfolioItem]
-positions(account='')
+
+**Return type:** List[PortfolioItem]
+
+---
+
+#### positions(account='')
+
 List of positions for the given account, or of all accounts if account is left blank.
-Parameters
-account (str) – If specified, filter for this account name.
-Return type
-List[Position]
-pnl(account='', modelCode='')
-List of subscribed PnL objects (profit and loss), optionally filtered by account and/or modelCode.
-The PnL objects are kept live updated.
-Parameters
-• account – If specified, filter for this account name.
-• modelCode – If specified, filter for this account model.
-Return type
-List[PnL]
-pnlSingle(account='', modelCode='', conId=0)
-List of subscribed PnLSingle objects (profit and loss for single positions).
-The PnLSingle objects are kept live updated.
-Parameters
-• account (str) – If specified, filter for this account name.
-• modelCode (str) – If specified, filter for this account model.
-• conId (int) – If specified, filter for this contract ID.
-Return type
-List[PnLSingle]
-trades()
+
+**Parameters:**
+- **account** (str) - If specified, filter for this account name.
+
+**Return type:** List[Position]
+
+---
+
+#### pnl(account='', modelCode='')
+
+List of subscribed PnL objects (profit and loss), optionally filtered by account and/or modelCode. The PnL objects are kept live updated.
+
+**Parameters:**
+- **account** - If specified, filter for this account name.
+- **modelCode** - If specified, filter for this account model.
+
+**Return type:** List[PnL]
+
+---
+
+#### pnlSingle(account='', modelCode='', conId=0)
+
+List of subscribed PnLSingle objects (profit and loss for single positions). The PnLSingle objects are kept live updated.
+
+**Parameters:**
+- **account** (str) - If specified, filter for this account name.
+- **modelCode** (str) - If specified, filter for this account model.
+- **conId** (int) - If specified, filter for this contract ID.
+
+**Return type:** List[PnLSingle]
+
+---
+
+#### trades()
+
 List of all order trades from this session.
-Return type
-List[Trade]
-openTrades()
+
+**Return type:** List[Trade]
+
+---
+
+#### openTrades()
+
 List of all open order trades.
-Return type
-List[Trade]
-orders()
+
+**Return type:** List[Trade]
+
+---
+
+#### orders()
+
 List of all orders from this session.
-Return type
-List[Order]
 
+**Return type:** List[Order]
 
-openOrders()
+---
+
+#### openOrders()
+
 List of all open orders.
-Return type
-List[Order]
-fills()
+
+**Return type:** List[Order]
+
+---
+
+#### fills()
+
 List of all fills from this session.
-Return type
-List[Fill]
-executions()
+
+**Return type:** List[Fill]
+
+---
+
+#### executions()
+
 List of all executions from this session.
-Return type
-List[Execution]
-ticker(contract)
-Get ticker of the given contract. It must have been requested before with reqMktData with the same contract
-object. The ticker may not be ready yet if called directly after reqMktData().
-Parameters
-contract (Contract) – Contract to get ticker for.
-Return type
-Ticker
-tickers()
+
+**Return type:** List[Execution]
+
+---
+
+#### ticker(contract)
+
+Get ticker of the given contract. It must have been requested before with reqMktData with the same contract object. The ticker may not be ready yet if called directly after reqMktData().
+
+**Parameters:**
+- **contract** (Contract) - Contract to get ticker for.
+
+**Return type:** Ticker
+
+---
+
+#### tickers()
+
 Get a list of all tickers.
-Return type
-List[Ticker]
-pendingTickers()
+
+**Return type:** List[Ticker]
+
+---
+
+#### pendingTickers()
+
 Get a list of all tickers that have pending ticks or domTicks.
-Return type
-List[Ticker]
-realtimeBars()
+
+**Return type:** List[Ticker]
+
+---
+
+#### realtimeBars()
+
 Get a list of all live updated bars. These can be 5 second realtime bars or live updated historical bars.
-Return type
-List[Union[BarDataList, RealTimeBarList]]
-newsTicks()
+
+**Return type:** List[Union[BarDataList, RealTimeBarList]]
+
+---
+
+#### newsTicks()
+
 List of ticks with headline news. The article itself can be retrieved with reqNewsArticle().
-Return type
-List[NewsTick]
-newsBulletins()
+
+**Return type:** List[NewsTick]
+
+---
+
+#### newsBulletins()
+
 List of IB news bulletins.
-Return type
-List[NewsBulletin]
-reqTickers(*contracts, regulatorySnapshot=False)
+
+**Return type:** List[NewsBulletin]
+
+---
+
+#### reqTickers(*contracts, regulatorySnapshot=False)
+
 Request and return a list of snapshot tickers. The list is returned when all tickers are ready.
-This method is blocking.
-Parameters
-• contracts (Contract) – Contracts to get tickers for.
-• regulatorySnapshot (bool) – Request NBBO snapshots (may incur a fee).
-Return type
-List[Ticker]
-qualifyContracts(*contracts)
-Fully qualify the given contracts in-place. This will fill in the missing fields in the contract, especially the
-conId.
-Returns a list of contracts that have been successfully qualified.
-This method is blocking.
-Parameters
-contracts (Contract) – Contracts to qualify.
-Return type
-List[Contract]
-bracketOrder(action, quantity, limitPrice, takeProfitPrice, stopLossPrice, **kwargs)
+
+**This method is blocking.**
+
+**Parameters:**
+- **contracts** (Contract) - Contracts to get tickers for.
+- **regulatorySnapshot** (bool) - Request NBBO snapshots (may incur a fee).
+
+**Return type:** List[Ticker]
+
+---
+
+#### qualifyContracts(*contracts)
+
+Fully qualify the given contracts in-place. This will fill in the missing fields in the contract, especially the conId. Returns a list of contracts that have been successfully qualified.
+
+**This method is blocking.**
+
+**Parameters:**
+- **contracts** (Contract) - Contracts to qualify.
+
+**Return type:** List[Contract]
+
+---
+
+#### bracketOrder(action, quantity, limitPrice, takeProfitPrice, stopLossPrice, **kwargs)
+
 Create a limit order that is bracketed by a take-profit order and a stop-loss order. Submit the bracket like:
+```
 for o in bracket:
-ib.placeOrder(contract, o)
+    ib.placeOrder(contract, o)
+```
 
+**Parameters:**
+- **action** (str) - 'BUY' or 'SELL'.
+- **quantity** (float) - Size of order.
+- **limitPrice** (float) - Limit price of entry order.
+- **takeProfitPrice** (float) - Limit price of profit order.
+- **stopLossPrice** (float) - Stop price of loss order.
 
-Parameters
-• action (str) – ‘BUY’ or ‘SELL’.
-• quantity (float) – Size of order.
-• limitPrice (float) – Limit price of entry order.
-• takeProfitPrice (float) – Limit price of profit order.
-• stopLossPrice (float) – Stop price of loss order.
-Return type
-BracketOrder
-static oneCancelsAll(orders, ocaGroup, ocaType)
+**Return type:** BracketOrder
+
+---
+
+#### static oneCancelsAll(orders, ocaGroup, ocaType)
+
 Place the trades in the same One Cancels All (OCA) group.
+
 https://interactivebrokers.github.io/tws-api/oca.html
-Parameters
-orders (List[Order]) – The orders that are to be placed together.
-Return type
-List[Order]
-whatIfOrder(contract, order)
-Retrieve commission and margin impact without actually placing the order. The given order will not be
-modified in any way.
-This method is blocking.
-Parameters
-• contract (Contract) – Contract to test.
-• order (Order) – Order to test.
-Return type
-OrderState
-placeOrder(contract, order)
-Place a new order or modify an existing order. Returns a Trade that is kept live updated with status changes,
-fills, etc.
-Parameters
-• contract (Contract) – Contract to use for order.
-• order (Order) – The order to be placed.
-Return type
-Trade
-cancelOrder(order, manualCancelOrderTime='')
+
+**Parameters:**
+- **orders** (List[Order]) - The orders that are to be placed together.
+
+**Return type:** List[Order]
+
+---
+
+#### whatIfOrder(contract, order)
+
+Retrieve commission and margin impact without actually placing the order. The given order will not be modified in any way.
+
+**This method is blocking.**
+
+**Parameters:**
+- **contract** (Contract) - Contract to test.
+- **order** (Order) - Order to test.
+
+**Return type:** OrderState
+
+---
+
+#### placeOrder(contract, order)
+
+Place a new order or modify an existing order. Returns a Trade that is kept live updated with status changes, fills, etc.
+
+**Parameters:**
+- **contract** (Contract) - Contract to use for order.
+- **order** (Order) - The order to be placed.
+
+**Return type:** Trade
+
+---
+
+#### cancelOrder(order, manualCancelOrderTime='')
+
 Cancel the order and return the Trade it belongs to.
-Parameters
-• order (Order) – The order to be canceled.
-• manualCancelOrderTime (str) – For audit trail.
-Return type
-Trade
-reqGlobalCancel()
+
+**Parameters:**
+- **order** (Order) - The order to be canceled.
+- **manualCancelOrderTime** (str) - For audit trail.
+
+**Return type:** Trade
+
+---
+
+#### reqGlobalCancel()
+
 Cancel all active trades including those placed by other clients or TWS/IB gateway.
-reqCurrentTime()
+
+---
+
+#### reqCurrentTime()
+
 Request TWS current time.
-This method is blocking.
-Return type
-datetime
-reqAccountUpdates(account='')
-This is called at startup - no need to call again.
-Request account and portfolio values of the account and keep updated. Returns when both account values
-and portfolio are filled.
-This method is blocking.
-Parameters
-account (str) – If specified, filter for this account name.
-reqAccountUpdatesMulti(account='', modelCode='')
-It is recommended to use accountValues() instead.
-Request account values of multiple accounts and keep updated.
-This method is blocking.
-Parameters
-• account (str) – If specified, filter for this account name.
-• modelCode (str) – If specified, filter for this account model.
-reqAccountSummary()
-It is recommended to use accountSummary() instead.
-Request account values for all accounts and keep them updated. Returns when account summary is filled.
-This method is blocking.
-reqAutoOpenOrders(autoBind=True)
-Bind manual TWS orders so that they can be managed from this client. The clientId must be 0 and the TWS
-API setting “Use negative numbers to bind automatic orders” must be checked.
-This request is automatically called when clientId=0.
-https://interactivebrokers.github.io/tws-api/open_orders.html https://interactivebrokers.github.io/tws-api/
-modifying_orders.html
-Parameters
-autoBind (bool) – Set binding on or off.
-reqOpenOrders()
-Request and return a list of open orders.
-This method can give stale information where a new open order is not reported or an already filled or can-
-celled order is reported as open. It is recommended to use the more reliable and much faster openTrades()
-or openOrders() methods instead.
-This method is blocking.
-Return type
-List[Order]
-reqAllOpenOrders()
-Request and return a list of all open orders over all clients. Note that the orders of other clients will not be
-kept in sync, use the master clientId mechanism instead to see other client’s orders that are kept in sync.
-Return type
-List[Order]
-reqCompletedOrders(apiOnly)
+
+**This method is blocking.**
+
+**Return type:** datetime
+
+---
+
+#### reqAccountUpdates(account='')
+
+This is called at startup - no need to call again. Request account and portfolio values of the account and keep updated. Returns when both account values and portfolio are filled.
+
+**This method is blocking.**
+
+**Parameters:**
+- **account** (str) - If specified, filter for this account name.
+
+---
+
+#### reqAccountUpdatesMulti(account='', modelCode='')
+
+It is recommended to use accountValues() instead. Request account values of multiple accounts and keep updated.
+
+**This method is blocking.**
+
+**Parameters:**
+- **account** (str) - If specified, filter for this account name.
+- **modelCode** (str) - If specified, filter for this account model.
+
+---
+
+#### reqAccountSummary()
+
+It is recommended to use accountSummary() instead. Request account values for all accounts and keep them updated. Returns when account summary is filled.
+
+**This method is blocking.**
+
+---
+
+#### reqAutoOpenOrders(autoBind=True)
+
+Bind manual TWS orders so that they can be managed from this client. The clientId must be 0 and the TWS API setting "Use negative numbers to bind automatic orders" must be checked. This request is automatically called when clientId=0.
+
+https://interactivebrokers.github.io/tws-api/open_orders.html https://interactivebrokers.github.io/tws-api/modifying_orders.html
+
+**Parameters:**
+- **autoBind** (bool) - Set binding on or off.
+
+---
+
+#### reqOpenOrders()
+
+Request and return a list of open orders. This method can give stale information where a new open order is not reported or an already filled or cancelled order is reported as open. It is recommended to use the more reliable and much faster openTrades() or openOrders() methods instead.
+
+**This method is blocking.**
+
+**Return type:** List[Order]
+
+---
+
+#### reqAllOpenOrders()
+
+Request and return a list of all open orders over all clients. Note that the orders of other clients will not be kept in sync, use the master clientId mechanism instead to see other client's orders that are kept in sync.
+
+**Return type:** List[Order]
+
+---
+
+#### reqCompletedOrders(apiOnly)
+
 Request and return a list of completed trades.
-Parameters
-apiOnly (bool) – Request only API orders (not manually placed TWS orders).
-Return type
-List[Trade]
-reqExecutions(execFilter=None)
-It is recommended to use fills() or executions() instead.
-Request and return a list of fills.
-This method is blocking.
-Parameters
-execFilter (Optional[ExecutionFilter]) – If specified, return executions that match
-the filter.
-Return type
-List[Fill]
-reqPositions()
-It is recommended to use positions() instead.
-Request and return a list of positions for all accounts.
-This method is blocking.
-Return type
-List[Position]
-reqPnL(account, modelCode='')
-Start a subscription for profit and loss events.
-Returns a PnL object that is kept live updated. The result can also be queried from pnl().
+
+**Parameters:**
+- **apiOnly** (bool) - Request only API orders (not manually placed TWS orders).
+
+**Return type:** List[Trade]
+
+---
+
+#### reqExecutions(execFilter=None)
+
+It is recommended to use fills() or executions() instead. Request and return a list of fills.
+
+**This method is blocking.**
+
+**Parameters:**
+- **execFilter** (Optional[ExecutionFilter]) - If specified, return executions that match the filter.
+
+**Return type:** List[Fill]
+
+---
+
+#### reqPositions()
+
+It is recommended to use positions() instead. Request and return a list of positions for all accounts.
+
+**This method is blocking.**
+
+**Return type:** List[Position]
+
+---
+
+#### reqPnL(account, modelCode='')
+
+Start a subscription for profit and loss events. Returns a PnL object that is kept live updated. The result can also be queried from pnl().
+
 https://interactivebrokers.github.io/tws-api/pnl.html
-Parameters
-• account (str) – Subscribe to this account.
-• modelCode (str) – If specified, filter for this account model.
-Return type
-PnL
-cancelPnL(account, modelCode='')
+
+**Parameters:**
+- **account** (str) - Subscribe to this account.
+- **modelCode** (str) - If specified, filter for this account model.
+
+**Return type:** PnL
+
+---
+
+#### cancelPnL(account, modelCode='')
+
 Cancel PnL subscription.
-Parameters
-• account – Cancel for this account.
-• modelCode (str) – If specified, cancel for this account model.
-reqPnLSingle(account, modelCode, conId)
-Start a subscription for profit and loss events for single positions.
-Returns a PnLSingle object that is kept live updated. The result can also be queried from pnlSingle().
+
+**Parameters:**
+- **account** - Cancel for this account.
+- **modelCode** (str) - If specified, cancel for this account model.
+
+---
+
+#### reqPnLSingle(account, modelCode, conId)
+
+Start a subscription for profit and loss events for single positions. Returns a PnLSingle object that is kept live updated. The result can also be queried from pnlSingle().
+
 https://interactivebrokers.github.io/tws-api/pnl.html
-Parameters
-• account (str) – Subscribe to this account.
-• modelCode (str) – Filter for this account model.
-• conId (int) – Filter for this contract ID.
-Return type
-PnLSingle
-cancelPnLSingle(account, modelCode, conId)
+
+**Parameters:**
+- **account** (str) - Subscribe to this account.
+- **modelCode** (str) - Filter for this account model.
+- **conId** (int) - Filter for this contract ID.
+
+**Return type:** PnLSingle
+
+---
+
+#### cancelPnLSingle(account, modelCode, conId)
+
 Cancel PnLSingle subscription for the given account, modelCode and conId.
-Parameters
-• account (str) – Cancel for this account name.
-• modelCode (str) – Cancel for this account model.
-• conId (int) – Cancel for this contract ID.
-ib_insync, Release 0.9.71
-reqContractDetails(contract)
-Get a list of contract details that match the given contract. If the returned list is empty then the contract is
-not known; If the list has multiple values then the contract is ambiguous.
-The fully qualified contract is available in the the ContractDetails.contract attribute.
-This method is blocking.
+
+**Parameters:**
+- **account** (str) - Cancel for this account name.
+- **modelCode** (str) - Cancel for this account model.
+- **conId** (int) - Cancel for this contract ID.
+
+---
+
+#### reqContractDetails(contract)
+
+Get a list of contract details that match the given contract. If the returned list is empty then the contract is not known; If the list has multiple values then the contract is ambiguous. The fully qualified contract is available in the the ContractDetails.contract attribute.
+
+**This method is blocking.**
+
 https://interactivebrokers.github.io/tws-api/contract_details.html
-Parameters
-contract (Contract) – The contract to get details for.
-Return type
-List[ContractDetails]
-reqMatchingSymbols(pattern)
+
+**Parameters:**
+- **contract** (Contract) - The contract to get details for.
+
+**Return type:** List[ContractDetails]
+
+---
+
+#### reqMatchingSymbols(pattern)
+
 Request contract descriptions of contracts that match a pattern.
-This method is blocking.
+
+**This method is blocking.**
+
 https://interactivebrokers.github.io/tws-api/matching_symbols.html
-Parameters
+
+**Parameters:**
 pattern (str) – The first few letters of the ticker symbol, or for longer strings a character
 sequence matching a word in the security name.
 Return type
