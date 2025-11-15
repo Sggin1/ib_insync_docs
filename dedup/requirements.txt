@@ -31,11 +31,15 @@ click>=8.1.0                  # CLI interface
 pandas>=2.0.0                 # Data analysis and CSV export
 jsonschema>=4.20.0            # JSON schema validation
 
-# Development and testing (optional)
+# Development and testing
 pytest>=7.4.0                 # Testing framework
 pytest-asyncio>=0.21.0        # Async testing support
+pytest-cov>=4.1.0             # Test coverage
+
+# Code quality tools (daily workflow)
 black>=23.0.0                 # Code formatting
-ruff>=0.1.0                   # Fast linting
+flake8>=6.1.0                 # Linting
+radon>=6.0.0                  # Complexity analysis
 mypy>=1.7.0                   # Type checking
 
 # Visualization (optional)

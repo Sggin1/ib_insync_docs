@@ -113,11 +113,12 @@ Create unified knowledge base:
 dedup/
 ├── README.md              # This file
 ├── TODO.md                # Task tracking
+├── CODING_STANDARDS.md    # Development guidelines
 ├── requirements.txt       # Python dependencies
 ├── config.yaml            # Configuration (API keys, thresholds)
+├── Makefile               # Daily workflow automation
 │
-├── src/                   # Source code
-│   ├── __init__.py
+├── src/                   # Source code (PEP 420 namespace package)
 │   ├── models.py          # Pydantic data models
 │   ├── extractors.py      # Parse MD files
 │   ├── embeddings.py      # Generate embeddings
@@ -141,11 +142,12 @@ dedup/
 │   ├── 4_merged/
 │   └── 5_final/
 │
-└── tests/                 # Unit tests
-    ├── __init__.py
+└── tests/                 # Unit tests (PEP 420 namespace package)
     ├── test_extractors.py
     └── test_clustering.py
 ```
+
+**Note:** Uses PEP 420 Namespace Packages (no `__init__.py` files) for cleaner imports and reduced boilerplate.
 
 ## Usage
 
@@ -209,6 +211,60 @@ output:
   include_diffs: true
   validation_level: strict
 ```
+
+## Development
+
+### Coding Standards
+
+This project follows strict coding standards to ensure maintainability:
+
+- **KISS Principle**: Keep It Simple, Stupid
+- **CC < 6**: Cyclomatic Complexity under 6 per function
+- **Flat Structure**: Minimal nesting, PEP 420 namespace packages
+- **Single Source**: No duplicate state, delegate pattern
+- **UTF-8 Encoding**: All files
+
+See `CODING_STANDARDS.md` for complete guidelines.
+
+### Daily Workflow
+
+Use the Makefile for automated quality checks:
+
+```bash
+# Complete workflow (before commit)
+make all
+
+# Individual steps
+make format      # Black formatting
+make lint        # Flake8 linting
+make complexity  # Radon complexity check
+make type        # mypy type checking
+make test        # Run tests with coverage
+
+# Quick check during development
+make quick
+```
+
+**Quality Targets:**
+- All functions: CC < 6 (complexity grade A)
+- All modules: MI > 70 (maintainability index)
+- Test coverage: >80%
+
+### Importing Modules
+
+With PEP 420 namespace packages:
+
+```python
+# Import modules directly
+from dedup.src import models
+from dedup.src import extractors
+
+# Import specific classes/functions
+from dedup.src.models import CodeExample, DedupDatabase
+from dedup.src.extractors import extract_code_blocks
+```
+
+No `__init__.py` files needed!
 
 ## Success Metrics
 

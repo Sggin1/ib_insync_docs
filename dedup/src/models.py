@@ -1,8 +1,22 @@
+# File: models.py
+# Location: dedup/src/models.py
+# Purpose: Pydantic data models for deduplication pipeline
+# Dependencies: pydantic
+
 """
 Pydantic models for ib_insync documentation deduplication.
 
-These models define the data structures used throughout the deduplication pipeline.
-All models support JSON serialization and validation.
+This module defines all data structures used throughout the deduplication pipeline.
+All models support JSON serialization, validation, and maintain single source of truth.
+Models follow flat structure with minimal nesting and clear ownership.
+
+Complexity: All model methods have CC < 3
+Size: Split into logical sections to maintain readability
+
+Example:
+    >>> example = CodeExample.from_code("print('hello')")
+    >>> example.code_hash
+    '2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824'
 """
 
 import hashlib
