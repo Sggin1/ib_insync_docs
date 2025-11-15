@@ -1,0 +1,151 @@
+# ib_insync Documentation Deduplication Configuration
+# This is the active configuration file
+
+ai:
+  mode: local_only  # Start with local_only for development
+
+  claude:
+    api_key: null  # Set via environment variable ANTHROPIC_API_KEY when ready
+    model: claude-sonnet-4-5-20250929
+    max_tokens: 2000
+    temperature: 0.3
+    track_costs: true
+    max_budget: 5.00
+
+  local:
+    provider: ollama
+    model: qwen2.5:7b
+    temperature: 0.3
+    timeout: 60
+    host: http://localhost:11434
+
+  hybrid:
+    local_similarity_threshold: 0.95
+    claude_variant_threshold: 5
+    claude_for_types:
+      - gotcha
+      - pattern
+      - complex_example
+
+embeddings:
+  model: all-MiniLM-L6-v2
+  device: cpu
+  batch_size: 32
+  normalize: true
+
+clustering:
+  similarity_threshold: 0.85
+  dbscan:
+    eps: 0.15
+    min_samples: 2
+    metric: cosine
+  hierarchy:
+    a0_threshold: 0.95
+    a1_threshold: 0.85
+    a2_threshold: 0.75
+  outliers:
+    keep: true
+    mark_as_canonical: true
+
+extraction:
+  source_files:
+    - ../ib.md
+    - ../ib_insync_complete_guide.md
+    - ../ib_insync_futures_update.md
+    - ../index.md
+  code:
+    normalize: true
+    remove_comments: true
+    standardize_whitespace: true
+    min_length: 20
+    languages:
+      - python
+      - bash
+  content_types:
+    detect_api_reference: true
+    detect_examples: true
+    detect_patterns: true
+    detect_gotchas: true
+    detect_concepts: true
+
+merging:
+  strategy:
+    prefer_longer: true
+    prefer_context: true
+    preserve_unique_info: true
+    flag_conflicts: true
+  conflicts:
+    threshold: 0.7
+    detect:
+      - different_results
+      - different_parameters
+      - different_explanations
+
+output:
+  preserve_sources: true
+  include_diffs: true
+  validation_level: strict
+  pretty_json: true
+  indent: 2
+  reports:
+    summary: true
+    statistics: true
+    conflicts: true
+    validation: true
+  export:
+    json: true
+    yaml: false
+    markdown: true
+    csv: false
+
+vector_db:
+  enabled: false
+  chromadb:
+    persist_directory: ./chromadb
+    collection_name: ib_insync_docs
+    distance_function: cosine
+
+pipeline:
+  stages:
+    extraction: true
+    embedding: true
+    clustering: true
+    merging: true
+    building: true
+    validation: true
+  cache_enabled: true
+  parallel:
+    enabled: true
+    max_workers: 4
+  logging:
+    level: INFO
+    format: rich
+    file: logs/dedup.log
+
+development:
+  debug: false
+  limits:
+    enabled: false
+    max_files: 1
+    max_examples: 50
+    max_clusters: 10
+  visualizations:
+    enabled: true
+    similarity_matrix: true
+    cluster_plot: true
+    embedding_tsne: true
+
+metrics:
+  track:
+    - deduplication_ratio
+    - information_preservation
+    - api_coverage
+    - example_executability
+    - processing_time
+    - api_costs
+  targets:
+    deduplication_ratio: 0.65
+    information_preservation: 1.0
+    api_coverage: 1.0
+    example_executability: 0.9
+    total_cost: 5.00

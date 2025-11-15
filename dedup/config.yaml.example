@@ -1,0 +1,271 @@
+# ib_insync Documentation Deduplication Configuration
+# Copy this file to config.yaml and customize
+
+# =============================================================================
+# AI Strategy Configuration
+# =============================================================================
+ai:
+  # Mode: claude_only, local_only, or hybrid
+  # - claude_only: Use Claude API for all merging (highest quality, ~$3-5 cost)
+  # - local_only: Use local LLM only (free, good for development)
+  # - hybrid: Use local LLM for simple cases, Claude for complex (recommended, ~$1-2)
+  mode: hybrid
+
+  # Claude API configuration (required for claude_only and hybrid modes)
+  claude:
+    api_key: null  # Set to your API key or use ANTHROPIC_API_KEY env var
+    model: claude-sonnet-4-5-20250929
+    max_tokens: 2000
+    temperature: 0.3  # Lower = more deterministic
+
+    # Cost tracking
+    track_costs: true
+    max_budget: 5.00  # Maximum spend in USD (stops if exceeded)
+
+  # Local LLM configuration (required for local_only and hybrid modes)
+  local:
+    provider: ollama  # ollama or other local provider
+    model: qwen2.5:7b  # Options: qwen2.5:7b, llama3.2, codellama
+    temperature: 0.3
+    timeout: 60  # seconds per request
+
+    # Ollama connection
+    host: http://localhost:11434
+
+  # Hybrid mode settings
+  hybrid:
+    # Use local LLM when cluster similarity is above this threshold
+    local_similarity_threshold: 0.95
+
+    # Use Claude when cluster has more than this many variants
+    claude_variant_threshold: 5
+
+    # Use Claude for these content types
+    claude_for_types:
+      - gotcha
+      - pattern
+      - complex_example
+
+# =============================================================================
+# Embedding Configuration
+# =============================================================================
+embeddings:
+  # Model for generating embeddings
+  model: all-MiniLM-L6-v2  # Options: all-MiniLM-L6-v2, all-mpnet-base-v2
+
+  # Dimensionality (automatically set by model)
+  # all-MiniLM-L6-v2: 384 dims
+  # all-mpnet-base-v2: 768 dims
+
+  # Device (cuda, mps, or cpu)
+  device: cpu  # Change to cuda if you have GPU
+
+  # Batch size for encoding
+  batch_size: 32
+
+  # Normalize embeddings
+  normalize: true
+
+# =============================================================================
+# Clustering Configuration
+# =============================================================================
+clustering:
+  # Similarity threshold for grouping (cosine similarity)
+  similarity_threshold: 0.85
+
+  # DBSCAN parameters
+  dbscan:
+    eps: 0.15  # Maximum distance between samples (1 - similarity_threshold)
+    min_samples: 2  # Minimum cluster size
+    metric: cosine
+
+  # Hierarchical clustering levels
+  hierarchy:
+    a0_threshold: 0.95  # Very similar (likely exact duplicates)
+    a1_threshold: 0.85  # Similar variants
+    a2_threshold: 0.75  # Related examples
+
+  # Outlier handling
+  outliers:
+    keep: true  # Keep single examples with no duplicates
+    mark_as_canonical: true
+
+# =============================================================================
+# Extraction Configuration
+# =============================================================================
+extraction:
+  # Source files (relative to repo root)
+  source_files:
+    - ib.md
+    - ib_insync_complete_guide.md
+    - ib_insync_futures_update.md
+    - index.md
+
+  # Code extraction
+  code:
+    # Normalize code before hashing
+    normalize: true
+    remove_comments: true
+    standardize_whitespace: true
+
+    # Minimum code length (characters)
+    min_length: 20
+
+    # Languages to extract
+    languages:
+      - python
+      - bash
+      - javascript
+
+  # Content type detection
+  content_types:
+    detect_api_reference: true
+    detect_examples: true
+    detect_patterns: true
+    detect_gotchas: true
+    detect_concepts: true
+
+# =============================================================================
+# Merging Configuration
+# =============================================================================
+merging:
+  # Merge strategy
+  strategy:
+    # Prefer longer examples
+    prefer_longer: true
+
+    # Prefer examples with more context
+    prefer_context: true
+
+    # Preserve all unique information
+    preserve_unique_info: true
+
+    # Flag conflicts for manual review
+    flag_conflicts: true
+
+  # Conflict detection
+  conflicts:
+    # Similarity threshold for detecting conflicts
+    threshold: 0.7
+
+    # What counts as a conflict
+    detect:
+      - different_results
+      - different_parameters
+      - different_explanations
+
+# =============================================================================
+# Output Configuration
+# =============================================================================
+output:
+  # Preserve source information
+  preserve_sources: true
+
+  # Include diff summaries
+  include_diffs: true
+
+  # Validation level (strict, normal, lenient)
+  validation_level: strict
+
+  # Pretty print JSON
+  pretty_json: true
+  indent: 2
+
+  # Generate reports
+  reports:
+    summary: true
+    statistics: true
+    conflicts: true
+    validation: true
+
+  # Export formats
+  export:
+    json: true
+    yaml: false
+    markdown: true
+    csv: false
+
+# =============================================================================
+# Vector Database Configuration (Optional)
+# =============================================================================
+vector_db:
+  enabled: false  # Set to true to enable ChromaDB
+
+  chromadb:
+    # Storage path (relative to outputs/5_final/)
+    persist_directory: ./chromadb
+
+    # Collection name
+    collection_name: ib_insync_docs
+
+    # Distance function (cosine, l2, ip)
+    distance_function: cosine
+
+# =============================================================================
+# Pipeline Configuration
+# =============================================================================
+pipeline:
+  # Run stages
+  stages:
+    extraction: true
+    embedding: true
+    clustering: true
+    merging: true
+    building: true
+    validation: true
+
+  # Cache intermediate results
+  cache_enabled: true
+
+  # Parallel processing
+  parallel:
+    enabled: true
+    max_workers: 4
+
+  # Logging
+  logging:
+    level: INFO  # DEBUG, INFO, WARNING, ERROR
+    format: rich  # rich, simple, json
+    file: logs/dedup.log
+
+# =============================================================================
+# Development Configuration
+# =============================================================================
+development:
+  # Run in debug mode
+  debug: false
+
+  # Limit processing (for testing)
+  limits:
+    enabled: false
+    max_files: 1
+    max_examples: 50
+    max_clusters: 10
+
+  # Generate visualizations
+  visualizations:
+    enabled: true
+    similarity_matrix: true
+    cluster_plot: true
+    embedding_tsne: true
+
+# =============================================================================
+# Metrics Configuration
+# =============================================================================
+metrics:
+  # Track these metrics
+  track:
+    - deduplication_ratio
+    - information_preservation
+    - api_coverage
+    - example_executability
+    - processing_time
+    - api_costs
+
+  # Targets
+  targets:
+    deduplication_ratio: 0.65  # 65% reduction
+    information_preservation: 1.0  # 100%
+    api_coverage: 1.0  # 100%
+    example_executability: 0.9  # 90%
+    total_cost: 5.00  # $5 max
