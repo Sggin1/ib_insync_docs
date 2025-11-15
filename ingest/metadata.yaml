@@ -1,0 +1,120 @@
+# Source Documentation Metadata
+# Describes each file in the ingest folder
+
+version: "0.9.86"
+last_updated: "2024-03-01"
+library: "ib_insync"
+
+# File classifications
+files:
+  markdown:
+    ib.md:
+      type: content              # Full content file
+      contains:
+        - api_reference
+        - code_examples
+        - documentation
+        - gotchas
+      size_kb: 144
+      lines: 4071
+      priority: high
+      notes: "Main comprehensive reference with examples"
+
+    ib_insync_complete_guide.md:
+      type: content
+      contains:
+        - tutorial
+        - code_examples
+        - best_practices
+        - async_patterns
+      size_kb: 52
+      lines: 1578
+      priority: high
+      notes: "Tutorial-style guide with detailed explanations"
+
+    ib_insync_futures_update.md:
+      type: content
+      contains:
+        - futures_specific
+        - code_examples
+        - contract_details
+      size_kb: 18
+      lines: 522
+      priority: medium
+      notes: "Futures trading specific documentation"
+
+    index.md:
+      type: index                # Index/pointer file
+      contains:
+        - api_references
+        - method_pointers
+      size_kb: 66
+      lines: 892
+      priority: low
+      notes: "Alphabetical API index - mostly pointers, minimal examples"
+      processing: "Extract API names for validation only"
+
+  json:
+    index_cleaned.json:
+      type: structured_data
+      contains:
+        - api_index
+        - pre_processed_data
+      priority: validation
+      notes: "Pre-processed index data, use for cross-validation"
+      processing: "Load and compare against extracted data"
+
+  pdf:
+    ib-insync.pdf:
+      type: source_material
+      size_kb: 673
+      priority: reference_only
+      notes: "Original PDF documentation - keep for reference but don't process"
+      processing: "Skip - reference only"
+
+# Processing rules
+processing_rules:
+  content_files:
+    action: full_extraction
+    extract:
+      - code_examples
+      - api_methods
+      - explanations
+      - gotchas
+      - patterns
+
+  index_files:
+    action: reference_extraction
+    extract:
+      - api_method_names
+    skip:
+      - code_examples
+      - explanations
+    use_for:
+      - validation
+      - api_coverage_check
+
+  structured_data:
+    action: validation
+    use_for:
+      - cross_reference
+      - completeness_check
+
+  source_material:
+    action: skip
+    keep_for: reference
+
+# Expected content statistics (for validation)
+expected_stats:
+  total_code_examples: 250-300
+  total_api_methods: 100-150
+  total_patterns: 30-50
+  total_gotchas: 20-40
+
+# Update instructions
+update_process:
+  - "Add new files to appropriate subfolder (markdown, json, pdf)"
+  - "Update this metadata.yaml with file details"
+  - "Update dedup/config.yaml to include new files"
+  - "Re-run pipeline: python scripts/run_all.py"
+  - "Compare outputs with previous version"

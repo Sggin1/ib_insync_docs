@@ -99,11 +99,38 @@ clustering:
     mark_as_canonical: true
 
 extraction:
-  source_files:
-    - ../ib.md
-    - ../ib_insync_complete_guide.md
-    - ../ib_insync_futures_update.md
-    - ../index.md
+  # Source data location
+  source_root: ../ingest       # Base directory for all source files
+  metadata_file: ../ingest/metadata.yaml  # File type descriptions
+
+  # Content files (full processing - extract everything)
+  content_files:
+    - markdown/ib.md
+    - markdown/ib_insync_complete_guide.md
+    - markdown/ib_insync_futures_update.md
+
+  # Index files (API references only - minimal example extraction)
+  index_files:
+    - markdown/index.md
+
+  # Structured data (use for validation)
+  validation_files:
+    - json/index_cleaned.json
+
+  # Reference files (skip processing)
+  reference_files:
+    - pdf/ib-insync.pdf
+
+  # File type detection
+  auto_detect:
+    enabled: true              # Auto-detect file types if not in metadata
+    code_block_threshold: 20   # >20 code blocks = content file
+    index_keywords:            # Keywords suggesting index file
+      - "index"
+      - "reference"
+      - "table of contents"
+
+  # Code extraction settings
   code:
     normalize: true
     remove_comments: true
@@ -112,12 +139,31 @@ extraction:
     languages:
       - python
       - bash
+
+  # Content type detection
   content_types:
     detect_api_reference: true
     detect_examples: true
     detect_patterns: true
     detect_gotchas: true
     detect_concepts: true
+
+  # Handle different file types differently
+  file_type_handling:
+    content:
+      extract_code: true
+      extract_api: true
+      extract_explanations: true
+    index:
+      extract_code: false      # Skip code from index files
+      extract_api: true        # Just get API names
+      extract_explanations: false
+      use_for_validation: true
+    structured_data:
+      parse_json: true
+      cross_reference: true
+    reference:
+      skip: true
 
 merging:
   strategy:
