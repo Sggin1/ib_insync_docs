@@ -505,3 +505,302 @@ class MergingOutput(BaseModel):
     merge_strategy_used: Dict[str, int] = Field(default_factory=dict)  # Count by strategy
     merging_time: float = 0.0
     api_cost: float = 0.0
+
+
+# =============================================================================
+# Pyramid Index Models (for fast hierarchical retrieval)
+# =============================================================================
+
+
+class OperationIndex(BaseModel):
+    """Index entry for an operation in the apex index."""
+
+    canonical_id: str = Field(..., description="ID of canonical example")
+    total_occurrences: int = Field(..., ge=1)
+    variant_count: int = Field(default=0, ge=0)
+    confidence: float = Field(default=1.0, ge=0.0, le=1.0)
+
+    tier_distribution: Dict[str, int] = Field(
+        default_factory=dict,
+        description="Count of examples per tier (a0, a1, a2, a3)",
+    )
+
+    file_pointer: str = Field(
+        ..., description="JSON pointer to canonical example"
+    )
+
+
+class ApexIndex(BaseModel):
+    """
+    Top-level pyramid index for ultra-fast canonical lookup.
+
+    Enables O(1) operation → canonical example retrieval.
+    """
+
+    version: str = "1.0.0"
+    created_at: datetime = Field(default_factory=datetime.now)
+
+    total_operations: int = Field(default=0, ge=0)
+    total_examples: int = Field(default=0, ge=0)
+    total_canonical: int = Field(default=0, ge=0)
+
+    # Operation name → Index entry
+    operations: Dict[str, OperationIndex] = Field(default_factory=dict)
+
+    quick_stats: Dict[str, Any] = Field(
+        default_factory=lambda: {
+            "most_common": [],
+            "avg_variants_per_operation": 0.0,
+            "deduplication_ratio": 0.0,
+        }
+    )
+
+    def add_operation(
+        self, operation: str, canonical_id: str, cluster: "ExampleCluster"
+    ) -> None:
+        """Add operation to apex index."""
+        tier_dist = {"a0": cluster.canonical.occurrence_count}
+
+        for variant in cluster.variants:
+            tier = variant.tier or "a1"
+            tier_dist[tier] = tier_dist.get(tier, 0) + variant.occurrence_count
+
+        self.operations[operation] = OperationIndex(
+            canonical_id=canonical_id,
+            total_occurrences=cluster.total_occurrences,
+            variant_count=cluster.variant_count,
+            tier_distribution=tier_dist,
+            file_pointer=f"canonical_examples.json#{canonical_id}",
+        )
+
+        self.total_operations = len(self.operations)
+
+    def save_json(self, path: Path | str) -> None:
+        """Save apex index to JSON."""
+        path = Path(path)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(self.model_dump_json(indent=2))
+
+    @classmethod
+    def load_json(cls, path: Path | str) -> "ApexIndex":
+        """Load apex index from JSON."""
+        path = Path(path)
+        with open(path, encoding="utf-8") as f:
+            import json
+
+            return cls(**json.load(f))
+
+
+class TierInfo(BaseModel):
+    """Information about a specific tier in a cluster."""
+
+    example_id: str
+    occurrences: int = Field(..., ge=1)
+    similarity: float = Field(..., ge=0.0, le=1.0)
+    pointer: Optional[str] = None
+    diff_summary: Optional[str] = None
+    unique_information: List[str] = Field(default_factory=list)
+
+
+class ClusterNavigation(BaseModel):
+    """Navigation pointers for cluster traversal."""
+
+    parent: str = Field(..., description="Pointer to apex index entry")
+    canonical: str = Field(..., description="Pointer to canonical example")
+    variants: Dict[str, int] = Field(
+        default_factory=dict, description="Count per tier"
+    )
+
+
+class VariantCluster(BaseModel):
+    """
+    Complete cluster with all tiers for pyramid index.
+
+    Enables efficient tier-based traversal.
+    """
+
+    cluster_id: str
+    operation: str
+    canonical_id: str
+    total_occurrences: int
+
+    # Tiers organized for cascade retrieval
+    tiers: Dict[str, Any] = Field(
+        default_factory=lambda: {"a0": {}, "a1": [], "a2": [], "a3": []}
+    )
+
+    navigation: ClusterNavigation
+
+    @classmethod
+    def from_example_cluster(
+        cls, cluster: ExampleCluster, operation: str
+    ) -> "VariantCluster":
+        """Convert ExampleCluster to VariantCluster for pyramid index."""
+        tiers: Dict[str, Any] = {
+            "a0": TierInfo(
+                example_id=cluster.canonical.id,
+                occurrences=cluster.canonical.occurrence_count,
+                similarity=1.0,
+                pointer=f"canonical_examples.json#{cluster.canonical.id}",
+            ).model_dump(),
+            "a1": [],
+            "a2": [],
+            "a3": [],
+        }
+
+        # Organize variants by tier
+        for variant in cluster.variants:
+            tier = variant.tier or "a1"
+            tier_info = TierInfo(
+                example_id=variant.id,
+                occurrences=variant.occurrence_count,
+                similarity=variant.similarity_to_canonical or 0.85,
+                diff_summary=variant.diff_summary,
+                unique_information=variant.unique_information,
+            )
+            tiers[tier].append(tier_info.model_dump())
+
+        return cls(
+            cluster_id=cluster.cluster_id,
+            operation=operation,
+            canonical_id=cluster.canonical.id,
+            total_occurrences=cluster.total_occurrences,
+            tiers=tiers,
+            navigation=ClusterNavigation(
+                parent=f"apex_index.json#{operation}",
+                canonical=f"canonical_examples.json#{cluster.canonical.id}",
+                variants={
+                    tier: len(examples)
+                    for tier, examples in tiers.items()
+                    if tier != "a0" and examples
+                },
+            ),
+        )
+
+
+class PyramidIndex(BaseModel):
+    """
+    Complete pyramid index structure.
+
+    Contains apex, canonicals, and variant clusters for fast retrieval.
+    """
+
+    version: str = "1.0.0"
+    created_at: datetime = Field(default_factory=datetime.now)
+
+    apex: ApexIndex
+    canonicals: Dict[str, CodeExample] = Field(default_factory=dict)
+    clusters: Dict[str, VariantCluster] = Field(default_factory=dict)
+
+    def build_from_database(self, db: "DedupDatabase") -> None:
+        """Build pyramid index from dedup database."""
+        self.apex = ApexIndex()
+
+        # Process each cluster
+        for cluster in db.example_clusters.values():
+            operation = cluster.operation
+
+            # Add canonical
+            self.canonicals[cluster.canonical.id] = cluster.canonical
+
+            # Create variant cluster
+            var_cluster = VariantCluster.from_example_cluster(cluster, operation)
+            self.clusters[cluster.cluster_id] = var_cluster
+
+            # Add to apex
+            self.apex.add_operation(operation, cluster.canonical.id, cluster)
+
+        # Calculate quick stats
+        self._calculate_stats(db)
+
+    def _calculate_stats(self, db: "DedupDatabase") -> None:
+        """Calculate quick statistics for apex index."""
+        # Most common operations
+        ops_by_count = sorted(
+            self.apex.operations.items(),
+            key=lambda x: x[1].total_occurrences,
+            reverse=True,
+        )
+        self.apex.quick_stats["most_common"] = [op for op, _ in ops_by_count[:10]]
+
+        # Average variants
+        if self.apex.total_operations > 0:
+            avg_variants = sum(
+                op.variant_count for op in self.apex.operations.values()
+            ) / self.apex.total_operations
+            self.apex.quick_stats["avg_variants_per_operation"] = round(
+                avg_variants, 2
+            )
+
+        # Dedup ratio
+        if db.metrics.total_examples_before > 0:
+            self.apex.quick_stats["deduplication_ratio"] = round(
+                db.metrics.deduplication_ratio, 2
+            )
+
+    def save(self, output_dir: Path | str) -> None:
+        """Save pyramid index to separate files."""
+        output_dir = Path(output_dir)
+        output_dir.mkdir(parents=True, exist_ok=True)
+
+        # Save apex (small, fast)
+        self.apex.save_json(output_dir / "apex_index.json")
+
+        # Save canonicals
+        canonical_data = {
+            "version": self.version,
+            "tier": "a0",
+            "count": len(self.canonicals),
+            "examples": {
+                ex_id: ex.model_dump() for ex_id, ex in self.canonicals.items()
+            },
+        }
+        with open(output_dir / "canonical_examples.json", "w", encoding="utf-8") as f:
+            import json
+
+            json.dump(canonical_data, f, indent=2, default=str)
+
+        # Save variant clusters
+        cluster_data = {
+            "version": self.version,
+            "count": len(self.clusters),
+            "clusters": {
+                c_id: cluster.model_dump()
+                for c_id, cluster in self.clusters.items()
+            },
+        }
+        with open(output_dir / "variant_clusters.json", "w", encoding="utf-8") as f:
+            import json
+
+            json.dump(cluster_data, f, indent=2, default=str)
+
+    @classmethod
+    def load(cls, output_dir: Path | str) -> "PyramidIndex":
+        """Load pyramid index from files."""
+        output_dir = Path(output_dir)
+
+        # Load apex
+        apex = ApexIndex.load_json(output_dir / "apex_index.json")
+
+        # Load canonicals
+        with open(output_dir / "canonical_examples.json", encoding="utf-8") as f:
+            import json
+
+            canonical_data = json.load(f)
+            canonicals = {
+                ex_id: CodeExample(**ex_data)
+                for ex_id, ex_data in canonical_data["examples"].items()
+            }
+
+        # Load clusters
+        with open(output_dir / "variant_clusters.json", encoding="utf-8") as f:
+            import json
+
+            cluster_data = json.load(f)
+            clusters = {
+                c_id: VariantCluster(**c_data)
+                for c_id, c_data in cluster_data["clusters"].items()
+            }
+
+        return cls(apex=apex, canonicals=canonicals, clusters=clusters)
