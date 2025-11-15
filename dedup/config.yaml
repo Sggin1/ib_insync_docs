@@ -1,0 +1,282 @@
+# ib_insync Documentation Deduplication Configuration
+# This is the active configuration file
+
+ai:
+  mode: local_only  # Options: local_only, hybrid, claude_only, openrouter
+
+  # Claude API (Anthropic direct)
+  claude:
+    api_key: null  # Set via environment variable ANTHROPIC_API_KEY when ready
+    model: claude-sonnet-4-5-20250929
+    max_tokens: 2000
+    temperature: 0.3
+    track_costs: true
+    max_budget: 5.00
+
+  # OpenRouter (access to multiple models)
+  openrouter:
+    api_key: null  # Set via environment variable OPENROUTER_API_KEY
+    model: anthropic/claude-3.5-sonnet  # or qwen/qwen-2.5-72b-instruct, deepseek/deepseek-coder
+    max_tokens: 2000
+    temperature: 0.3
+    track_costs: true
+    max_budget: 5.00
+    base_url: https://openrouter.ai/api/v1
+
+  # Local LLM (Ollama, LM Studio, or vLLM)
+  local:
+    provider: ollama  # Options: ollama, lmstudio, vllm
+
+    # Model selection (choose based on GPU capability)
+    # 16GB GPU options:
+    # - qwen2.5:14b (recommended - excellent code understanding)
+    # - qwen2.5:32b-instruct-q4_K_M (quantized, fits in 16GB)
+    # - deepseek-coder:33b-instruct-q4_K_M (specialized for code)
+    # - mixtral:8x7b-instruct-v0.1-q4_K_M (good reasoning)
+    # - codellama:34b-instruct-q4_K_M (code-focused)
+    model: qwen2.5:14b
+
+    temperature: 0.3
+    timeout: 120  # Longer timeout for larger models
+
+    # Ollama settings
+    ollama:
+      host: http://localhost:11434
+      num_gpu: 1  # Use GPU
+      num_thread: 8
+
+    # LM Studio settings (alternative)
+    lmstudio:
+      host: http://localhost:1234
+      gpu_layers: -1  # -1 = use all GPU layers
+
+    # vLLM settings (high performance, Docker)
+    vllm:
+      host: http://localhost:8000
+      gpu_memory_utilization: 0.9
+
+  # Hybrid mode settings
+  hybrid:
+    local_similarity_threshold: 0.95
+    claude_variant_threshold: 5
+    claude_for_types:
+      - gotcha
+      - pattern
+      - complex_example
+
+    # With 16GB GPU, can handle more locally
+    use_local_for_most: true  # Use local LLM for 80-90% of merges
+
+embeddings:
+  # Embedding model selection
+  # For 16GB GPU, can use larger models:
+  # - all-MiniLM-L6-v2 (384 dim, fast, good quality)
+  # - all-mpnet-base-v2 (768 dim, better quality, slower)
+  # - sentence-transformers/gtr-t5-large (768 dim, excellent)
+  # - BAAI/bge-large-en-v1.5 (1024 dim, state-of-the-art)
+  model: all-mpnet-base-v2  # Upgrade from MiniLM with 16GB GPU
+
+  device: cuda  # Use GPU! (options: cuda, cpu, mps for Mac)
+  batch_size: 64  # Can increase with GPU
+  normalize: true
+
+  # GPU settings
+  gpu_id: 0  # GPU device ID
+  precision: float16  # Use half precision for faster inference
+
+clustering:
+  similarity_threshold: 0.85
+  dbscan:
+    eps: 0.15
+    min_samples: 2
+    metric: cosine
+  hierarchy:
+    a0_threshold: 0.95
+    a1_threshold: 0.85
+    a2_threshold: 0.75
+  outliers:
+    keep: true
+    mark_as_canonical: true
+
+extraction:
+  # Source data location
+  source_root: ../ingest       # Base directory for all source files
+  metadata_file: ../ingest/metadata.yaml  # File type descriptions
+
+  # Content files (full processing - extract everything)
+  content_files:
+    - markdown/ib.md
+    - markdown/ib_insync_complete_guide.md
+    - markdown/ib_insync_futures_update.md
+
+  # Index files (API references only - minimal example extraction)
+  index_files:
+    - markdown/index.md
+
+  # Structured data (use for validation)
+  validation_files:
+    - json/index_cleaned.json
+
+  # Reference files (skip processing)
+  reference_files:
+    - pdf/ib-insync.pdf
+
+  # File type detection
+  auto_detect:
+    enabled: true              # Auto-detect file types if not in metadata
+    code_block_threshold: 20   # >20 code blocks = content file
+    index_keywords:            # Keywords suggesting index file
+      - "index"
+      - "reference"
+      - "table of contents"
+
+  # Code extraction settings
+  code:
+    normalize: true
+    remove_comments: true
+    standardize_whitespace: true
+    min_length: 20
+    languages:
+      - python
+      - bash
+
+  # Content type detection
+  content_types:
+    detect_api_reference: true
+    detect_examples: true
+    detect_patterns: true
+    detect_gotchas: true
+    detect_concepts: true
+
+  # Handle different file types differently
+  file_type_handling:
+    content:
+      extract_code: true
+      extract_api: true
+      extract_explanations: true
+    index:
+      extract_code: false      # Skip code from index files
+      extract_api: true        # Just get API names
+      extract_explanations: false
+      use_for_validation: true
+    structured_data:
+      parse_json: true
+      cross_reference: true
+    reference:
+      skip: true
+
+merging:
+  strategy:
+    prefer_longer: true
+    prefer_context: true
+    preserve_unique_info: true
+    flag_conflicts: true
+
+  conflicts:
+    threshold: 0.7
+    detect:
+      - different_results
+      - different_parameters
+      - different_explanations
+
+  # Parallel processing for faster merging
+  parallel:
+    enabled: false           # Start with false, enable after validation
+    num_workers: 2           # 2 workers for 16GB GPU (2 × 6GB = 12GB)
+    batch_size: 10           # Process 10 clusters per worker batch
+    worker_model: qwen2.5:7b # Smaller model for parallel execution
+
+  # Smart routing (use API for complex cases)
+  routing:
+    enabled: false           # Start with false, enable if needed
+    use_api_for_complex: true
+    complexity_threshold: 0.9  # Use API if similarity < 0.9
+    api_percentage_max: 30   # Max 30% of clusters to API
+    critical_operations:     # Always use API for these
+      - placeOrder
+      - createOrder
+      - modifyOrder
+
+output:
+  preserve_sources: true
+  include_diffs: true
+  validation_level: strict
+  pretty_json: true
+  indent: 2
+  reports:
+    summary: true
+    statistics: true
+    conflicts: true
+    validation: true
+  export:
+    json: true
+    yaml: false
+    markdown: true
+    csv: false
+
+vector_db:
+  enabled: false
+  chromadb:
+    persist_directory: ./chromadb
+    collection_name: ib_insync_docs
+    distance_function: cosine
+
+pipeline:
+  stages:
+    extraction: true
+    embedding: true
+    clustering: true
+    merging: true
+    building: true
+    validation: true
+  cache_enabled: true
+  parallel:
+    enabled: true
+    max_workers: 4
+  logging:
+    level: INFO
+    format: rich
+    file: logs/dedup.log
+
+development:
+  debug: false
+  limits:
+    enabled: false
+    max_files: 1
+    max_examples: 50
+    max_clusters: 10
+  visualizations:
+    enabled: true
+    similarity_matrix: true
+    cluster_plot: true
+    embedding_tsne: true
+
+metrics:
+  track:
+    - deduplication_ratio
+    - information_preservation
+    - api_coverage
+    - example_executability
+    - processing_time
+    - api_costs
+  targets:
+    deduplication_ratio: 0.65
+    information_preservation: 1.0
+    api_coverage: 1.0
+    example_executability: 0.9
+    total_cost: 5.00
+
+# Agent retrieval settings (for future agent project)
+agent:
+  retrieval:
+    search_order: [a0, a1, a2, a3]   # Check tiers in pyramid order
+    min_confidence: 0.5              # Minimum confidence to return result
+    include_related: true            # Include related tier info in response
+    max_results_per_tier: 3          # Return top 3 from each tier
+
+  behavior:
+    prefer_canonical: true           # Always try a0 first
+    confidence_threshold: 0.7        # Warn user if confidence below this
+    show_tier_in_response: true      # Tell user which tier was used
+    explain_variants: true           # Explain why variant instead of canonical
+    fallback_enabled: true           # Cascade through tiers if needed
