@@ -125,12 +125,31 @@ merging:
     prefer_context: true
     preserve_unique_info: true
     flag_conflicts: true
+
   conflicts:
     threshold: 0.7
     detect:
       - different_results
       - different_parameters
       - different_explanations
+
+  # Parallel processing for faster merging
+  parallel:
+    enabled: false           # Start with false, enable after validation
+    num_workers: 2           # 2 workers for 16GB GPU (2 × 6GB = 12GB)
+    batch_size: 10           # Process 10 clusters per worker batch
+    worker_model: qwen2.5:7b # Smaller model for parallel execution
+
+  # Smart routing (use API for complex cases)
+  routing:
+    enabled: false           # Start with false, enable if needed
+    use_api_for_complex: true
+    complexity_threshold: 0.9  # Use API if similarity < 0.9
+    api_percentage_max: 30   # Max 30% of clusters to API
+    critical_operations:     # Always use API for these
+      - placeOrder
+      - createOrder
+      - modifyOrder
 
 output:
   preserve_sources: true
