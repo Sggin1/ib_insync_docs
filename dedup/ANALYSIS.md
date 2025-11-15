@@ -444,3 +444,126 @@ The ib_insync documentation corpus is well-suited for this approach due to:
 **Status:** Ready to proceed with implementation
 **Confidence:** High
 **Next Action:** Install dependencies and test local LLM setup
+
+---
+
+## UPDATE: Enhanced Setup with 16GB GPU
+
+**Date:** 2025-11-15
+**Hardware:** 16GB GPU available
+**Tools:** Ollama, LM Studio, Docker
+
+### New Recommendations
+
+With a **16GB GPU**, the strategy significantly improves:
+
+#### 1. Local LLM Options (Better Models)
+
+**Recommended: Qwen2.5 14B** (upgrade from 7B)
+```bash
+ollama pull qwen2.5:14b
+```
+- Quality: Excellent (on par with GPT-3.5)
+- Speed: ~15-25 tokens/sec
+- VRAM: ~10-12GB
+- Cost: $0
+
+**Alternative: DeepSeek-Coder 33B**
+```bash
+ollama pull deepseek-coder:33b-instruct-q4_K_M
+```
+- Quality: Superior for code analysis
+- Speed: ~8-12 tokens/sec
+- VRAM: ~14-15GB
+- Best for: Complex code merges
+
+#### 2. Embeddings (GPU-Accelerated)
+
+**Upgrade to all-mpnet-base-v2**
+- Dimensions: 768 (vs 384 for MiniLM)
+- Quality: Significantly better semantic understanding
+- Speed: ~500-1000 sentences/sec on GPU (vs 100-200 on CPU)
+- Time for 300 examples: ~1-2 seconds (vs 10-15 seconds CPU)
+
+#### 3. OpenRouter Integration
+
+Access to multiple models through one API:
+
+**Cheap Options:**
+- `qwen/qwen-2.5-72b-instruct` - $0.36/M tokens
+- `deepseek/deepseek-coder` - $0.14/M tokens
+
+**Cost for 200 merges:**
+- Qwen 72B: ~$0.40
+- DeepSeek: ~$0.15
+- Claude: ~$2.00
+
+#### 4. Revised Hybrid Strategy
+
+**With 16GB GPU, new approach:**
+
+1. **Local-First (Recommended):**
+   - LLM: Qwen 14B (local GPU)
+   - Embeddings: mpnet-base-v2 (GPU)
+   - Cost: **$0** (only electricity)
+   - Quality: Excellent
+   - Time: ~90 minutes
+
+2. **Hybrid with OpenRouter (Best Value):**
+   - 90% Qwen 14B (local)
+   - 10% OpenRouter DeepSeek (complex cases)
+   - Cost: **~$0.20**
+   - Quality: Excellent
+   - Time: ~80 minutes
+
+3. **Hybrid with Claude (Maximum Quality):**
+   - 80% Qwen 14B (local)
+   - 20% Claude API (complex/critical)
+   - Cost: **~$0.80**
+   - Quality: Superior
+   - Time: ~75 minutes
+
+### Performance Comparison
+
+| Setup | Cost | Time | Quality | GPU Usage |
+|-------|------|------|---------|-----------|
+| **CPU-only + Claude** | $2-3 | 60 min | Excellent | 0% |
+| **GPU Local-only** | $0 | 90 min | Excellent | 80-95% |
+| **GPU + OpenRouter** | $0.20 | 80 min | Excellent | 80-95% |
+| **GPU + Claude** | $0.80 | 75 min | Superior | 80-95% |
+
+### Updated Configuration
+
+See `GPU_SETUP.md` for complete setup instructions.
+
+**Recommended config.yaml for 16GB GPU:**
+
+```yaml
+ai:
+  mode: local_only  # Start here
+
+  local:
+    provider: ollama
+    model: qwen2.5:14b
+    ollama:
+      num_gpu: 1
+
+embeddings:
+  model: all-mpnet-base-v2
+  device: cuda
+  batch_size: 64
+  precision: float16
+```
+
+### Conclusion
+
+**With 16GB GPU:**
+- ✓ Can run everything locally ($0 cost)
+- ✓ Better quality models (14B vs 7B)
+- ✓ 5-10x faster embeddings
+- ✓ Still option to use OpenRouter/Claude for complex cases
+- ✓ Best of all worlds
+
+**New recommendation: Start with full local setup, add OpenRouter fallback only if needed (cost: $0-0.20 vs original $1-2)**
+
+See `GPU_SETUP.md` for detailed setup instructions.

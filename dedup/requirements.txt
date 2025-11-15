@@ -15,7 +15,10 @@ lxml>=4.9.0                   # XML parser for BeautifulSoup
 
 # AI Integration
 anthropic>=0.40.0             # Claude API client (optional, for hybrid mode)
+openai>=1.0.0                 # For OpenRouter API compatibility
 # ollama (install separately: pip install ollama)
+# Note: For GPU support, install PyTorch with CUDA:
+# pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
 
 # Vector Database (optional, for future RAG)
 chromadb>=0.4.0               # Local vector database

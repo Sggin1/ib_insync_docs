@@ -2,8 +2,9 @@
 # This is the active configuration file
 
 ai:
-  mode: local_only  # Start with local_only for development
+  mode: local_only  # Options: local_only, hybrid, claude_only, openrouter
 
+  # Claude API (Anthropic direct)
   claude:
     api_key: null  # Set via environment variable ANTHROPIC_API_KEY when ready
     model: claude-sonnet-4-5-20250929
@@ -12,13 +13,49 @@ ai:
     track_costs: true
     max_budget: 5.00
 
-  local:
-    provider: ollama
-    model: qwen2.5:7b
+  # OpenRouter (access to multiple models)
+  openrouter:
+    api_key: null  # Set via environment variable OPENROUTER_API_KEY
+    model: anthropic/claude-3.5-sonnet  # or qwen/qwen-2.5-72b-instruct, deepseek/deepseek-coder
+    max_tokens: 2000
     temperature: 0.3
-    timeout: 60
-    host: http://localhost:11434
+    track_costs: true
+    max_budget: 5.00
+    base_url: https://openrouter.ai/api/v1
 
+  # Local LLM (Ollama, LM Studio, or vLLM)
+  local:
+    provider: ollama  # Options: ollama, lmstudio, vllm
+
+    # Model selection (choose based on GPU capability)
+    # 16GB GPU options:
+    # - qwen2.5:14b (recommended - excellent code understanding)
+    # - qwen2.5:32b-instruct-q4_K_M (quantized, fits in 16GB)
+    # - deepseek-coder:33b-instruct-q4_K_M (specialized for code)
+    # - mixtral:8x7b-instruct-v0.1-q4_K_M (good reasoning)
+    # - codellama:34b-instruct-q4_K_M (code-focused)
+    model: qwen2.5:14b
+
+    temperature: 0.3
+    timeout: 120  # Longer timeout for larger models
+
+    # Ollama settings
+    ollama:
+      host: http://localhost:11434
+      num_gpu: 1  # Use GPU
+      num_thread: 8
+
+    # LM Studio settings (alternative)
+    lmstudio:
+      host: http://localhost:1234
+      gpu_layers: -1  # -1 = use all GPU layers
+
+    # vLLM settings (high performance, Docker)
+    vllm:
+      host: http://localhost:8000
+      gpu_memory_utilization: 0.9
+
+  # Hybrid mode settings
   hybrid:
     local_similarity_threshold: 0.95
     claude_variant_threshold: 5
@@ -27,11 +64,25 @@ ai:
       - pattern
       - complex_example
 
+    # With 16GB GPU, can handle more locally
+    use_local_for_most: true  # Use local LLM for 80-90% of merges
+
 embeddings:
-  model: all-MiniLM-L6-v2
-  device: cpu
-  batch_size: 32
+  # Embedding model selection
+  # For 16GB GPU, can use larger models:
+  # - all-MiniLM-L6-v2 (384 dim, fast, good quality)
+  # - all-mpnet-base-v2 (768 dim, better quality, slower)
+  # - sentence-transformers/gtr-t5-large (768 dim, excellent)
+  # - BAAI/bge-large-en-v1.5 (1024 dim, state-of-the-art)
+  model: all-mpnet-base-v2  # Upgrade from MiniLM with 16GB GPU
+
+  device: cuda  # Use GPU! (options: cuda, cpu, mps for Mac)
+  batch_size: 64  # Can increase with GPU
   normalize: true
+
+  # GPU settings
+  gpu_id: 0  # GPU device ID
+  precision: float16  # Use half precision for faster inference
 
 clustering:
   similarity_threshold: 0.85
