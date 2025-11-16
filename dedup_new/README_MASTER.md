@@ -13,12 +13,27 @@
 1. **THIS FILE** (`README_MASTER.md`) - Overview and quick start
 2. **`PYRIMID_DEDUP_UPDATED.md`** - Complete specification (authoritative)
 3. **`PIPELINE_COMPLETE.md`** - Implementation details and usage
-4. **`QUICKSTART.md`** - 5-minute setup (if you want to run it)
+4. **`outputs_comparison/COMPARISON_MASTER.md`** - Compare all 3 approaches ⭐
+5. **`QUICKSTART.md`** - 5-minute setup (if you want to run it)
 
 **Ignore these (old/deprecated):**
 - ❌ `README.md` - Old quick start (superseded by README_MASTER.md)
 - ❌ `THREE_LAYER_ARCHITECTURE.md` - Superseded by PYRIMID_DEDUP_UPDATED.md
 - ❌ `RESULTS_SUMMARY.md` - Initial results only
+
+---
+
+---
+
+## 📊 Compare All 3 Approaches
+
+This project evolved through **3 different deduplication approaches**, all preserved in `outputs_comparison/`:
+
+- **Run 1:** Simple flat merge (731 KB, no indexing)
+- **Run 2:** Pyramid with apex index (727 KB, ~400 KB RAM)
+- **Run 3:** 3-layer optimized (321 KB, 16.4 KB RAM) ← **Recommended**
+
+**→ See `outputs_comparison/COMPARISON_MASTER.md` for detailed side-by-side comparison**
 
 ---
 
