@@ -11,13 +11,13 @@
 **START HERE →** Read these documents in order:
 
 1. **THIS FILE** (`README_MASTER.md`) - Overview and quick start
-2. **`Pyramid_dedup2.md`** - Complete specification (authoritative)
+2. **`PYRIMID_DEDUP_UPDATED.md`** - Complete specification (authoritative)
 3. **`PIPELINE_COMPLETE.md`** - Implementation details and usage
 4. **`QUICKSTART.md`** - 5-minute setup (if you want to run it)
 
 **Ignore these (old/deprecated):**
-- ❌ `THREE_LAYER_ARCHITECTURE.md` - Superseded by Pyramid_dedup2.md
-- ❌ `PYRAMID_STRUCTURE.md` - Old version
+- ❌ `README.md` - Old quick start (superseded by README_MASTER.md)
+- ❌ `THREE_LAYER_ARCHITECTURE.md` - Superseded by PYRIMID_DEDUP_UPDATED.md
 - ❌ `RESULTS_SUMMARY.md` - Initial results only
 
 ---
@@ -342,7 +342,7 @@ To reproduce this setup:
 1. ✅ Clone repository
 2. ✅ Install dependencies: `pip install -r requirements.txt`
 3. ✅ Set OpenRouter API key (if running dedup): `echo "OPENROUTER_API_KEY=..." > .env`
-4. ✅ Read `Pyramid_dedup2.md` (specification)
+4. ✅ Read `PYRIMID_DEDUP_UPDATED.md` (specification)
 5. ✅ Run Phase 2: `python src/three_layer_builder.py`
 6. ✅ Run Phase 3: `python scripts/test_examples.py`
 7. ✅ Run Phase 4: `python scripts/build_confirmed_db.py`
@@ -429,4 +429,4 @@ To reproduce this setup:
 
 *Last updated: 2025-11-16*
 *Branch: claude/setup-openrouter-deepseek-016XpDkSuEP8n7hJiw9f5L6P*
-*Specification: Pyramid_dedup2.md*
+*Specification: PYRIMID_DEDUP_UPDATED.md*

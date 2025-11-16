@@ -22,6 +22,11 @@ outputs/6_vectorized/         # Phase 6 (future)
 logs/
 .cache/
 
+# Deprecated documentation (superseded by README_MASTER.md structure)
+README.md                     # Old quick start
+THREE_LAYER_ARCHITECTURE.md   # Old architecture doc
+RESULTS_SUMMARY.md            # Initial results only
+
 # IDEs
 .vscode/
 .idea/

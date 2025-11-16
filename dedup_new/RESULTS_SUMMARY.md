@@ -1,3 +1,14 @@
+# ⚠️ DEPRECATED - Use PIPELINE_COMPLETE.md Instead
+
+**This file contains initial results only. Complete results are documented in `PIPELINE_COMPLETE.md`.**
+
+**→ Please read `README_MASTER.md` for the complete, updated documentation.**
+
+---
+
+<details>
+<summary><i>(Old content - click to expand)</i></summary>
+
 # IB_INSYNC Deduplication Results Summary
 
 **Date:** 2025-11-16
@@ -157,3 +168,5 @@ The OpenRouter + DeepSeek R1 approach successfully:
 - Low cost
 - High quality merges
 - Comprehensive outputs
+
+</details>

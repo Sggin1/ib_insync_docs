@@ -1,3 +1,14 @@
+# ⚠️ DEPRECATED - Use PYRIMID_DEDUP_UPDATED.md Instead
+
+**This file has been superseded by `PYRIMID_DEDUP_UPDATED.md` and `PIPELINE_COMPLETE.md`.**
+
+**→ Please read `README_MASTER.md` for the complete, updated documentation.**
+
+---
+
+<details>
+<summary><i>(Old content - click to expand)</i></summary>
+
 # 3-Layer Optimized Architecture - Implementation
 
 **Date:** 2025-11-16
@@ -392,3 +403,5 @@ Create `6_vectorized/` for specialist agent:
 *Generated: 2025-11-16*
 *Specification: deduplication-architecture.md*
 *Implementation: 3-layer optimized*
+
+</details>

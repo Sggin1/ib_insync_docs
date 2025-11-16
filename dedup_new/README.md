@@ -1,3 +1,14 @@
+# ⚠️ DEPRECATED - Use README_MASTER.md Instead
+
+**This file has been superseded by `README_MASTER.md` which provides the complete, updated documentation.**
+
+**→ Please read `README_MASTER.md` for the current documentation.**
+
+---
+
+<details>
+<summary><i>(Old content - click to expand)</i></summary>
+
 # IB_INSYNC Documentation Deduplication
 
 **Fast, cheap, AI-powered deduplication using OpenRouter DeepSeek**
@@ -252,3 +263,5 @@ Issues or questions? Check:
 ## License
 
 MIT
+
+</details>
