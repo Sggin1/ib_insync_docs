@@ -19,6 +19,10 @@ outputs/3_final/              # Old simple output (replaced)
 outputs/5_final/              # Old pyramid (replaced)
 outputs/5_expanded/           # Phase 5 (future)
 outputs/6_vectorized/         # Phase 6 (future)
+
+# KEEP outputs_comparison/ - comparison of all 3 approaches
+# outputs_comparison/         # ← NOT ignored, this is kept!
+
 logs/
 .cache/
 
