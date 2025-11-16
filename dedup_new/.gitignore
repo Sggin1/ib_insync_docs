@@ -12,8 +12,9 @@ venv/
 ENV/
 .venv
 
-# Output files
-outputs/
+# Output files (keep final results, ignore intermediate files)
+outputs/1_extracted/
+outputs/2_merged/
 logs/
 .cache/
 
