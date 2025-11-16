@@ -1,0 +1,101 @@
+# ib_insync Documentation Deduplication - OpenRouter DeepSeek Configuration
+# Simple, fast, cheap approach using OpenRouter's DeepSeek model
+
+ai:
+  provider: openrouter
+
+  openrouter:
+    # Set via environment variable OPENROUTER_API_KEY
+    api_key: ${OPENROUTER_API_KEY}
+
+    # DeepSeek R1 - Excellent for code, extremely cheap
+    # Pricing: $0.55/1M input tokens, $2.19/1M output tokens
+    # Estimated cost for this project: ~$0.04
+    model: deepseek/deepseek-r1
+
+    # Alternative models (uncomment to use):
+    # model: anthropic/claude-3.5-sonnet  # Better quality, ~$1.57 cost
+    # model: deepseek/deepseek-coder      # Older DeepSeek, still good
+
+    base_url: https://openrouter.ai/api/v1
+    max_tokens: 4000
+    temperature: 0.2  # Lower for more consistent output
+
+    # Cost tracking
+    track_costs: true
+    max_budget: 5.00  # Safety limit
+
+    # Rate limiting (DeepSeek allows good throughput)
+    requests_per_minute: 20
+    concurrent_requests: 5
+
+extraction:
+  # Source files (only MD files under docs/)
+  source_dir: ../docs
+
+  # Which files to process
+  include_patterns:
+    - "*.md"
+
+  # Skip these files
+  exclude_patterns:
+    - "PROCESSING_REPORT.md"
+    - "index_raw.md"  # Duplicate of index.md
+
+  # Code extraction settings
+  code:
+    min_length: 20  # Skip tiny snippets
+    languages:
+      - python
+      - bash
+    normalize: true
+    remove_comments: false  # Keep comments, they have context
+
+merging:
+  # Simple similarity-based approach
+  strategy: ai_merge  # Use AI for all merging decisions
+
+  # How to identify duplicates
+  similarity_threshold: 0.85  # 85% similar = likely duplicate
+
+  # Merge preferences
+  prefer_longer: true  # Keep more detailed examples
+  preserve_unique_info: true
+  flag_conflicts: true
+
+  # Batch processing (faster, cheaper)
+  batch_size: 5  # Send 5 similar examples to AI at once
+
+output:
+  # Output format
+  preserve_sources: true  # Track where content came from
+  include_metadata: true
+  pretty_json: true
+  indent: 2
+
+  # What to generate
+  formats:
+    - json  # Main output
+    - markdown  # Human-readable summary
+
+  # Reports
+  generate_summary: true
+  generate_stats: true
+
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/dedup.log
+  console: true
+
+# Performance settings
+performance:
+  parallel_processing: false  # Start simple, enable if needed
+  cache_enabled: true
+  cache_dir: .cache
+
+# Development/testing limits (disable for full run)
+development:
+  enabled: false  # Set to true to test on small subset
+  max_files: 2
+  max_examples: 20
