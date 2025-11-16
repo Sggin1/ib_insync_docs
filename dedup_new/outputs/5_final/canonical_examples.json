@@ -1,0 +1,851 @@
+{
+  "version": "1.0.0",
+  "tier": "a0",
+  "count": 17,
+  "examples": {
+    "merged_ex_0001_73157af0": {
+      "id": "merged_ex_0001_73157af0",
+      "operation": "order",
+      "code": "from ib_insync import *\norder = MarketOrder('BUY', 100)",
+      "language": "python",
+      "description": " Market Order",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0001_73157af0",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [
+          "merged_cluster_0198",
+          "merged_cluster_0204"
+        ],
+        "a2": [
+          "merged_ex_0002_8770c7ad",
+          "merged_ex_0003_3baa2883",
+          "merged_ex_0016_8c2fb027",
+          "merged_ex_0059_7013efa0",
+          "merged_ex_0121_fda0b06a",
+          "merged_ex_0141_8522063f",
+          "merged_ex_0174_7b2a453d",
+          "merged_ex_0213_59eaafe2",
+          "merged_ex_0214_436ee625",
+          "merged_ex_0217_b9979312",
+          "merged_ex_0221_39d68f86"
+        ],
+        "a3": []
+      },
+      "variant_count": 13,
+      "total_occurrences": 14,
+      "metadata": {
+        "tags": [
+          "order"
+        ],
+        "category": "order",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_order"
+    },
+    "merged_cluster_0003": {
+      "id": "merged_cluster_0003",
+      "operation": "placeOrder",
+      "code": "parent, takeProfit, stopLoss = BracketOrder(\n    'BUY', 100, 175.0,\n    takeProfitPrice=185.0,\n    stopLossPrice=170.0\n)\n\nfor order in (parent, takeProfit, stopLoss):\n    ib.placeOrder(contract, order)",
+      "language": "python",
+      "description": "Creates a bracket order with entry, take profit, and stop loss orders. The parent order is a BUY order for 100 contracts at 175.0, with profit-taking at 185.0 and stop loss at 170.0. All three orders are placed sequentially using a loop. This pattern ensures risk management by automatically setting profit targets and loss limits. Works for both stock and derivatives trading.",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0004_1edc2880",
+          "line": null
+        },
+        {
+          "file": "ex_0278_3d95d75e",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [
+          "merged_cluster_0004",
+          "merged_cluster_0006",
+          "merged_cluster_0011",
+          "merged_cluster_0014",
+          "merged_cluster_0144",
+          "merged_cluster_0149"
+        ],
+        "a2": [
+          "merged_ex_0009_55344dab",
+          "merged_ex_0014_cbe2f695",
+          "merged_ex_0017_6a11bf25",
+          "merged_ex_0018_ce1ccb8b",
+          "merged_ex_0019_2cc9e38b",
+          "merged_ex_0054_2b50dee3",
+          "merged_ex_0066_d7c5ce88",
+          "merged_ex_0067_f66f09e8",
+          "merged_ex_0068_68d1eeb1",
+          "merged_ex_0069_97afc54d",
+          "merged_ex_0070_e2d9a68a",
+          "merged_ex_0071_a5aa41ea",
+          "merged_ex_0072_20869a92",
+          "merged_ex_0073_68026665",
+          "merged_ex_0074_62270345",
+          "merged_ex_0075_d96e77e8",
+          "merged_ex_0083_62498bd6",
+          "merged_ex_0114_dcf476f2",
+          "merged_ex_0150_43324d28",
+          "merged_ex_0151_5d2c3705",
+          "merged_ex_0152_4ec34ae3",
+          "merged_ex_0159_02a55978",
+          "merged_ex_0161_c633d4e2",
+          "merged_ex_0162_40a89498",
+          "merged_ex_0170_11393855",
+          "merged_ex_0172_de7fe994",
+          "merged_ex_0218_da330b8a"
+        ],
+        "a3": []
+      },
+      "variant_count": 33,
+      "total_occurrences": 34,
+      "metadata": {
+        "tags": [
+          "contract",
+          "order",
+          "error"
+        ],
+        "category": "placeOrder",
+        "notes": "Examples show different price parameters (175/185/170 vs 150/160/145) demonstrating the pattern works with any price levels. Example 1 includes 'error' tag highlighting potential error handling considerations."
+      },
+      "file_pointer": "variant_clusters.json#cluster_placeOrder"
+    },
+    "merged_ex_0006_ce50b185": {
+      "id": "merged_ex_0006_ce50b185",
+      "operation": "contract",
+      "code": "# Trigger when SPY hits 450\ntrigger_contract = Stock('SPY', 'SMART', 'USD')\ntrigger_contract = ib.qualifyContracts(trigger_contract)[0]\n\ncondition = PriceCondition(\n    condType=1,\n    conId=trigger_contract.conId,\n    exchange='SMART',\n    isMore=True,  # Above price\n    price=450.0\n)\n\norder = LimitOrder('BUY', 100, 175.0)\norder.conditions = [condition]",
+      "language": "python",
+      "description": " Conditional Order",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0006_ce50b185",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [
+          "merged_cluster_0123",
+          "merged_cluster_0124",
+          "merged_cluster_0208"
+        ],
+        "a2": [
+          "merged_ex_0025_b431b910",
+          "merged_ex_0026_bff1f5f7",
+          "merged_ex_0027_f3914538",
+          "merged_ex_0029_6e6893b1",
+          "merged_ex_0033_b6bbded7",
+          "merged_ex_0034_785d16e2",
+          "merged_ex_0038_342563ba",
+          "merged_ex_0055_3cb13bff",
+          "merged_ex_0065_1584a6ea",
+          "merged_ex_0078_1e17e8a5",
+          "merged_ex_0079_8c44b68b",
+          "merged_ex_0080_52d6cf6d",
+          "merged_ex_0081_642b54b4",
+          "merged_ex_0082_b5e51137",
+          "merged_ex_0087_bdec6e72",
+          "merged_ex_0091_57100ddd",
+          "merged_ex_0093_43b2c4bd",
+          "merged_ex_0094_b590c4c9",
+          "merged_ex_0097_3e1b5da3",
+          "merged_ex_0105_d552e908",
+          "merged_ex_0106_f97028f9",
+          "merged_ex_0112_0d08872d",
+          "merged_ex_0113_777eef12",
+          "merged_ex_0122_bbbc6522",
+          "merged_ex_0123_bc6f8975",
+          "merged_ex_0129_0c947e3f",
+          "merged_ex_0134_4bae9046",
+          "merged_ex_0140_c87a4a2c",
+          "merged_ex_0143_2e49e4f1",
+          "merged_ex_0181_61f34a96",
+          "merged_ex_0184_caee834a",
+          "merged_ex_0198_021797a7",
+          "merged_ex_0199_47b23e16",
+          "merged_ex_0201_30a355c3",
+          "merged_ex_0202_8a148020",
+          "merged_ex_0208_0ae96c65",
+          "merged_ex_0209_d000a006",
+          "merged_ex_0211_0a67635a",
+          "merged_ex_0212_944e293c",
+          "merged_ex_0222_3d080260",
+          "merged_ex_0225_73bbdf10",
+          "merged_ex_0228_df91b679",
+          "merged_ex_0229_ad978f61",
+          "merged_ex_0231_1f886e3e",
+          "merged_ex_0236_612914ff",
+          "merged_ex_0239_d5adc6d3",
+          "merged_ex_0240_38b77bc7",
+          "merged_ex_0241_a43bc6b4",
+          "merged_ex_0242_62ca894c",
+          "merged_ex_0247_c0af1b5a",
+          "merged_ex_0249_f664de43",
+          "merged_ex_0250_af167094",
+          "merged_ex_0275_0223f3f8",
+          "merged_ex_0297_f097284e"
+        ],
+        "a3": []
+      },
+      "variant_count": 57,
+      "total_occurrences": 58,
+      "metadata": {
+        "tags": [
+          "contract",
+          "order"
+        ],
+        "category": "contract",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_contract"
+    },
+    "merged_ex_0008_d7830359": {
+      "id": "merged_ex_0008_d7830359",
+      "operation": "connect",
+      "code": "ib = IB()\nib.connect('127.0.0.1', 7497, clientId=1)\n\ncontract = Stock('AAPL', 'SMART', 'USD')\ncontract = ib.qualifyContracts(contract)[0]\n\norder = LimitOrder('BUY', 100, 175.0)\ntrade = ib.placeOrder(contract, order)\n\n# Wait for fill\nwhile not trade.isDone():\n    ib.sleep(0.1)\n\nprint(f\"Status: {trade.orderStatus.status}\")",
+      "language": "python",
+      "description": " Basic Pattern",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0008_d7830359",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [
+          "merged_cluster_0129"
+        ],
+        "a2": [
+          "merged_ex_0022_a3f0f5a9",
+          "merged_ex_0040_8452a621",
+          "merged_ex_0041_e5acebcb",
+          "merged_ex_0043_5d3bba14",
+          "merged_ex_0044_cff8313a",
+          "merged_ex_0048_4f262d22",
+          "merged_ex_0049_17c31825",
+          "merged_ex_0063_228c81f6",
+          "merged_ex_0064_bdc1144a",
+          "merged_ex_0077_85f6c0d1",
+          "merged_ex_0089_aa3f4ca5",
+          "merged_ex_0107_7cda9f41",
+          "merged_ex_0110_385aac72",
+          "merged_ex_0111_6bf39739",
+          "merged_ex_0117_03a78138",
+          "merged_ex_0118_9050e9e9",
+          "merged_ex_0119_672d75df",
+          "merged_ex_0120_61a75e07",
+          "merged_ex_0135_71282853",
+          "merged_ex_0136_1556d437",
+          "merged_ex_0148_f2fd5bf4",
+          "merged_ex_0149_9e42986f",
+          "merged_ex_0163_f6b52c88",
+          "merged_ex_0168_01a3894d",
+          "merged_ex_0177_8748cfe5",
+          "merged_ex_0183_3e821cf7",
+          "merged_ex_0186_740a3bd3",
+          "merged_ex_0187_9c1600a8",
+          "merged_ex_0192_1c37caad",
+          "merged_ex_0193_8372747c",
+          "merged_ex_0194_217875f9",
+          "merged_ex_0195_8e8c97f7",
+          "merged_ex_0253_4e41919c",
+          "merged_ex_0257_81a00951",
+          "merged_ex_0258_28c76fef",
+          "merged_ex_0259_e9e86cd9",
+          "merged_ex_0279_792ef977",
+          "merged_ex_0280_7ff23534",
+          "merged_ex_0281_2484482f",
+          "merged_ex_0282_2728ae87",
+          "merged_ex_0283_bdce8c76",
+          "merged_ex_0284_51b7c018",
+          "merged_ex_0285_a059ab35",
+          "merged_ex_0286_c1f31f77",
+          "merged_ex_0287_6fea4d44",
+          "merged_ex_0288_6880db86",
+          "merged_ex_0292_6d4e3880"
+        ],
+        "a3": []
+      },
+      "variant_count": 48,
+      "total_occurrences": 49,
+      "metadata": {
+        "tags": [
+          "connect",
+          "contract",
+          "order"
+        ],
+        "category": "connect",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_connect"
+    },
+    "merged_ex_0010_7e8f1098": {
+      "id": "merged_ex_0010_7e8f1098",
+      "operation": "cancelOrder",
+      "code": "ib.cancelOrder(order)",
+      "language": "python",
+      "description": " Cancel Order",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0010_7e8f1098",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0190_1da11b26",
+          "merged_ex_0220_af1ad75f"
+        ],
+        "a3": []
+      },
+      "variant_count": 2,
+      "total_occurrences": 3,
+      "metadata": {
+        "tags": [
+          "order"
+        ],
+        "category": "cancelOrder",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_cancelOrder"
+    },
+    "merged_ex_0011_18b44996": {
+      "id": "merged_ex_0011_18b44996",
+      "operation": "misc",
+      "code": "ib.reqGlobalCancel()",
+      "language": "python",
+      "description": " Cancel All",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0011_18b44996",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0030_b39d58cf",
+          "merged_ex_0031_809d444a",
+          "merged_ex_0100_bd27cf80",
+          "merged_ex_0138_fbdce807",
+          "merged_ex_0144_a855e3c4",
+          "merged_ex_0188_8e7796b2",
+          "merged_ex_0200_ac6252b4",
+          "merged_ex_0203_d49a58bb",
+          "merged_ex_0204_93b9ec89",
+          "merged_ex_0205_203f5234",
+          "merged_ex_0206_bfa34fc6",
+          "merged_ex_0207_163692a6",
+          "merged_ex_0232_eea923a8",
+          "merged_ex_0238_11491458",
+          "merged_ex_0243_0587e2fb",
+          "merged_ex_0245_21f82c32",
+          "merged_ex_0251_fd03c5d2",
+          "merged_ex_0252_1a669c09",
+          "merged_ex_0260_9c708f65",
+          "merged_ex_0262_3d6ef144",
+          "merged_ex_0265_53e6fadb",
+          "merged_ex_0266_fab63157",
+          "merged_ex_0294_41afd91b"
+        ],
+        "a3": []
+      },
+      "variant_count": 23,
+      "total_occurrences": 24,
+      "metadata": {
+        "tags": [],
+        "category": "misc",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_misc"
+    },
+    "merged_ex_0013_489b83e2": {
+      "id": "merged_ex_0013_489b83e2",
+      "operation": "event",
+      "code": "def on_order_status(trade):\n    print(f\"Order {trade.order.orderId}: {trade.orderStatus.status}\")\n\nib.orderStatusEvent += on_order_status",
+      "language": "python",
+      "description": " Monitor Status",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0013_489b83e2",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0076_c4ff8d3a",
+          "merged_ex_0099_24d7046c",
+          "merged_ex_0109_76fc649a",
+          "merged_ex_0139_0058769e",
+          "merged_ex_0196_6af2e413",
+          "merged_ex_0254_d1dc505e",
+          "merged_ex_0255_8775dd62",
+          "merged_ex_0256_d86ab109",
+          "merged_ex_0269_4d249eb8",
+          "merged_ex_0270_c9bcedf6",
+          "merged_ex_0273_ee1d6f63",
+          "merged_ex_0274_2dd7ade1",
+          "merged_ex_0290_5eea209b",
+          "merged_ex_0295_b291fa9b"
+        ],
+        "a3": []
+      },
+      "variant_count": 14,
+      "total_occurrences": 15,
+      "metadata": {
+        "tags": [
+          "event",
+          "order"
+        ],
+        "category": "event",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_event"
+    },
+    "merged_cluster_0019": {
+      "id": "merged_cluster_0019",
+      "operation": "reqHistoricalData",
+      "code": "while True:\n    bars = ib.reqHistoricalData(...)  # DON'T POLL!\n    time.sleep(5)  # Also wrong - blocks event loop!",
+      "language": "python",
+      "description": "Demonstrates incorrect pattern of repeatedly polling historical data in a blocking loop. This approach violates API best practices by 1) Using historical requests instead of real-time streaming 2) Blocking the event loop with sleep() which prevents processing of messages and events. Use real-time market data subscriptions instead of polling historical endpoints.",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0020_eb569bed",
+          "line": null
+        },
+        {
+          "file": "ex_0267_ecb56a32",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [
+          "merged_cluster_0027",
+          "merged_cluster_0091"
+        ],
+        "a2": [
+          "merged_ex_0032_34b0e6c2",
+          "merged_ex_0085_ff9da4c6",
+          "merged_ex_0088_0333ca26",
+          "merged_ex_0116_d1d3b777",
+          "merged_ex_0176_65541a5c",
+          "merged_ex_0182_36544bcc",
+          "merged_ex_0233_443b62c5",
+          "merged_ex_0293_aec1b4a0"
+        ],
+        "a3": []
+      },
+      "variant_count": 10,
+      "total_occurrences": 11,
+      "metadata": {
+        "tags": [
+          "data",
+          "event"
+        ],
+        "category": "reqHistoricalData",
+        "notes": "Example 2 adds emphasis on event loop blocking consequence. Both agree on core anti-pattern of polling historical data. Combined comments show both polling and blocking issues."
+      },
+      "file_pointer": "variant_clusters.json#cluster_reqHistoricalData"
+    },
+    "merged_ex_0021_b4426143": {
+      "id": "merged_ex_0021_b4426143",
+      "operation": "reqMktData",
+      "code": "# For ticks\nticker = ib.reqMktData(contract)\nticker.updateEvent += process_tick\n\n# For bars  \nbars = ib.reqRealTimeBars(contract, 5, 'TRADES', False)\nbars.updateEvent += process_bar",
+      "language": "python",
+      "description": "\u2705 ALWAYS DO THIS:",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0021_b4426143",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0023_e4cf6f06",
+          "merged_ex_0024_0e65c2b1",
+          "merged_ex_0035_c23ecc05",
+          "merged_ex_0037_86e01f21",
+          "merged_ex_0039_6faded7e",
+          "merged_ex_0042_4c1e2894",
+          "merged_ex_0046_d613ad24",
+          "merged_ex_0062_4ca1eb17",
+          "merged_ex_0090_63eb797f",
+          "merged_ex_0095_c4cd43da",
+          "merged_ex_0096_ed4bca13",
+          "merged_ex_0098_3c54380f",
+          "merged_ex_0101_46f5524b",
+          "merged_ex_0102_2681b27b",
+          "merged_ex_0103_922900ca",
+          "merged_ex_0104_14f4249a",
+          "merged_ex_0108_aa9a9920",
+          "merged_ex_0115_e6c51488",
+          "merged_ex_0145_6124bc35",
+          "merged_ex_0146_ac20163f",
+          "merged_ex_0167_405955a3",
+          "merged_ex_0169_53f05d1d",
+          "merged_ex_0173_6fdd48c4",
+          "merged_ex_0175_d2cf5153",
+          "merged_ex_0179_0c5a4c2d",
+          "merged_ex_0180_c93de700",
+          "merged_ex_0185_3be9f3a2",
+          "merged_ex_0224_acebfcb7",
+          "merged_ex_0226_109839aa",
+          "merged_ex_0268_1fbd5182",
+          "merged_ex_0271_fda8a0c1",
+          "merged_ex_0272_d4da6975",
+          "merged_ex_0276_35e97390",
+          "merged_ex_0277_e3d77231"
+        ],
+        "a3": []
+      },
+      "variant_count": 34,
+      "total_occurrences": 35,
+      "metadata": {
+        "tags": [
+          "contract",
+          "data",
+          "event"
+        ],
+        "category": "reqMktData",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_reqMktData"
+    },
+    "merged_cluster_0035": {
+      "id": "merged_cluster_0035",
+      "operation": "market data",
+      "code": "# Market Data Types:\n# 1 = Live (subscription required)\n# 2 = Frozen (snapshot)\n# 3 = Delayed (free, 15-min delay)\n# 4 = Delayed-Frozen\nib.reqMarketDataType(3)  # Use delayed data (free)",
+      "language": "python",
+      "description": "Sets the market data type for Interactive Brokers API connections. Use reqMarketDataType() to specify data quality: (1) Live data requiring subscription, (2) Frozen snapshots, (3) Free delayed data with 15-minute latency, or (4) Delayed-Frozen data. Type 3 is recommended for free access without subscriptions. This also resolves Error 354 ('Requested market data not subscribed') when accounts lack real-time data permissions.",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0036_b007e6a8",
+          "line": null
+        },
+        {
+          "file": "ex_0289_2973e326",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [],
+        "a3": []
+      },
+      "variant_count": 0,
+      "total_occurrences": 1,
+      "metadata": {
+        "tags": [
+          "market data",
+          "subscription",
+          "delayed data",
+          "error handling",
+          "connection",
+          "reqMarketDataType"
+        ],
+        "category": "market data",
+        "notes": "Example 1 provides complete market type definitions while Example 2 focuses on resolving subscription errors. Both agree on using type 3 for free delayed data. Example 2 additionally mentions type 4 (Delayed-Frozen) as an alternative solution for Error 354."
+      },
+      "file_pointer": "variant_clusters.json#cluster_market data"
+    },
+    "merged_ex_0045_4e24d1aa": {
+      "id": "merged_ex_0045_4e24d1aa",
+      "operation": "async",
+      "code": "# Synchronous event handler\ndef onOrderStatus(trade):\n    print(f\"Order {trade.order.orderId}: {trade.orderStatus.status}\")\n    if trade.isDone():\n        print(f\"Filled at: {trade.orderStatus.avgFillPrice}\")\n\nib.orderStatusEvent += onOrderStatus\n\n# Asynchronous event handler\nasync def onBarUpdate(bars, hasNewBar):\n    if hasNewBar:\n        print(f\"New bar: {bars[-1]}\")\n        # Can use await inside async handlers\n        await ib.qualifyContractsAsync(contract)\n\nbars.updateEvent += onBarUpdate",
+      "language": "python",
+      "description": "ibinsync uses the eventkit library for its event system. Events fire asynchronously and you subscribe using the += operator. Event handlers can be either synchronous functions or async coroutines.",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0045_4e24d1aa",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0047_02297e7d",
+          "merged_ex_0050_6a97af6f",
+          "merged_ex_0051_76c1e159",
+          "merged_ex_0060_374afa70",
+          "merged_ex_0178_7a9e424a",
+          "merged_ex_0197_5d3a8df7",
+          "merged_ex_0263_1b93afa6",
+          "merged_ex_0264_083aaf30",
+          "merged_ex_0296_3cf79bd0"
+        ],
+        "a3": []
+      },
+      "variant_count": 9,
+      "total_occurrences": 10,
+      "metadata": {
+        "tags": [
+          "async",
+          "contract",
+          "event",
+          "order"
+        ],
+        "category": "async",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_async"
+    },
+    "merged_ex_0052_e56ea900": {
+      "id": "merged_ex_0052_e56ea900",
+      "operation": "portfolio",
+      "code": "# Internal architecture (conceptual)\nIB Instance\n    \u2514\u2500\u2500 Wrapper Instance (single source of truth)\n        \u251c\u2500\u2500 accountValues (dict)\n        \u251c\u2500\u2500 acctSummary (dict)\n        \u251c\u2500\u2500 portfolio (defaultdict)\n        \u251c\u2500\u2500 positions (defaultdict)\n        \u251c\u2500\u2500 trades (dict)\n        \u251c\u2500\u2500 tickers (dict)\n        \u2514\u2500\u2500 [other state collections]\n    \u2514\u2500\u2500 Client Instance (network communication)",
+      "language": "python",
+      "description": "The IB class provides the user-facing interface, but internally delegates all state storage to the Wrapper. This Wrapper maintains dictionaries for account values, portfolio items, positions, trades, ...",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0052_e56ea900",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0246_af6a41c6"
+        ],
+        "a3": []
+      },
+      "variant_count": 1,
+      "total_occurrences": 2,
+      "metadata": {
+        "tags": [
+          "portfolio"
+        ],
+        "category": "portfolio",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_portfolio"
+    },
+    "merged_ex_0053_127607b2": {
+      "id": "merged_ex_0053_127607b2",
+      "operation": "reqPositions",
+      "code": "# CORRECT - access live state\ndef check_positions():\n    positions = ib.positions()\n    for pos in positions:\n        print(f\"{pos.contract.symbol}: {pos.position}\")\n\n# WRONG - storing stale copies\ncached_positions = ib.positions()  # Snapshot becomes stale\n# Later...\nprint(cached_positions)  # Likely outdated",
+      "language": "python",
+      "description": "The critical pattern: never store copies of state in long-lived variables. Always call IB methods to access current state. Stored copies become stale as the Wrapper updates in the background.",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0053_127607b2",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0056_43a0d333",
+          "merged_ex_0057_0fc7542b",
+          "merged_ex_0058_425a6b9f",
+          "merged_ex_0061_f269a415",
+          "merged_ex_0171_130315a8",
+          "merged_ex_0191_a0a2d809",
+          "merged_ex_0261_45f7dcb4"
+        ],
+        "a3": []
+      },
+      "variant_count": 7,
+      "total_occurrences": 8,
+      "metadata": {
+        "tags": [
+          "contract",
+          "portfolio"
+        ],
+        "category": "reqPositions",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_reqPositions"
+    },
+    "merged_ex_0084_7ced81f4": {
+      "id": "merged_ex_0084_7ced81f4",
+      "operation": "reqContractDetails",
+      "code": "contract = Future('ES', '202506', 'CME')\ndetails_list = ib.reqContractDetails(contract)\n\nfor details in details_list:\n    print(f\"ConId: {details.contract.conId}\")\n    print(f\"Local Symbol: {details.contract.localSymbol}\")\n    print(f\"Expiry: {details.contract.lastTradeDateOrContractMonth}\")\n    print(f\"Multiplier: {details.contract.multiplier}\")\n    print(f\"Min Tick: {details.minTick}\")\n    print(f\"Market Name: {details.marketName}\")",
+      "language": "python",
+      "description": "Use reqContractDetails() to get comprehensive contract information beyond basic qualification:",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0084_7ced81f4",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0086_5032bbea",
+          "merged_ex_0142_c7128665",
+          "merged_ex_0210_84bbd4a2"
+        ],
+        "a3": []
+      },
+      "variant_count": 3,
+      "total_occurrences": 4,
+      "metadata": {
+        "tags": [
+          "contract"
+        ],
+        "category": "reqContractDetails",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_reqContractDetails"
+    },
+    "merged_ex_0189_91b1ed12": {
+      "id": "merged_ex_0189_91b1ed12",
+      "operation": "error",
+      "code": "RequestTimeout: float = 0        # Request timeout (0 = infinite)\nRaiseRequestErrors: bool = False # Raise errors vs silent fail\nMaxSyncedSubAccounts: int = 50   # Max sub-accounts to sync",
+      "language": "python",
+      "description": " Class Attributes",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0189_91b1ed12",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [],
+        "a3": []
+      },
+      "variant_count": 0,
+      "total_occurrences": 1,
+      "metadata": {
+        "tags": [
+          "error"
+        ],
+        "category": "error",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_error"
+    },
+    "merged_ex_0234_5c6e682d": {
+      "id": "merged_ex_0234_5c6e682d",
+      "operation": "data",
+      "code": "S = Seconds (max 60)\nD = Days (max 365)\nW = Weeks (max 52)\nM = Months (max 12)\nY = Years (max 1)",
+      "language": "python",
+      "description": "Duration Strings:",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0234_5c6e682d",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [
+          "merged_ex_0235_43901f2a"
+        ],
+        "a3": []
+      },
+      "variant_count": 1,
+      "total_occurrences": 2,
+      "metadata": {
+        "tags": [
+          "data"
+        ],
+        "category": "data",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_data"
+    },
+    "merged_ex_0248_23c41848": {
+      "id": "merged_ex_0248_23c41848",
+      "operation": "reqAccountSummary",
+      "code": "summary = ib.reqAccountSummary() -> List[AccountValue]\n# Summary for all accounts\n\n# Or filter by tags\nsummary = ib.reqAccountSummary(\n    account: str = 'All',\n    modelCode: str = '',\n    tags: str = 'NetLiquidation,TotalCashValue,BuyingPower'\n)",
+      "language": "python",
+      "description": " Account Summary",
+      "occurrence_count": 1,
+      "tier": "a0",
+      "is_canonical": true,
+      "similarity": 1.0,
+      "sources": [
+        {
+          "file": "ex_0248_23c41848",
+          "line": null
+        }
+      ],
+      "variants": {
+        "a1": [],
+        "a2": [],
+        "a3": []
+      },
+      "variant_count": 0,
+      "total_occurrences": 1,
+      "metadata": {
+        "tags": [],
+        "category": "reqAccountSummary",
+        "notes": "Single example, no duplicates found"
+      },
+      "file_pointer": "variant_clusters.json#cluster_reqAccountSummary"
+    }
+  }
+}

@@ -12,9 +12,10 @@ venv/
 ENV/
 .venv
 
-# Output files (keep final results, ignore intermediate files)
+# Output files (keep pyramid index in 5_final, ignore intermediate files)
 outputs/1_extracted/
 outputs/2_merged/
+outputs/3_final/
 logs/
 .cache/
 

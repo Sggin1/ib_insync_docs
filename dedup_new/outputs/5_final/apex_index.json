@@ -1,0 +1,246 @@
+{
+  "version": "1.0.0",
+  "created_at": "2025-11-16",
+  "total_operations": 17,
+  "total_examples": 272,
+  "total_canonical": 17,
+  "operations": {
+    "order": {
+      "canonical_id": "merged_ex_0001_73157af0",
+      "total_occurrences": 14,
+      "variant_count": 13,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 2,
+        "a2": 11,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0001_73157af0"
+    },
+    "placeOrder": {
+      "canonical_id": "merged_cluster_0003",
+      "total_occurrences": 34,
+      "variant_count": 33,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 6,
+        "a2": 27,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_cluster_0003"
+    },
+    "contract": {
+      "canonical_id": "merged_ex_0006_ce50b185",
+      "total_occurrences": 58,
+      "variant_count": 57,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 3,
+        "a2": 54,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0006_ce50b185"
+    },
+    "connect": {
+      "canonical_id": "merged_ex_0008_d7830359",
+      "total_occurrences": 49,
+      "variant_count": 48,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 1,
+        "a2": 47,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0008_d7830359"
+    },
+    "cancelOrder": {
+      "canonical_id": "merged_ex_0010_7e8f1098",
+      "total_occurrences": 3,
+      "variant_count": 2,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 2,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0010_7e8f1098"
+    },
+    "misc": {
+      "canonical_id": "merged_ex_0011_18b44996",
+      "total_occurrences": 24,
+      "variant_count": 23,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 23,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0011_18b44996"
+    },
+    "event": {
+      "canonical_id": "merged_ex_0013_489b83e2",
+      "total_occurrences": 15,
+      "variant_count": 14,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 14,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0013_489b83e2"
+    },
+    "reqHistoricalData": {
+      "canonical_id": "merged_cluster_0019",
+      "total_occurrences": 11,
+      "variant_count": 10,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 2,
+        "a2": 8,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_cluster_0019"
+    },
+    "reqMktData": {
+      "canonical_id": "merged_ex_0021_b4426143",
+      "total_occurrences": 35,
+      "variant_count": 34,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 34,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0021_b4426143"
+    },
+    "market data": {
+      "canonical_id": "merged_cluster_0035",
+      "total_occurrences": 1,
+      "variant_count": 0,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 0,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_cluster_0035"
+    },
+    "async": {
+      "canonical_id": "merged_ex_0045_4e24d1aa",
+      "total_occurrences": 10,
+      "variant_count": 9,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 9,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0045_4e24d1aa"
+    },
+    "portfolio": {
+      "canonical_id": "merged_ex_0052_e56ea900",
+      "total_occurrences": 2,
+      "variant_count": 1,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 1,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0052_e56ea900"
+    },
+    "reqPositions": {
+      "canonical_id": "merged_ex_0053_127607b2",
+      "total_occurrences": 8,
+      "variant_count": 7,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 7,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0053_127607b2"
+    },
+    "reqContractDetails": {
+      "canonical_id": "merged_ex_0084_7ced81f4",
+      "total_occurrences": 4,
+      "variant_count": 3,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 3,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0084_7ced81f4"
+    },
+    "error": {
+      "canonical_id": "merged_ex_0189_91b1ed12",
+      "total_occurrences": 1,
+      "variant_count": 0,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 0,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0189_91b1ed12"
+    },
+    "data": {
+      "canonical_id": "merged_ex_0234_5c6e682d",
+      "total_occurrences": 2,
+      "variant_count": 1,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 1,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0234_5c6e682d"
+    },
+    "reqAccountSummary": {
+      "canonical_id": "merged_ex_0248_23c41848",
+      "total_occurrences": 1,
+      "variant_count": 0,
+      "confidence": 1.0,
+      "tier_distribution": {
+        "a0": 1,
+        "a1": 0,
+        "a2": 0,
+        "a3": 0
+      },
+      "file_pointer": "canonical_examples.json#merged_ex_0248_23c41848"
+    }
+  },
+  "quick_stats": {
+    "most_common": [
+      "contract",
+      "connect",
+      "reqMktData",
+      "placeOrder",
+      "misc",
+      "event",
+      "order",
+      "reqHistoricalData",
+      "async",
+      "reqPositions"
+    ],
+    "avg_variants_per_operation": 15.0,
+    "deduplication_ratio": 0.9375
+  }
+}
