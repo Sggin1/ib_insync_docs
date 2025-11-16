@@ -1,0 +1,463 @@
+[
+  {
+    "line": 0,
+    "id": "merged_cluster_0003",
+    "topic": "Creates a bracket order with entry, take profit, a",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.34,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 1,
+    "id": "merged_cluster_0004",
+    "topic": "Creates a trailing stop order that tracks price mo",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.13,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 2,
+    "id": "merged_cluster_0006",
+    "topic": "Creates a TWAP (Time-Weighted Average Price) order",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.24,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 3,
+    "id": "merged_cluster_0011",
+    "topic": "Modifies an existing order by updating its limit p",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.07,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 4,
+    "id": "merged_cluster_0014",
+    "topic": "Creates a vertical spread (debit) or calendar spre",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.55,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 5,
+    "id": "merged_cluster_0019",
+    "topic": "Demonstrates incorrect pattern of repeatedly polli",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.08,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 6,
+    "id": "merged_cluster_0027",
+    "topic": "Requests historical market data for a financial in",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.17,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 7,
+    "id": "merged_cluster_0035",
+    "topic": "Sets the market data type for Interactive Brokers ",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.04,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 8,
+    "id": "merged_cluster_0091",
+    "topic": "Requests historical bars with real-time updates. W",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.13,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 9,
+    "id": "merged_cluster_0123",
+    "topic": "Represents financial contracts for various asset t",
+    "tier": "a1",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+    "warnings": []
+  },
+  {
+    "line": 10,
+    "id": "merged_cluster_0124",
+    "topic": "Represents a financial contract in IBKR systems. T",
+    "tier": "a1",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+    "warnings": []
+  },
+  {
+    "line": 11,
+    "id": "merged_cluster_0129",
+    "topic": "Demonstrates asynchronous streaming of real-time m",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.61,
+    "error": null,
+    "warnings": [
+      "syntax:ok",
+      "import:asyncio",
+      "import:ib_insync",
+      "pattern:async"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 12,
+    "id": "merged_cluster_0144",
+    "topic": "Places advanced order types in Interactive Brokers",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.15,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 13,
+    "id": "merged_cluster_0198",
+    "topic": "Represents stop and stop-limit order types. Stop o",
+    "tier": "a1",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 2)",
+    "warnings": []
+  },
+  {
+    "line": 14,
+    "id": "merged_cluster_0204",
+    "topic": "The whatIfOrder method tests an order without plac",
+    "tier": "a1",
+    "status": "pass",
+    "exec_time_ms": 0.05,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 15,
+    "id": "merged_cluster_0208",
+    "topic": "Cancels real-time market data subscriptions. Use c",
+    "tier": "a1",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+    "warnings": []
+  },
+  {
+    "line": 0,
+    "id": "merged_ex_0001_73157af0",
+    "topic": " Market Order",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.12,
+    "error": null,
+    "warnings": [
+      "syntax:ok",
+      "from:ib_insync"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 1,
+    "id": "merged_ex_0002_8770c7ad",
+    "topic": " Limit Order",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.05,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 2,
+    "id": "merged_ex_0003_3baa2883",
+    "topic": " Stop Order",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.05,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 3,
+    "id": "merged_ex_0006_ce50b185",
+    "topic": " Conditional Order",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.27,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 4,
+    "id": "merged_ex_0008_d7830359",
+    "topic": " Basic Pattern",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.34,
+    "error": null,
+    "warnings": [
+      "syntax:ok",
+      "pattern:IB_init",
+      "pattern:connect"
+    ],
+    "demo_safe": true
+  },
+  {
+    "line": 5,
+    "id": "merged_ex_0009_55344dab",
+    "topic": " With Validation",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.24,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 6,
+    "id": "merged_ex_0010_7e8f1098",
+    "topic": " Cancel Order",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.04,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 7,
+    "id": "merged_ex_0011_18b44996",
+    "topic": " Cancel All",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.03,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 8,
+    "id": "merged_ex_0013_489b83e2",
+    "topic": " Monitor Status",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.14,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 9,
+    "id": "merged_ex_0014_cbe2f695",
+    "topic": " Single Option",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.16,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 10,
+    "id": "merged_ex_0016_8c2fb027",
+    "topic": " Time In Force",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.05,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 11,
+    "id": "merged_ex_0017_6a11bf25",
+    "topic": " Position Entry with Protection",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.32,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 12,
+    "id": "merged_ex_0018_ce1ccb8b",
+    "topic": " Scale In/Out",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.3,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 13,
+    "id": "merged_ex_0019_2cc9e38b",
+    "topic": " Error Handling",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.34,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 14,
+    "id": "merged_ex_0021_b4426143",
+    "topic": "\u2705 ALWAYS DO THIS:",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.13,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 15,
+    "id": "merged_ex_0022_a3f0f5a9",
+    "topic": " Basic Ticker (Streaming)",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.37,
+    "error": null,
+    "warnings": [
+      "syntax:ok",
+      "pattern:IB_init",
+      "pattern:connect"
+    ],
+    "demo_safe": true
+  },
+  {
+    "line": 16,
+    "id": "merged_ex_0023_e4cf6f06",
+    "topic": " With Event Handler",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.17,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 17,
+    "id": "merged_ex_0024_0e65c2b1",
+    "topic": " Generic Ticks (Extra Data)",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.16,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  },
+  {
+    "line": 18,
+    "id": "merged_ex_0025_b431b910",
+    "topic": " Generic Tick IDs",
+    "tier": "a2",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+    "warnings": []
+  },
+  {
+    "line": 19,
+    "id": "merged_ex_0026_bff1f5f7",
+    "topic": " Cancel Streaming",
+    "tier": "a2",
+    "status": "pass",
+    "exec_time_ms": 0.09,
+    "error": null,
+    "warnings": [
+      "syntax:ok"
+    ],
+    "demo_safe": false
+  }
+]

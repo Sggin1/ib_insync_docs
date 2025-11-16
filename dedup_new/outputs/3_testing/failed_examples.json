@@ -1,0 +1,52 @@
+[
+  {
+    "line": 9,
+    "id": "merged_cluster_0123",
+    "topic": "Represents financial contracts for various asset t",
+    "tier": "a1",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+    "warnings": []
+  },
+  {
+    "line": 10,
+    "id": "merged_cluster_0124",
+    "topic": "Represents a financial contract in IBKR systems. T",
+    "tier": "a1",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+    "warnings": []
+  },
+  {
+    "line": 13,
+    "id": "merged_cluster_0198",
+    "topic": "Represents stop and stop-limit order types. Stop o",
+    "tier": "a1",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 2)",
+    "warnings": []
+  },
+  {
+    "line": 15,
+    "id": "merged_cluster_0208",
+    "topic": "Cancels real-time market data subscriptions. Use c",
+    "tier": "a1",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+    "warnings": []
+  },
+  {
+    "line": 18,
+    "id": "merged_ex_0025_b431b910",
+    "topic": " Generic Tick IDs",
+    "tier": "a2",
+    "status": "fail",
+    "exec_time_ms": 0,
+    "error": "SyntaxError: invalid syntax (<unknown>, line 1)",
+    "warnings": []
+  }
+]
