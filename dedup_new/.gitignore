@@ -12,10 +12,11 @@ venv/
 ENV/
 .venv
 
-# Output files (keep pyramid index in 5_final, ignore intermediate files)
+# Output files (keep 3-layer optimized in 5_final_v2, ignore old/intermediate)
 outputs/1_extracted/
 outputs/2_merged/
 outputs/3_final/
+outputs/5_final/
 logs/
 .cache/
 
