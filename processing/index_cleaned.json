@@ -1,0 +1,4419 @@
+{
+  "index": [
+    {
+      "name": "abovePrice",
+      "full_path": "ib_insync.objects.ScannerSubscription.abovePrice",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "account",
+      "full_path": "ib_insync.ibcontroller.Watchdog.account",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "accountSummary",
+      "full_path": "ib_insync.ib.IB.accountSummary",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "accountSummaryAsync",
+      "full_path": "ib_insync.ib.IB.accountSummaryAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "AccountValue",
+      "full_path": "ib_insync.objects.AccountValue",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "accountValues",
+      "full_path": "ib_insync.ib.IB.accountValues",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "acctCode",
+      "full_path": "ib_insync.objects.ExecutionFilter.acctCode",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "ActiveStates",
+      "full_path": "ib_insync.order.OrderStatus.ActiveStates",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "adjustableTrailingUnit",
+      "full_path": "ib_insync.order.Order.adjustableTrailingUnit",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "adjustedOrderType",
+      "full_path": "ib_insync.order.Order.adjustedOrderType",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "adjustedStopLimitPrice",
+      "full_path": "ib_insync.order.Order.adjustedStopLimitPrice",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "adjustedStopPrice",
+      "full_path": "ib_insync.order.Order.adjustedStopPrice",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "aggGroup",
+      "full_path": "ib_insync.objects.DepthMktDataDescription.aggGroup",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "algoParams",
+      "full_path": "ib_insync.order.StopLimitOrder.algoParams",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "allowCtrlC",
+      "full_path": "ib_insync.util.allowCtrlC",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "And",
+      "full_path": "ib_insync.order.OrderCondition.And",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "ApiCancelled",
+      "full_path": "ib_insync.order.OrderStatus.ApiCancelled",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "appStartupTime",
+      "full_path": "ib_insync.ibcontroller.Watchdog.appStartupTime",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "articleText",
+      "full_path": "ib_insync.objects.NewsArticle.articleText",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "articleType",
+      "full_path": "ib_insync.objects.NewsArticle.articleType",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "askPastHigh",
+      "full_path": "ib_insync.objects.TickAttribBidAsk.askPastHigh",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "askPrice",
+      "full_path": "ib_insync.objects.TickByTickBidAsk.askPrice",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "atasks",
+      "full_path": "ib_insync.ticker.TickerUpdateEvent.atasks",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "atclientId",
+      "full_path": "ib_insync.objects.ExecutionFilter.atclientId",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "atconnectAsync",
+      "full_path": "ib_insync.ib.IB.atconnectAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "atdict",
+      "full_path": "ib_insync.contract.Warrant.atdict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "atexchange",
+      "full_path": "ib_insync.objects.ExecutionFilter.atexchange",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "atgetReqId",
+      "full_path": "ib_insync.client.Client.atgetReqId",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "atreqPositions",
+      "full_path": "ib_insync.ib.IB.atreqPositions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "atreqTickByTickData",
+      "full_path": "ib_insync.ib.IB.atreqTickByTickData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "atsendMsg",
+      "full_path": "ib_insync.client.Client.atsendMsg",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "attuple",
+      "full_path": "ib_insync.contract.Stock.attuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "attuple",
+      "full_path": "ib_insync.ibcontroller.Watchdog.attuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "auctionImbalance",
+      "full_path": "ib_insync.ticker.Ticker.auctionImbalance",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "autoCancelParent",
+      "full_path": "ib_insync.order.Order.autoCancelParent",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "avgFillPrice",
+      "full_path": "ib_insync.order.OrderStatus.avgFillPrice",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "Bag",
+      "full_path": "ib_insync.contract.Bag",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "Bar",
+      "full_path": "ib_insync.ticker.Bar",
+      "type": "class",
+      "module": "ib_insync.ticker",
+      "class": null
+    },
+    {
+      "name": "BarData",
+      "full_path": "ib_insync.objects.BarData",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "BarDataList",
+      "full_path": "ib_insync.objects.BarDataList",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "BarList",
+      "full_path": "ib_insync.ticker.BarList",
+      "type": "class",
+      "module": "ib_insync.ticker",
+      "class": null
+    },
+    {
+      "name": "barplot",
+      "full_path": "ib_insync.util.barplot",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "barSize",
+      "full_path": "ib_insync.objects.RealTimeBarList.barSize",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "bids",
+      "full_path": "ib_insync.ticker.TickerUpdateEvent.bids",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "bitNumber",
+      "full_path": "ib_insync.objects.SmartComponent.bitNumber",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "Bond",
+      "full_path": "ib_insync.contract.Bond",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "bracketOrder",
+      "full_path": "ib_insync.ib.IB.bracketOrder",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "BracketOrder",
+      "full_path": "ib_insync.order.BracketOrder",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "calculateOptionPrice",
+      "full_path": "ib_insync.ib.IB.calculateOptionPrice",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "callOpenInterest",
+      "full_path": "ib_insync.ticker.Ticker.callOpenInterest",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "cancelHistogramData",
+      "full_path": "ib_insync.client.Client.cancelHistogramData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "cancelHistoricalData",
+      "full_path": "ib_insync.ib.IB.cancelHistoricalData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelMktData",
+      "full_path": "ib_insync.client.Client.cancelMktData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "cancelMktData",
+      "full_path": "ib_insync.ib.IB.cancelMktData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelMktDepth",
+      "full_path": "ib_insync.client.Client.cancelMktDepth",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "cancelMktDepth",
+      "full_path": "ib_insync.ib.IB.cancelMktDepth",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelNewsBulletins",
+      "full_path": "ib_insync.ib.IB.cancelNewsBulletins",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelOrder",
+      "full_path": "ib_insync.client.Client.cancelOrder",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "cancelOrder",
+      "full_path": "ib_insync.ib.IB.cancelOrder",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelPnL",
+      "full_path": "ib_insync.client.Client.cancelPnL",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "cancelPnL",
+      "full_path": "ib_insync.ib.IB.cancelPnL",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelPnLSingle",
+      "full_path": "ib_insync.client.Client.cancelPnLSingle",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "cancelPnLSingle",
+      "full_path": "ib_insync.ib.IB.cancelPnLSingle",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelPositions",
+      "full_path": "ib_insync.client.Client.cancelPositions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "cancelRealTimeBars",
+      "full_path": "ib_insync.ib.IB.cancelRealTimeBars",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelTickByTickData",
+      "full_path": "ib_insync.ib.IB.cancelTickByTickData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "cancelWshEventData",
+      "full_path": "ib_insync.client.Client.cancelWshEventData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "CFD",
+      "full_path": "ib_insync.contract.CFD",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "Client",
+      "full_path": "ib_insync.client.Client",
+      "type": "class",
+      "module": "ib_insync.client",
+      "class": null
+    },
+    {
+      "name": "clientId",
+      "full_path": "ib_insync.ibcontroller.Watchdog.clientId",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "ComboLeg",
+      "full_path": "ib_insync.contract.ComboLeg",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "comboLegs",
+      "full_path": "ib_insync.contract.MutualFund.comboLegs",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "CommissionReport",
+      "full_path": "ib_insync.objects.CommissionReport",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "Commodity",
+      "full_path": "ib_insync.contract.Commodity",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "completedTime",
+      "full_path": "ib_insync.order.OrderState.completedTime",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "conditions",
+      "full_path": "ib_insync.order.StopLimitOrder.conditions",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "condType",
+      "full_path": "ib_insync.order.MarginCondition.condType",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "condType",
+      "full_path": "ib_insync.order.VolumeCondition.condType",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "connect",
+      "full_path": "ib_insync.client.Client.connect",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "connect",
+      "full_path": "ib_insync.ib.IB.connect",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "connectAsync",
+      "full_path": "ib_insync.client.Client.connectAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "connectionStats",
+      "full_path": "ib_insync.client.Client.connectionStats",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "ConnectionStats",
+      "full_path": "ib_insync.objects.ConnectionStats",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "ConnectionStatspropnonDefaults",
+      "full_path": "ib_insync.objects.PnL.ConnectionStatspropnonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "ContFuture",
+      "full_path": "ib_insync.contract.ContFuture",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "continuousUpdate",
+      "full_path": "ib_insync.order.Order.continuousUpdate",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "Contract",
+      "full_path": "ib_insync.contract.Contract",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "ContractDescripdtiiocnt",
+      "full_path": "ib_insync.objects.SoftDollarTier.ContractDescripdtiiocnt",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "ContractDescription",
+      "full_path": "ib_insync.contract.ContractDescription",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "ContractDetails",
+      "full_path": "ib_insync.contract.ContractDetails",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "coupon",
+      "full_path": "ib_insync.contract.ContractDetails.coupon",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "create",
+      "full_path": "ib_insync.contract.Contract.create",
+      "type": "static_method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "Crypto",
+      "full_path": "ib_insync.contract.Crypto",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "dataclassAsDict",
+      "full_path": "ib_insync.util.dataclassAsDict",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "dataclassAsTuple",
+      "full_path": "ib_insync.util.dataclassAsTuple",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "dataclassNonDefaults",
+      "full_path": "ib_insync.util.dataclassNonDefaults",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "dataclassRepr",
+      "full_path": "ib_insync.util.dataclassRepr",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "dataclassUpdate",
+      "full_path": "ib_insync.util.dataclassUpdate",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "delta",
+      "full_path": "ib_insync.objects.OptionComputation.delta",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "deltaNeutralConId",
+      "full_path": "ib_insync.order.Order.deltaNeutralConId",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "DeltaNeutralContract",
+      "full_path": "ib_insync.contract.DeltaNeutralContract",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "deltaNeutralOpenClose",
+      "full_path": "ib_insync.order.Order.deltaNeutralOpenClose",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "deltaNeutralOrderType",
+      "full_path": "ib_insync.order.Order.deltaNeutralOrderType",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "deltaNeutralShortSale",
+      "full_path": "ib_insync.order.Order.deltaNeutralShortSale",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "deltaNeutralShortSaleSlot",
+      "full_path": "ib_insync.order.Order.deltaNeutralShortSaleSlot",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "DepthMktDataDescriptinoonnDefaults",
+      "full_path": "ib_insync.order.StopOrder.DepthMktDataDescriptinoonnDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "df",
+      "full_path": "ib_insync.flexreport.FlexReport.df",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "flexreport"
+    },
+    {
+      "name": "df",
+      "full_path": "ib_insync.util.df",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Bag.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Bond.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.CFD.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.ComboLeg.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Commodity.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.ContFuture.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Contract.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.ContractDetails.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Crypto.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Forex.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Future.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.FuturesOption.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Index.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.MutualFund.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Option.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.ScanData.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.contract.Stock.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.ibcontroller.IBC.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.ibcontroller.IBController.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.ibcontroller.Watchdog.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.BarData.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.CommissionReport.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.Execution.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.ExecutionFilter.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.HistogramData.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.HistoricalSchedule.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.HistoricalSession.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.NewsProvider.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.PnL.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.PnLSingle.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.RealTimeBar.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.ScannerSubscription.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.TickAttrib.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.TickAttribBidAsk.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.TickAttribLast.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.objects.TradeLogEntry.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.ExecutionCondition.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.LimitOrder.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.MarginCondition.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.MarketOrder.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.Order.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.OrderComboLeg.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.OrderCondition.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.OrderState.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.OrderStatus.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.PriceCondition.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.StopLimitOrder.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.StopOrder.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.TimeCondition.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.Trade.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.order.VolumeCondition.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "dict",
+      "full_path": "ib_insync.ticker.Ticker.dict",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "disconnect",
+      "full_path": "ib_insync.client.Client.disconnect",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "disconnect",
+      "full_path": "ib_insync.ib.IB.disconnect",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "discretionaryAmt",
+      "full_path": "ib_insync.order.Order.discretionaryAmt",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "Dividends",
+      "full_path": "ib_insync.objects.Dividends",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "DOMLevel",
+      "full_path": "ib_insync.objects.DOMLevel",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "download",
+      "full_path": "ib_insync.flexreport.FlexReport.download",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "flexreport"
+    },
+    {
+      "name": "durationStr",
+      "full_path": "ib_insync.objects.BarDataList.durationStr",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "DynamicObject",
+      "full_path": "ib_insync.objects.DynamicObject",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "endDateTime",
+      "full_path": "ib_insync.objects.BarDataList.endDateTime",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "equityWithLoanChange",
+      "full_path": "ib_insync.order.OrderState.equityWithLoanChange",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "errorCode",
+      "full_path": "ib_insync.objects.TradeLogEntry.errorCode",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "evRule",
+      "full_path": "ib_insync.contract.ContractDetails.evRule",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "execId",
+      "full_path": "ib_insync.objects.CommissionReport.execId",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "Execution",
+      "full_path": "ib_insync.objects.Execution",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "ExecutionCondition",
+      "full_path": "ib_insync.order.ExecutionCondition",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "ExecutionFilter",
+      "full_path": "ib_insync.objects.ExecutionFilter",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "executions",
+      "full_path": "ib_insync.ib.IB.executions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "exemptCode",
+      "full_path": "ib_insync.contract.ComboLeg.exemptCode",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "exerciseOptions",
+      "full_path": "ib_insync.client.Client.exerciseOptions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "exerciseOptions",
+      "full_path": "ib_insync.ib.IB.exerciseOptions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "extract",
+      "full_path": "ib_insync.flexreport.FlexReport.extract",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "flexreport"
+    },
+    {
+      "name": "FamilyCode",
+      "full_path": "ib_insync.objects.FamilyCode",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "Fill",
+      "full_path": "ib_insync.objects.Fill",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "filled",
+      "full_path": "ib_insync.order.Trade.filled",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "fills",
+      "full_path": "ib_insync.ib.IB.fills",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "FlexReport",
+      "full_path": "ib_insync.flexreport.FlexReport",
+      "type": "class",
+      "module": "ib_insync.flexreport",
+      "class": null
+    },
+    {
+      "name": "Forex",
+      "full_path": "ib_insync.contract.Forex",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "formatDate",
+      "full_path": "ib_insync.objects.BarDataList.formatDate",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "formatIBDatetime",
+      "full_path": "ib_insync.util.formatIBDatetime",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "formatSI",
+      "full_path": "ib_insync.util.formatSI",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "FundamentalRatios",
+      "full_path": "ib_insync.objects.FundamentalRatios",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "fundamentalRatios",
+      "full_path": "ib_insync.ticker.Ticker.fundamentalRatios",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "Future",
+      "full_path": "ib_insync.contract.Future",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "FuturesOption",
+      "full_path": "ib_insync.contract.FuturesOption",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "gamma",
+      "full_path": "ib_insync.objects.OptionComputation.gamma",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "getAccounts",
+      "full_path": "ib_insync.client.Client.getAccounts",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "getLoop",
+      "full_path": "ib_insync.util.getLoop",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "hasBidAsk",
+      "full_path": "ib_insync.ticker.Ticker.hasBidAsk",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "headline",
+      "full_path": "ib_insync.objects.HistoricalNews.headline",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "HistogramData",
+      "full_path": "ib_insync.objects.HistogramData",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "HistoricalSchedule",
+      "full_path": "ib_insync.objects.HistoricalSchedule",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "HistoricalTick",
+      "full_path": "ib_insync.objects.HistoricalTick",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "HistoricalTickLast",
+      "full_path": "ib_insync.objects.HistoricalTickLast",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "IB",
+      "full_path": "ib_insync.ib.IB",
+      "type": "class",
+      "module": "ib_insync.ib",
+      "class": null
+    },
+    {
+      "name": "IBC",
+      "full_path": "ib_insync.ibcontroller.IBC",
+      "type": "class",
+      "module": "ib_insync.ibcontroller",
+      "class": null
+    },
+    {
+      "name": "IBC_INI",
+      "full_path": "ib_insync.ibcontroller.IBController.IBC_INI",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "IBController",
+      "full_path": "ib_insync.ibcontroller.IBController",
+      "type": "class",
+      "module": "ib_insync.ibcontroller",
+      "class": null
+    },
+    {
+      "name": "impliedVolatility",
+      "full_path": "ib_insync.ticker.Ticker.impliedVolatility",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "Index",
+      "full_path": "ib_insync.contract.Index",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "isActive",
+      "full_path": "ib_insync.order.Trade.isActive",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "isConnected",
+      "full_path": "ib_insync.client.Client.isConnected",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "isConnected",
+      "full_path": "ib_insync.ib.IB.isConnected",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "isDone",
+      "full_path": "ib_insync.order.Trade.isDone",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "isHashable",
+      "full_path": "ib_insync.contract.Contract.isHashable",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "isnamedtupleinstance",
+      "full_path": "ib_insync.util.isnamedtupleinstance",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "isNan",
+      "full_path": "ib_insync.util.isNan",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "isReady",
+      "full_path": "ib_insync.client.Client.isReady",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "lastLiquidity",
+      "full_path": "ib_insync.objects.Execution.lastLiquidity",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "LimitOrder",
+      "full_path": "ib_insync.order.LimitOrder",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "load",
+      "full_path": "ib_insync.flexreport.FlexReport.load",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "flexreport"
+    },
+    {
+      "name": "logToConsole",
+      "full_path": "ib_insync.util.logToConsole",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "logToFile",
+      "full_path": "ib_insync.util.logToFile",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "loopUntil",
+      "full_path": "ib_insync.ib.IB.loopUntil",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "maintMarginAfter",
+      "full_path": "ib_insync.order.OrderState.maintMarginAfter",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "maintMarginBefore",
+      "full_path": "ib_insync.order.OrderState.maintMarginBefore",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "managedAccounts",
+      "full_path": "ib_insync.ib.IB.managedAccounts",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "MarginCondition",
+      "full_path": "ib_insync.order.MarginCondition",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "marketMaker",
+      "full_path": "ib_insync.objects.DOMLevel.marketMaker",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "marketPrice",
+      "full_path": "ib_insync.ticker.Ticker.marketPrice",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "MaxClientVersion",
+      "full_path": "ib_insync.client.Client.MaxClientVersion",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "maxCommission",
+      "full_path": "ib_insync.order.OrderState.maxCommission",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "midOffsetAtWhole",
+      "full_path": "ib_insync.order.Order.midOffsetAtWhole",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "midpoint",
+      "full_path": "ib_insync.ticker.Ticker.midpoint",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "Midpoints",
+      "full_path": "ib_insync.ticker.Midpoints",
+      "type": "class",
+      "module": "ib_insync.ticker",
+      "class": null
+    },
+    {
+      "name": "midpoints",
+      "full_path": "ib_insync.ticker.TickerUpdateEvent.midpoints",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "mifid2ExecutionTrader",
+      "full_path": "ib_insync.order.Order.mifid2ExecutionTrader",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "MinClientVersion",
+      "full_path": "ib_insync.client.Client.MinClientVersion",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "minCommission",
+      "full_path": "ib_insync.order.OrderState.minCommission",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "minSize",
+      "full_path": "ib_insync.contract.ContractDetails.minSize",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "minTick",
+      "full_path": "ib_insync.contract.ContractDetails.minTick",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "MktDepthData",
+      "full_path": "ib_insync.objects.MktDepthData",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "modelCode",
+      "full_path": "ib_insync.objects.AccountValue.modelCode",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "monitorAsync",
+      "full_path": "ib_insync.ibcontroller.IBC.monitorAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "multiplier",
+      "full_path": "ib_insync.objects.OptionChain.multiplier",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "MutualFund",
+      "full_path": "ib_insync.contract.MutualFund",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "NewsArticle",
+      "full_path": "ib_insync.objects.NewsArticle",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "NewsBulletin",
+      "full_path": "ib_insync.objects.NewsBulletin",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "newsBulletins",
+      "full_path": "ib_insync.ib.IB.newsBulletins",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "NewsProvider",
+      "full_path": "ib_insync.objects.NewsProvider",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "NewsTick",
+      "full_path": "ib_insync.objects.NewsTick",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "newsTicks",
+      "full_path": "ib_insync.ib.IB.newsTicks",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "next12Months",
+      "full_path": "ib_insync.objects.Dividends.next12Months",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Bag.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Bond.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.CFD.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Contract.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Crypto.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.DeltaNeutralContract.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Forex.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Future.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Index.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Option.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.ScanData.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Stock.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.contract.Warrant.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.ibcontroller.IBC.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.ibcontroller.Watchdog.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.objects.BarData.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.objects.Execution.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.objects.PnLSingle.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.objects.ScannerSubscription.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.objects.TickAttrib.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.objects.TickAttribLast.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.order.LimitOrder.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.order.MarketOrder.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.order.Order.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.order.OrderState.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.order.OrderStatus.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.order.StopLimitOrder.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.order.Trade.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.order.VolumeCondition.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "nonDefaults",
+      "full_path": "ib_insync.ticker.Ticker.nonDefaults",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "on_source",
+      "full_path": "ib_insync.ticker.Midpoints.on_source",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "on_source",
+      "full_path": "ib_insync.ticker.TickBars.on_source",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "on_source",
+      "full_path": "ib_insync.ticker.Tickfilter.on_source",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "on_source",
+      "full_path": "ib_insync.ticker.TimeBars.on_source",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "oneCancelsAll",
+      "full_path": "ib_insync.ib.IBstatic.oneCancelsAll",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "openOrders",
+      "full_path": "ib_insync.ib.IB.openOrders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "openTrades",
+      "full_path": "ib_insync.ib.IB.openTrades",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "operation",
+      "full_path": "ib_insync.objects.MktDepthData.operation",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "Option",
+      "full_path": "ib_insync.contract.Option",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "OptionChain",
+      "full_path": "ib_insync.objects.OptionChain",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "OptionComputation",
+      "full_path": "ib_insync.objects.OptionComputation",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "Or",
+      "full_path": "ib_insync.order.OrderCondition.Or",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "Order",
+      "full_path": "ib_insync.order.Order",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "OrderComboLeg",
+      "full_path": "ib_insync.order.OrderComboLeg",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "orderComboLegs",
+      "full_path": "ib_insync.order.StopOrder.orderComboLegs",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "OrderCondition",
+      "full_path": "ib_insync.order.OrderCondition",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "orderMiscOptions",
+      "full_path": "ib_insync.order.Order.orderMiscOptions",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "orders",
+      "full_path": "ib_insync.ib.IB.orders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "OrderState",
+      "full_path": "ib_insync.order.OrderState",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "OrderStatus",
+      "full_path": "ib_insync.order.OrderStatus",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "pair",
+      "full_path": "ib_insync.contract.Forex.pair",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "parseIBDatetime",
+      "full_path": "ib_insync.util.parseIBDatetime",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "past12Months",
+      "full_path": "ib_insync.objects.Dividends.past12Months",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "pastLimit",
+      "full_path": "ib_insync.objects.TickAttribLast.pastLimit",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "patchAsyncio",
+      "full_path": "ib_insync.util.patchAsyncio",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "pendingTickers",
+      "full_path": "ib_insync.ib.IB.pendingTickers",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "PercentChangeCondition",
+      "full_path": "ib_insync.order.PercentChangeCondition",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "placeOrder",
+      "full_path": "ib_insync.client.Client.placeOrder",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "placeOrder",
+      "full_path": "ib_insync.ib.IB.placeOrder",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "pnl",
+      "full_path": "ib_insync.ib.IB.pnl",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "PnL",
+      "full_path": "ib_insync.objects.PnL",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "pnlSingle",
+      "full_path": "ib_insync.ib.IB.pnlSingle",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "PnLSingle",
+      "full_path": "ib_insync.objects.PnLSingle",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "portfolio",
+      "full_path": "ib_insync.ib.IB.portfolio",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "PortfolioItem",
+      "full_path": "ib_insync.objects.PortfolioItem",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "position",
+      "full_path": "ib_insync.objects.MktDepthData.position",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "Position",
+      "full_path": "ib_insync.objects.Position",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "positions",
+      "full_path": "ib_insync.ib.IB.positions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "PreSubmitted",
+      "full_path": "ib_insync.order.OrderStatus.PreSubmitted",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "price",
+      "full_path": "ib_insync.objects.HistoricalTickLast.price",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "PriceCondition",
+      "full_path": "ib_insync.order.PriceCondition",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "PriceIncrement",
+      "full_path": "ib_insync.objects.PriceIncrement",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "priceMagnifier",
+      "full_path": "ib_insync.contract.ContractDetails.priceMagnifier",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "propduration",
+      "full_path": "ib_insync.objects.ConnectionStats.propduration",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "propevMultiplier",
+      "full_path": "ib_insync.objects.Execution.propevMultiplier",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "providerCode",
+      "full_path": "ib_insync.objects.NewsTick.providerCode",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "putable",
+      "full_path": "ib_insync.contract.ContractDetails.putable",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "qualifyContracts",
+      "full_path": "ib_insync.ib.IB.qualifyContracts",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "qualifyContractsAsync",
+      "full_path": "ib_insync.ib.IB.qualifyContractsAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "ratings",
+      "full_path": "ib_insync.contract.ContractDetails.ratings",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "readonly",
+      "full_path": "ib_insync.ibcontroller.Watchdog.readonly",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "RealTimeBar",
+      "full_path": "ib_insync.objects.RealTimeBar",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "RealTimeBarList",
+      "full_path": "ib_insync.objects.RealTimeBarList",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "realtimeBars",
+      "full_path": "ib_insync.ib.IB.realtimeBars",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "refDate",
+      "full_path": "ib_insync.objects.HistoricalSession.refDate",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "remaining",
+      "full_path": "ib_insync.order.Trade.remaining",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "replaceFA",
+      "full_path": "ib_insync.client.Client.replaceFA",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "replaceFA",
+      "full_path": "ib_insync.ib.IB.replaceFA",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqAccountSummary",
+      "full_path": "ib_insync.ib.IB.reqAccountSummary",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqAccountSummaryAsync",
+      "full_path": "ib_insync.ib.IB.reqAccountSummaryAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqAccountUpdates",
+      "full_path": "ib_insync.ib.IB.reqAccountUpdates",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqAccountUpdatesAsync",
+      "full_path": "ib_insync.ib.IB.reqAccountUpdatesAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqAccountUpdatesMulti",
+      "full_path": "ib_insync.client.Client.reqAccountUpdatesMulti",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqAccountUpdatesMulti",
+      "full_path": "ib_insync.ib.IB.reqAccountUpdatesMulti",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqAllOpenOrders",
+      "full_path": "ib_insync.client.Client.reqAllOpenOrders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqAllOpenOrders",
+      "full_path": "ib_insync.ib.IB.reqAllOpenOrders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqAllOpenOrdersAsync",
+      "full_path": "ib_insync.ib.IB.reqAllOpenOrdersAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqAutoOpenOrders",
+      "full_path": "ib_insync.ib.IB.reqAutoOpenOrders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqCompletedOrders",
+      "full_path": "ib_insync.ib.IB.reqCompletedOrders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqContractDetails",
+      "full_path": "ib_insync.ib.IB.reqContractDetails",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqCurrentTime",
+      "full_path": "ib_insync.client.Client.reqCurrentTime",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqCurrentTime",
+      "full_path": "ib_insync.ib.IB.reqCurrentTime",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqCurrentTimeAsync",
+      "full_path": "ib_insync.ib.IB.reqCurrentTimeAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqExecutions",
+      "full_path": "ib_insync.client.Client.reqExecutions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqExecutions",
+      "full_path": "ib_insync.ib.IB.reqExecutions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqExecutionsAsync",
+      "full_path": "ib_insync.ib.IB.reqExecutionsAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqFamilyCodes",
+      "full_path": "ib_insync.client.Client.reqFamilyCodes",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqFundamentalData",
+      "full_path": "ib_insync.ib.IB.reqFundamentalData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqGlobalCancel",
+      "full_path": "ib_insync.client.Client.reqGlobalCancel",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqGlobalCancel",
+      "full_path": "ib_insync.ib.IB.reqGlobalCancel",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHeadTimeStamp",
+      "full_path": "ib_insync.client.Client.reqHeadTimeStamp",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqHeadTimeStamp",
+      "full_path": "ib_insync.ib.IB.reqHeadTimeStamp",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHeadTimeStampAsync",
+      "full_path": "ib_insync.ib.IB.reqHeadTimeStampAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHistogramData",
+      "full_path": "ib_insync.client.Client.reqHistogramData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqHistogramData",
+      "full_path": "ib_insync.ib.IB.reqHistogramData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHistogramDataAsync",
+      "full_path": "ib_insync.ib.IB.reqHistogramDataAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHistoricalData",
+      "full_path": "ib_insync.ib.IB.reqHistoricalData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHistoricalDataAsync",
+      "full_path": "ib_insync.ib.IB.reqHistoricalDataAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHistoricalNews",
+      "full_path": "ib_insync.ib.IB.reqHistoricalNews",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHistoricalNewsAsync",
+      "full_path": "ib_insync.ib.IB.reqHistoricalNewsAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHistoricalSchedule",
+      "full_path": "ib_insync.ib.IB.reqHistoricalSchedule",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqHistoricalTicks",
+      "full_path": "ib_insync.ib.IB.reqHistoricalTicks",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqIds",
+      "full_path": "ib_insync.client.Client.reqIds",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqManagedAccts",
+      "full_path": "ib_insync.client.Client.reqManagedAccts",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqMarketDataType",
+      "full_path": "ib_insync.ib.IB.reqMarketDataType",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqMarketRule",
+      "full_path": "ib_insync.client.Client.reqMarketRule",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqMarketRule",
+      "full_path": "ib_insync.ib.IB.reqMarketRule",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqMarketRuleAsync",
+      "full_path": "ib_insync.ib.IB.reqMarketRuleAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqMatchingSymbols",
+      "full_path": "ib_insync.ib.IB.reqMatchingSymbols",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqMktData",
+      "full_path": "ib_insync.client.Client.reqMktData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqMktData",
+      "full_path": "ib_insync.ib.IB.reqMktData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqMktDepth",
+      "full_path": "ib_insync.client.Client.reqMktDepth",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqMktDepth",
+      "full_path": "ib_insync.ib.IB.reqMktDepth",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqMktDepthExchanges",
+      "full_path": "ib_insync.ib.IB.reqMktDepthExchanges",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqNewsArticle",
+      "full_path": "ib_insync.client.Client.reqNewsArticle",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqNewsArticle",
+      "full_path": "ib_insync.ib.IB.reqNewsArticle",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqNewsArticleAsync",
+      "full_path": "ib_insync.ib.IB.reqNewsArticleAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqNewsBulletins",
+      "full_path": "ib_insync.client.Client.reqNewsBulletins",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqNewsBulletins",
+      "full_path": "ib_insync.ib.IB.reqNewsBulletins",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqNewsProviders",
+      "full_path": "ib_insync.client.Client.reqNewsProviders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqNewsProviders",
+      "full_path": "ib_insync.ib.IB.reqNewsProviders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqNewsProvidersAsync",
+      "full_path": "ib_insync.ib.IB.reqNewsProvidersAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqOpenOrders",
+      "full_path": "ib_insync.client.Client.reqOpenOrders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqOpenOrders",
+      "full_path": "ib_insync.ib.IB.reqOpenOrders",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqOpenOrdersAsync",
+      "full_path": "ib_insync.ib.IB.reqOpenOrdersAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqPnL",
+      "full_path": "ib_insync.client.Client.reqPnL",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqPnL",
+      "full_path": "ib_insync.ib.IB.reqPnL",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqPnLSingle",
+      "full_path": "ib_insync.client.Client.reqPnLSingle",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqPnLSingle",
+      "full_path": "ib_insync.ib.IB.reqPnLSingle",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqPositions",
+      "full_path": "ib_insync.client.Client.reqPositions",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqPositionsAsync",
+      "full_path": "ib_insync.ib.IB.reqPositionsAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqRealTimeBars",
+      "full_path": "ib_insync.client.Client.reqRealTimeBars",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqRealTimeBars",
+      "full_path": "ib_insync.ib.IB.reqRealTimeBars",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqScannerData",
+      "full_path": "ib_insync.ib.IB.reqScannerData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqScannerDataAsync",
+      "full_path": "ib_insync.ib.IB.reqScannerDataAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqScannerParameters",
+      "full_path": "ib_insync.client.Client.reqScannerParameters",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqScannerParameters",
+      "full_path": "ib_insync.ib.IB.reqScannerParameters",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqScannerParametersAsync",
+      "full_path": "ib_insync.ib.IB.reqScannerParametersAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqScannerSubscription",
+      "full_path": "ib_insync.ib.IB.reqScannerSubscription",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqSecDefOptParams",
+      "full_path": "ib_insync.ib.IB.reqSecDefOptParams",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqSmartComponents",
+      "full_path": "ib_insync.ib.IB.reqSmartComponents",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqTickers",
+      "full_path": "ib_insync.ib.IB.reqTickers",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqTickersAsync",
+      "full_path": "ib_insync.ib.IB.reqTickersAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "RequestError",
+      "full_path": "ib_insync.wrapper.RequestError",
+      "type": "class",
+      "module": "ib_insync.wrapper",
+      "class": null
+    },
+    {
+      "name": "requestFA",
+      "full_path": "ib_insync.client.Client.requestFA",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "requestFA",
+      "full_path": "ib_insync.ib.IB.requestFA",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "requestFAAsync",
+      "full_path": "ib_insync.ib.IB.requestFAAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "RequestsInterval",
+      "full_path": "ib_insync.client.Client.RequestsInterval",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqUserInfo",
+      "full_path": "ib_insync.client.Client.reqUserInfo",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqUserInfo",
+      "full_path": "ib_insync.ib.IB.reqUserInfo",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqUserInfoAsync",
+      "full_path": "ib_insync.ib.IB.reqUserInfoAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "reqWshEventData",
+      "full_path": "ib_insync.client.Client.reqWshEventData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reqWshMetaData",
+      "full_path": "ib_insync.client.Client.reqWshMetaData",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "reset",
+      "full_path": "ib_insync.client.Client.reset",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "rtHistVolatility",
+      "full_path": "ib_insync.ticker.Ticker.rtHistVolatility",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "run",
+      "full_path": "ib_insync.client.Client.run",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "run",
+      "full_path": "ib_insync.ib.IBstatic.run",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "run",
+      "full_path": "ib_insync.util.run",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "runAsync",
+      "full_path": "ib_insync.ibcontroller.Watchdog.runAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "save",
+      "full_path": "ib_insync.flexreport.FlexReport.save",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "flexreport"
+    },
+    {
+      "name": "scaleInitFillQty",
+      "full_path": "ib_insync.order.Order.scaleInitFillQty",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "scaleInitPosition",
+      "full_path": "ib_insync.order.Order.scaleInitPosition",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "scaleProfitOffset",
+      "full_path": "ib_insync.order.Order.scaleProfitOffset",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "ScanData",
+      "full_path": "ib_insync.contract.ScanData",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "ScanDataList",
+      "full_path": "ib_insync.objects.ScanDataList",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "ScannerSubscription",
+      "full_path": "ib_insync.objects.ScannerSubscription",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "ScannerSubscriptiontickAttribLast",
+      "full_path": "ib_insync.objects.TickByTickAllLast.ScannerSubscriptiontickAttribLast",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "schedule",
+      "full_path": "ib_insync.ib.IBstatic.schedule",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "schedule",
+      "full_path": "ib_insync.util.schedule",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "send",
+      "full_path": "ib_insync.client.Client.send",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "serverVersion",
+      "full_path": "ib_insync.client.Client.serverVersion",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "setTimeout",
+      "full_path": "ib_insync.ib.IB.setTimeout",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "sleep",
+      "full_path": "ib_insync.ib.IBstatic.sleep",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "sleep",
+      "full_path": "ib_insync.util.sleep",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "SmartComponent",
+      "full_path": "ib_insync.objects.SmartComponent",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "SoftDollarTier",
+      "full_path": "ib_insync.objects.SoftDollarTier",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "softDollarTier",
+      "full_path": "ib_insync.order.StopOrder.softDollarTier",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "start",
+      "full_path": "ib_insync.ibcontroller.IBC.start",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "start",
+      "full_path": "ib_insync.ibcontroller.IBController.start",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "start",
+      "full_path": "ib_insync.ibcontroller.Watchdog.start",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "startApi",
+      "full_path": "ib_insync.client.Client.startApi",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "startAsync",
+      "full_path": "ib_insync.ibcontroller.IBC.startAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "startDate",
+      "full_path": "ib_insync.objects.WshEventData.startDate",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "startLoop",
+      "full_path": "ib_insync.util.startLoop",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "Stock",
+      "full_path": "ib_insync.contract.Stock",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "stockType",
+      "full_path": "ib_insync.contract.ContractDetails.stockType",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "stop",
+      "full_path": "ib_insync.ibcontroller.IBController.stop",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "stop",
+      "full_path": "ib_insync.ibcontroller.Watchdog.stop",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "stopAsync",
+      "full_path": "ib_insync.ibcontroller.IBController.stopAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "StopLimitOrder",
+      "full_path": "ib_insync.order.StopLimitOrder",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "StopOrder",
+      "full_path": "ib_insync.order.StopOrder",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "subcategory",
+      "full_path": "ib_insync.contract.ContractDetails.subcategory",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "symbol",
+      "full_path": "ib_insync.order.ExecutionCondition.symbol",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "TagValue",
+      "full_path": "ib_insync.contract.TagValue",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "takeProfit",
+      "full_path": "ib_insync.order.BracketOrder.takeProfit",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "terminate",
+      "full_path": "ib_insync.ibcontroller.IBC.terminate",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "theta",
+      "full_path": "ib_insync.objects.OptionComputation.theta",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tickAttrib",
+      "full_path": "ib_insync.objects.OptionComputation.tickAttrib",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "TickAttrib",
+      "full_path": "ib_insync.objects.TickAttrib",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "TickAttribBidAsk",
+      "full_path": "ib_insync.objects.TickAttribBidAsk",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "tickAttribLast",
+      "full_path": "ib_insync.objects.HistoricalTickLast.tickAttribLast",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "TickAttribLast",
+      "full_path": "ib_insync.objects.TickAttribLast",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "TickBars",
+      "full_path": "ib_insync.ticker.TickBars",
+      "type": "class",
+      "module": "ib_insync.ticker",
+      "class": null
+    },
+    {
+      "name": "tickbars",
+      "full_path": "ib_insync.ticker.Tickfilter.tickbars",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "TickByTickAllLast",
+      "full_path": "ib_insync.objects.TickByTickAllLast",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "TickByTickBidAsk",
+      "full_path": "ib_insync.objects.TickByTickBidAsk",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "TickByTickMidPoint",
+      "full_path": "ib_insync.objects.TickByTickMidPoint",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "TickData",
+      "full_path": "ib_insync.objects.TickData",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "ticker",
+      "full_path": "ib_insync.ib.IB.ticker",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "Ticker",
+      "full_path": "ib_insync.ticker.Ticker",
+      "type": "class",
+      "module": "ib_insync.ticker",
+      "class": null
+    },
+    {
+      "name": "tickers",
+      "full_path": "ib_insync.ib.IB.tickers",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "TickerUpdateEvent",
+      "full_path": "ib_insync.ticker.TickerUpdateEvent",
+      "type": "class",
+      "module": "ib_insync.ticker",
+      "class": null
+    },
+    {
+      "name": "Tickfilter",
+      "full_path": "ib_insync.ticker.Tickfilter",
+      "type": "class",
+      "module": "ib_insync.ticker",
+      "class": null
+    },
+    {
+      "name": "time",
+      "full_path": "ib_insync.objects.HistoricalTickBidAsk.time",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "time",
+      "full_path": "ib_insync.objects.TickByTickMidPoint.time",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "timebars",
+      "full_path": "ib_insync.ticker.Tickfilter.timebars",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "TimeBars",
+      "full_path": "ib_insync.ticker.TimeBars",
+      "type": "class",
+      "module": "ib_insync.ticker",
+      "class": null
+    },
+    {
+      "name": "TimeCondition",
+      "full_path": "ib_insync.order.TimeCondition",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "timeRange",
+      "full_path": "ib_insync.ib.IBstatic.timeRange",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "timeRange",
+      "full_path": "ib_insync.util.timeRange",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "timeRangeAsync",
+      "full_path": "ib_insync.ib.IBstatic.timeRangeAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "timeRangeAsync",
+      "full_path": "ib_insync.util.timeRangeAsync",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "topics",
+      "full_path": "ib_insync.flexreport.FlexReport.topics",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "flexreport"
+    },
+    {
+      "name": "Trade",
+      "full_path": "ib_insync.order.Trade",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "TradeLogEntry",
+      "full_path": "ib_insync.objects.TradeLogEntry",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "trades",
+      "full_path": "ib_insync.ib.IB.trades",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "trades",
+      "full_path": "ib_insync.ticker.TickerUpdateEvent.trades",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "tradingClass",
+      "full_path": "ib_insync.contract.Contract.tradingClass",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tree",
+      "full_path": "ib_insync.util.tree",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Bag.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Bond.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.CFD.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.ComboLeg.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Commodity.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.ContFuture.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Contract.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.ContractDetails.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Crypto.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Forex.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Future.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.FuturesOption.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Index.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.MutualFund.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Option.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.ScanData.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.contract.Warrant.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.ibcontroller.IBC.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.ibcontroller.IBController.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.BarData.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.CommissionReport.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.Execution.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.ExecutionFilter.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.HistogramData.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.HistoricalSchedule.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.HistoricalSession.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.NewsProvider.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.PnL.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.PnLSingle.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.RealTimeBar.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.SoftDollarTier.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.TickAttrib.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.TickAttribBidAsk.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.TickAttribLast.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.objects.TradeLogEntry.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.ExecutionCondition.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.LimitOrder.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.MarginCondition.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.MarketOrder.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.Order.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.OrderComboLeg.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.OrderCondition.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.OrderState.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.OrderStatus.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.PercentChangeCondition.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.PriceCondition.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.StopLimitOrder.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.StopOrder.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.TimeCondition.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.Trade.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.order.VolumeCondition.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "tuple",
+      "full_path": "ib_insync.ticker.Ticker.tuple",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "underlyingConId",
+      "full_path": "ib_insync.objects.OptionChain.underlyingConId",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Bag.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Bond.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.CFD.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.ComboLeg.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Commodity.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.ContFuture.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Contract.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.ContractDetails.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Crypto.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.DeltaNeutralContract.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Forex.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Future.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.FuturesOption.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Index.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.MutualFund.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Option.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.ScanData.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Stock.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.contract.Warrant.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.ibcontroller.IBC.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.ibcontroller.IBController.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.ibcontroller.Watchdog.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ibcontroller"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.BarData.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.DepthMktDataDescription.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.Execution.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.ExecutionFilter.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.HistogramData.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.HistoricalSession.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.NewsProvider.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.PnL.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.PnLSingle.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.RealTimeBar.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.SoftDollarTier.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.TickAttrib.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.TickAttribBidAsk.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.TickAttribLast.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.objects.TradeLogEntry.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.ExecutionCondition.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.LimitOrder.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.MarginCondition.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.MarketOrder.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.Order.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.OrderComboLeg.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.OrderCondition.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.OrderState.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.OrderStatus.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.PriceCondition.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.StopLimitOrder.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.StopOrder.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.TimeCondition.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.Trade.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.order.VolumeCondition.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "update",
+      "full_path": "ib_insync.ticker.Ticker.update",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ticker"
+    },
+    {
+      "name": "updateReqId",
+      "full_path": "ib_insync.client.Client.updateReqId",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "usePriceMgmtAlgo",
+      "full_path": "ib_insync.order.Order.usePriceMgmtAlgo",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "order"
+    },
+    {
+      "name": "useQt",
+      "full_path": "ib_insync.util.useQt",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "validExchanges",
+      "full_path": "ib_insync.contract.ContractDetails.validExchanges",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "contract"
+    },
+    {
+      "name": "vega",
+      "full_path": "ib_insync.objects.OptionComputation.vega",
+      "type": "property",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "verifyAndAuthMessage",
+      "full_path": "ib_insync.client.Client.verifyAndAuthMessage",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "verifyAndAuthRequest",
+      "full_path": "ib_insync.client.Client.verifyAndAuthRequest",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "verifyMessage",
+      "full_path": "ib_insync.client.Client.verifyMessage",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "verifyRequest",
+      "full_path": "ib_insync.client.Client.verifyRequest",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "client"
+    },
+    {
+      "name": "VolumeCondition",
+      "full_path": "ib_insync.order.VolumeCondition",
+      "type": "class",
+      "module": "ib_insync.order",
+      "class": null
+    },
+    {
+      "name": "waitOnUpdate",
+      "full_path": "ib_insync.ib.IB.waitOnUpdate",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "waitUntil",
+      "full_path": "ib_insync.ib.IBstatic.waitUntil",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "waitUntil",
+      "full_path": "ib_insync.util.waitUntil",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "waitUntilAsync",
+      "full_path": "ib_insync.util.waitUntilAsync",
+      "type": "function",
+      "module": "ib_insync.util",
+      "class": null
+    },
+    {
+      "name": "Warrant",
+      "full_path": "ib_insync.contract.Warrant",
+      "type": "class",
+      "module": "ib_insync.contract",
+      "class": null
+    },
+    {
+      "name": "Watchdog",
+      "full_path": "ib_insync.ibcontroller.Watchdog",
+      "type": "class",
+      "module": "ib_insync.ibcontroller",
+      "class": null
+    },
+    {
+      "name": "whatIfOrder",
+      "full_path": "ib_insync.ib.IB.whatIfOrder",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "whatIfOrderAsync",
+      "full_path": "ib_insync.ib.IB.whatIfOrderAsync",
+      "type": "method",
+      "module": "ib_insync",
+      "class": "ib"
+    },
+    {
+      "name": "whatToShow",
+      "full_path": "ib_insync.objects.BarDataList.whatToShow",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "whatToShow",
+      "full_path": "ib_insync.objects.RealTimeBarList.whatToShow",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    },
+    {
+      "name": "WshEventData",
+      "full_path": "ib_insync.objects.WshEventData",
+      "type": "class",
+      "module": "ib_insync.objects",
+      "class": null
+    },
+    {
+      "name": "yield_",
+      "full_path": "ib_insync.objects.CommissionReport.yield_",
+      "type": "attribute",
+      "module": "ib_insync",
+      "class": "objects"
+    }
+  ],
+  "metadata": {
+    "total_entries": 629,
+    "duplicates_removed": 0,
+    "breakdown_by_type": {
+      "attribute": 83,
+      "method": 397,
+      "class": 96,
+      "function": 27,
+      "property": 25,
+      "static_method": 1
+    }
+  }
+}
