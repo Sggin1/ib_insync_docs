@@ -1,0 +1,22 @@
+{
+  "C": [
+    "connect:40:40:3:182",
+    "contract_creation:53:53:3:103"
+  ],
+  "U": [
+    "unknown:28:28:3:672"
+  ],
+  "P": [
+    "placeOrder:61:61:3:290",
+    "positions:5:5:3:691"
+  ],
+  "R": [
+    "reqHistoricalData:13:13:3:38"
+  ],
+  "B": [
+    "bars_request:4:4:3:629"
+  ],
+  "T": [
+    "ticker_subscription:9:9:3:271"
+  ]
+}
